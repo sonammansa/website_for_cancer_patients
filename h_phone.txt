@@ -1,0 +1,46 @@
+create or replace procedure ins_hph1
+(id in h_phone.hid%type,n1 in h_phone.phone_no%type,n2 in h_phone.phone_no%type,n3 in h_phone.phone_no%type)
+is
+begin
+insert into h_phone values(id,n1);
+if n2<>0 then
+insert into h_phone values(id,n2);
+else
+dbms_output.put_line('');
+end if;
+if n3<>0 then
+insert into h_phone values(id,n3);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+begin
+ins_hph1(01,917925359232,9426755855,9426417678);
+ins_hph1(02,9109748618260,0,0);
+ins_hph1(03,9109322478221,0,0);
+ins_hph1(04,9104346389,9872555576,0);
+ins_hph1(05,9109845280651,0,0);
+ins_hph1(06,911143006000,0,0);
+ins_hph1(07,914522641332,914522580892,9842124100);
+ins_hph1(08,914044885000,0,0);
+ins_hph1(09,91009650152647,0,0);
+ins_hph1(10,914529442619775,0,0);
+ins_hph1(11,9109958919595,911209891010390,0);
+ins_hph1(12,9109910206437,0,0);
+ins_hph1(13,9849999379,0,0);
+ins_hph1(14,91119810444600,0,0);
+ins_hph1(15,918022152215,0,0);
+ins_hph1(16,9109810059380,0,0);
+ins_hph1(17,912652711091,9909912905,0);
+ins_hph1(18,9109611195666,0,0);
+ins_hph1(19,9109414451043,0,0);
+ins_hph1(20,91119313668802,32668050,0);
+ins_hph1(21,9109812399708,9717041602,0);
+ins_hph1(22,91449444132816,0,0);
+ins_hph1(23,917940022211,40022233,9825062015);
+ins_hph1(24,91408008159444,0,0);
+ins_hph1(25,9109552522556,0,0);
+ins_hph1(26,914426424396,26411621,26412474);
+ins_hph1(27,914023607777,0,0);
+end;

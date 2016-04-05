@@ -1,0 +1,67 @@
+create or replace trigger spc
+before insert or update on specialists
+for each row
+declare
+d date;
+begin
+select sysdate into d from dual;
+:new.age:=(d-:new.DOB)/365;
+end;
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(101,'Dr.(Mrs.)Ronak P.Bhansali','21-oct-1960','Oncologist(Gynec-oncologist)',30000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(102,'Dr. Amitabh Ray','19-oct-1972','Oncologist',12000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(103,'Dr. Amitkumar Jaiswal','27-jul-1966','Oncologist(surgical oncologist)',27000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(104,'Dr. Bhagwan D Jindal','10-nov-1964','Oncologist(cancer consultant)',33000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(105,'Dr. Bindhu Joseph','01-nov-1968','Oncologist',25000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(106,'Dr. Dinesh Chandra Katiyar','28-apr-1970','Oncologist(Cancer Surgery)',43000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(107,'Dr. E Prasad','11-oct-1968','Oncologist(Radiation Oncologist)',47000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(108,'Dr. G.Amarnath','15-oct-1961','Oncologist(Radiation oncology)',41000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(109,'Dr. Hemanth Vudayaraju','28-oct-1965','Oncologist(Surgical Oncologist)',25000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(110,'Dr. Jawahar Ticku','04-nov-1969','Oncologist(Hematology)',43000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(111,'Dr. Jebasingh J','23-mar-1961','Oncologist(Medical Oncologist)',30000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(112,'Dr. LM.Darlong','14-jun-1964','Oncologist(Thoraric Surgical Oncology)',40000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(113,'Dr. Mudit Agarwal','05-may-1970','Oncologist(Surgical Oncologist)',34000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(114,'Dr. Nagendra Parvataneni','29-jan-1963','Oncologist(Surgical Oncologist)',25000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(115,'Dr. P.K.Das','08-jan-1962','Oncologist(Medical Oncologist)',27000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(116,'Dr. Prasad Dandekar','21-apr-1971','Oncologist',18000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(117,'Dr. S.K.Das','30-jun-1967','Oncologist(Gynae-Oncology)',20000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(118,'Dr. Samir Ray','20-feb-1968','Oncologist(Consultant GI Oncosurgeon)',25000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(119,'Dr. Sapna Nangia','19-sep-1966','Oncologist(Radiation Oncology)',23000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(120,'Dr. Satish Kumar','04-sep-1963','Oncologist(Hematology)',17000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(121,'Dr. Shankar Lal Jakhar','28-sep-1960','Oncologist(Radiation Oncology)',29000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(122,'Dr. Shuaib Zaidi','14-aug-1964','Oncologist',21000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(123,'Dr. Swarupa Mitra','27-aug-1967','Oncologist(Radiation Oncologist)',36000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(124,'Dr. T N Vijayashree','05-sep-1969','Oncologist(Radiation Oncology)',40000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(125,'Dr. Tarang Patel','18-jul-1965','Oncologist(Consultant Onco Surgeon)',34000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra','21-jan-1968','Oncologist(PET SCAN)',28000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(127,'Dr. Tushar V Patil','30-oct-1969','Oncologist(Hematology)',34000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(128,'Dr. V. Vedhamoorthy','07-oct-1966','Oncologist(Cancer Specialist)',29000);
+
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(129,'Dr. Vijay Anand P Reddy','25-dec-1962','Oncologist',37000);

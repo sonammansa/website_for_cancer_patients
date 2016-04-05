@@ -1,0 +1,41 @@
+create or replace procedure ins_wrk1
+(id in hospital.hid%type,i1 in specialists.sid%type,i2 in specialists.sid%type)
+is
+begin
+insert into works_at values(i1,id);
+if i2<>0 then
+insert into works_at values(i2,id);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+begin
+ins_wrk1(01,101,0);
+ins_wrk1(02,102,0);
+ins_wrk1(03,103,0);
+ins_wrk1(04,104,0);
+ins_wrk1(05,105,0);
+ins_wrk1(06,106,0);
+ins_wrk1(07,107,108);
+ins_wrk1(08,109,0);
+ins_wrk1(09,110,0);
+ins_wrk1(10,111,0);
+ins_wrk1(11,112,119);
+ins_wrk1(12,113,0);
+ins_wrk1(13,114,0);
+ins_wrk1(14,115,0);
+ins_wrk1(15,116,0);
+ins_wrk1(16,117,0);
+ins_wrk1(17,118,0);
+ins_wrk1(18,120,0);
+ins_wrk1(19,121,0);
+ins_wrk1(20,122,0);
+ins_wrk1(21,123,0);
+ins_wrk1(22,124,0);
+ins_wrk1(23,125,0);
+ins_wrk1(24,126,0);
+ins_wrk1(25,127,0);
+ins_wrk1(26,128,0);
+ins_wrk1(27,129,0);
+end;

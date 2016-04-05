@@ -1,0 +1,10 @@
+declare
+v_s hospital.state%type:=&state;
+c int;
+begin
+select count(hid) into c from hospital where state=v_s group by state;
+dbms_output.put_line(v_s||' has '||c||' hospitals with cancer specialists.');
+exception
+when no_data_found then
+dbms_output.put_line('no such state in our database');
+end;

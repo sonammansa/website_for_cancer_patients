@@ -1,0 +1,66 @@
+create table cancer
+(type varchar(255) not null,
+bodypart_affec varchar(255),
+cells_damaged varchar(255),
+primary key(type));
+
+create table causes
+(type varchar(255) not null,
+cause_riskfactor varchar(255),
+primary key(type,cause_riskfactor),
+foreign key(type) references cancer(type));
+
+create table symptoms
+(type varchar(255) not null,
+symptoms varchar(255),
+primary key(type,symptoms),
+foreign key(type) references cancer(type));
+
+create table diagnosis
+(type varchar(255) not null,
+tests varchar(255),
+primary key(type,tests),
+foreign key(type) references cancer(type));
+
+create table treatment
+(type varchar(255) not null,
+treatment varchar(255),
+primary key(type,treatment),
+foreign key(type) references cancer(type));
+
+create table specialists
+(sid int not null,
+sname varchar(255),
+DOB date,
+age int,
+speciality varchar(255),
+consult_fee number(10),
+primary key(sid));
+
+create table s_educ
+(sid int not null,
+degrees varchar(255),
+primary key(sid,degrees),
+foreign key(sid) references specialists(sid) on delete cascade);
+
+create table hospital
+(hid int not null,
+hname varchar(255),
+building varchar(255),
+town varchar(255),
+city varchar(255),
+state varchar(255),
+primary key(hid));
+
+create table works_at
+(sid int not null,
+hid int,
+primary key(sid,hid),
+foreign key(sid) references specialists(sid) on delete cascade,
+foreign key(hid) references hospital(hid) on delete cascade);
+
+create table h_phone
+(hid int not null,
+phone_no number(20),
+primary key(hid,phone_no),
+foreign key(hid) references hospital(hid) on delete cascade);

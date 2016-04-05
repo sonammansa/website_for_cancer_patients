@@ -1,0 +1,245 @@
+create or replace procedure pro11
+(t in causes.type%type,c1 in causes.cause_riskfactor%type,c2 in causes.cause_riskfactor%type,c3 in causes.cause_riskfactor%type,c4 in causes.cause_riskfactor%type,c5 in causes.cause_riskfactor%type)
+is
+begin
+insert into causes
+values(t,c1);
+if c2<>'null' then
+insert into causes
+values(t,c2);
+else
+dbms_output.put_line('');
+end if;
+if c3<>'null' then
+insert into causes
+values(t,c3);
+else
+dbms_output.put_line('');
+end if;
+if c4<>'null' then
+insert into causes
+values(t,c4);
+else
+dbms_output.put_line('');
+end if;
+if c5<>'null' then
+insert into causes
+values(t,c5);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+begin
+pro11('Acute lymphoblastic leukemia','Certain chromosome problems','Exposure to radiation','Receiving a bone marrow transplant','Toxins','genetic disorders');
+
+pro11('Acute myeloid leukemia','Blood disorders','Genetics','Radiation','Chemical exposure','Preleukemia');
+
+pro11('Hairy cell leukemia','abnormal growth of B cells','null','null','null','null');
+
+pro11('Head and neck cancer','A poor diet','Heavy consumption of alcohol','Chewing tobacco, betel, pan, or gutkha','	Smoking tobacco','null');
+
+pro11('Heart cancer','soft tissue cells such as lymphomas ','null','null','null','null');
+
+pro11('Hepatocellular (liver) cancer','Iron overload in the body ','Inflammation of the liver that is long-term ','	Hepatitis B or C virus infection','Autoimmune diseases of the liver','	Alcohol abuse ');
+
+pro11('Hodgkin lymphoma','Exposure to exotoxins','Prolonged use of human growth hormone','Weakened immune system','infectious mononucleosis','null');
+
+pro11('Hypopharyngeal cancer','Smoking','Chewing tobacco','Heavy alcohol use','Poor diet','Plummer-Vinson Syndrome ');
+
+pro11('Hypothalamic and visual pathway glioma, childhood','changes to genes','null','null','null','null');
+
+pro11('Intraocular Melanoma','Dysplastic Nevi', 'Fair Skin', 'Personal History of Skin Cancer', 'Family History', 'Weakened Immune System');
+
+pro11('Islet Cell Carcinoma (Endocrine Pancreas)','excess of pancreatic hormones','null','null','null','null');
+
+pro11('Kaposi sarcoma','exposure to sunlight', 'diet', 'smoking n alcohol', 'infectious diseases', 'use of drugs');
+
+pro11('Kidney cancer (renal cell cancer)','Cigarette smoking ','exposure to petroleum products','Cystic changes in the kidney and renal dialysis ','Tuberous sclerosis ','Hereditary renal cancer ');
+
+pro11('Laryngeal Cancer','heavy smoking and drinking','poor eating habits-not enough vitamins from fruits and vegetables','weakened immune system','exposure to chemicals and certain substances (e.g., wood dust, paint fumes, soot)','	acid reflux');
+
+pro11('Leukemias','Radiation', 'Atomic bomb explosions', 'Radiation therapy', 'Diagnostic x-rays', 'smoking');
+
+pro11('Lip and Oral Cavity Cancer','Using tobacco products','Heavy alcohol use.','Being exposed to natural sunlight or artificial sunlight ','Being male','Being infected with human papillomavirus (HPV)');
+
+pro11('Liposarcoma','damaged genes',' radiation treatment or chemotherapy in the past', 'smoking','null','null');
+
+pro11('Lung Cancer','Viruses','Asbestos','Radon gas','smoking','null');
+
+pro11('Lymphomas',' Carcinogens', 'Exposure to toxic chemicals', 'infections', 'Taking drugs that suppress the immune system','null');
+
+pro11('Malignant Fibrous Histiocytoma of bone','age','past time read in radiation treatment','	Bloom syndrome','Paget disease','change in the retinoblastoma gene');
+
+pro11('Medulloblastoma, Childhood','The child is older than 3 years of age.','	The tumor is at the very back of the brain.','All of the tumor was removed by surgery or there was a very small amount remaining','The cancer has not spread to other parts of the body','null');
+
+pro11('Melanoma','natural history', 'genetics', 'uv radiation','null','null');
+
+pro11('Merkel Cell Carcinoma','Age over 65 years','Fair skin','History of extensive sun exposure','Chronic immune suppression (e.g., kidney or heart transplantation or HIV)','null');
+
+pro11('Mesothelioma',' Environmental exposures','Asbestos in buildings','null','null','null');
+
+pro11('Metastatic Squamous Neck Cancer with Occult Primary','age','null','null','null','null');
+
+pro11('Multiple Endocrine Neoplasia Syndrome, Childhood','gene mutations','null','null','null','null');
+
+pro11('Multiple Myeloma or Plasma Cell Neoplasm','Age over 65','Personal history of monoclonal gammopathy of undetermined significance (MGUS)','Family history of multiple myeloma','null','null');
+
+pro11('Mycosis Fungoides','genetics', 'viral infections', 'chemical exposure','null','null');
+
+pro11('Myelodysplastic or Myeloproliferative Diseases','exposure to occupational and environmental carcinogens ','null','null','null','null');
+
+pro11('Nasal cavity and paranasal sinus cancer','Being exposed to certain workplace chemicals or dust','Being infected with human papillomavirus (HPV)','Being male and older than 40 years','Smoking.','null');
+
+pro11('Nasopharyngeal carcinoma','Chinese or Asian ancestry','	Exposure to the Epstein-Barr virus','Drinking large amounts of alcohol.','null','null');
+
+pro11('Neuroblastoma','immature neuroblasts in newborns','null','null','null','null');
+
+pro11('Non-Hodgkin lymphoma','Being older, male, or white.','Taking immunosuppressant drugs after an organ transplant','Being exposed to certain pesticides','null','null');
+
+pro11('Waldenström macroglobulinemia','exposure to farming', 'pesticides',' wood dust', 'organic solvents', 'genetic factors' );
+
+pro11('Wilms tumor (kidney cancer), childhood','genetic mutation','null','null','null','null');
+
+pro11('Adrenocortical carcinoma','inheritance','gender','null','null','null');
+
+pro11('AIDS','Infected blood.','Infected needles','Multiple partners','Infected mother to her baby before birth.','	Injectable Drug Abuse');
+
+pro11('AIDS-related lymphoma','Exposure to radiation','null','null','null','null');
+
+pro11('Anal cancer','older age','anal sex','smoking','exposure to raditaions','Human papillomavirus (HPV). ');
+
+pro11('Appendix cancer','appendix become block','swelling in appendix','null','null','null');
+
+pro11('Astrocytoma','radiation exposure','exposure to oil refinery','null','null','null');
+
+pro11('Basal-cell carcinoma','exposure to sun','age','exposure to ultraviolet radiation','therapeutic radiation','null');
+
+pro11('Bladder cancer','smoking','age','sex','diet','null');
+
+pro11('Bone tumor','Inherited genetic mutations','Trauma','radiation','null','null');
+
+pro11('Brain tumor','exposure to radiation ','family history','weak immune system','null','null');
+
+pro11('Brainstem glioma','genetic factors and genetic conditions','null','null','null','null');
+
+pro11('Breast cancer','age','inheritance','radioactivity','exposure to harmful chemicals','null');
+
+pro11('Bronchial adenomas','bleeding or obstruction of a lung or lung lobe','null','null','null','null');
+
+pro11('Burkitts lymphoma','chronic malaria','null','null','null','null');
+
+pro11('Carcinoid tumor','smoking','age','null','null','null');
+
+pro11('Carcinoma of unknown primary','Overexposure to x-rays','null','null','null','null');
+
+pro11('Central nervous system lymphoma, primary','hiv','organ tranplant','age','null','null');
+
+pro11('Cerebellar astrocytoma','chemical exposure','radiation exposure','null','null','null');
+
+pro11('Cervical cancer','Human papillomavirus (HPV)','having sex in early age','smoking','low socioeconomic status','infection with the human immunodeficiency virus (HIV) that causes AIDS.');
+
+pro11('Cholangiocarcinoma','increasing age','infection','Inflammatory bowel disease ','Abnormal bile ducts','null') ;
+
+pro11('Chronic lymphocytic leukemia','Exposure to chemicals','null','null','null','null');
+
+pro11('Chronic myelogenous leukemia','Age and gender','null','null','null','null');
+
+pro11('Chronic myeloproliferative disorders','myeloid lineage in the bone marrow','null','null','null','null');
+
+pro11('Colon Cancer','age','gender','smoking','alcohal','family history');
+
+pro11('Cutaneous T-cell lymphoma',' mutation of T cells','null','null','null','null');
+
+pro11('Desmoplastic small round cell tumor','Due to formation  of small or B cell tumors','null','null','null','null');
+
+pro11('Endometrial cancer','Endometrial hyperplasia','Excess estrogen','age','null','null');
+
+pro11('Ependymoma','anaplastic ependymoma','age','null','null','null');
+
+pro11('Esophageal cancer','age','sex','heredity','Gastroesophageal reflux disease','tabacoo smoking');
+
+pro11('Ewings sarcoma in the Ewing family of tumors','exchange between chromosomes','null','null','null','null');
+
+pro11('Eye Cancer','inherited genes','exposure to sun','null','null','null');
+
+pro11('Gallbladder cancer','chronic inflammation','null','null','null','null');
+
+pro11('Gastric (Stomach) cancer','diet','infection','imune system','null','null');
+
+pro11('Gastrointestinal stromal tumor (GIST)','smoking','alcohal','genetic factors','null','null');
+
+pro11('Germ cell tumor','infections such as HIV, mumps, orchitis','history of trauma ','organ transplant immunosuppression','null','null');
+
+pro11('Gestational trophoblastic tumor','age ','gender','null','null','null');
+
+pro11('Vaginal cancer','age','gender','null','null','null');
+
+pro11('Vulvar cancer','age','smoking','hiv','hpv','null');
+
+pro11('Oral cancer','chewing betel, paan and Areca','exposure of sun','null','null','null');
+
+pro11('Oropharyngeal cancer','	A diet low in fruits and vegetables.','alcohals','smoking','EBV infection','Erythroplakia');
+
+pro11('Ovarian cancer','mutations in specific genes','early first pregnancy','hormonal contraception','null','null');
+
+pro11('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','used birth control pills','absense of BRCA1 and BRCA2 genes which help in mutation.','null','null','null');
+
+pro11('Pancreatic cancer','age','smoking','diet ','alcohal','null');
+
+pro11('Parathyroid cancer','hyperparathyroidism-jaw tumor syndrome','null','null','null','null');
+
+pro11('Penile cancer','Being age 60 or older.','null','null','null','null');
+
+pro11('Pharyngeal cancer','alcohal','tabacoo','cigar','null','null');
+
+pro11('Pheochromocytoma','mutation of genes','null','null','null','null');
+
+pro11('Pinealoma','age','gender','null','null','null');
+
+pro11('Pituitary adenoma','family history','null','null','null','null');
+
+pro11('Pleuropulmonary blastoma','inheritance','age','null','null','null');
+
+pro11('Primary central nervous system lymphoma','hiv infection','null','null','null','null');
+
+pro11('Rectal cancer','smoking','diet','alcohal','null','null');
+
+pro11('Renal cell carcinoma (kidney cancer)','being male','being over 50','smoking','alcohal','family history');
+
+pro11('Renal pelvis and ureter, transitional cell cancer','Analgesic nephropathy','exposure to certain dyes','age','null','null');
+
+pro11('Retinoblastoma','mutation on chromosome 13','null','null','null','null');
+
+pro11('Rhabdomyosarcoma, childhoods','age ','birth defects','mutations','null','null');
+
+pro11('Salivary gland cancer','old age','exposure to some things','null','null','null');
+
+pro11('Sarcoma, Ewing family of tumors','translocation between chromosomes 11 and 22','null','null','null','null');
+
+pro11('Sézary syndrome','htlv','null','null','null','null');
+
+pro11('Skin cancer','exposure to radioactive substance','use of tanning booths','contacts with certain chemicals like arsenic','null','null');
+
+pro11('Soft tissue sarcoma','exposure to certain chemicals', 'genetic diseases', 'past radiation therapy','null','null');
+
+pro11('Supratentorial primitive neuroectodermal tumor, childhood','gestational exposure to alcohol, hair coloring products, farms, and substances containing N-nitroso compounds','null','null','null','null');
+
+pro11('Testicular cancer','Undescended testicle: ','null','null','null','null');
+
+pro11('Throat cancer','alcohal','cigar','exposure to chemicals','null','null');
+
+pro11('Thymoma','age','null','null','null','null');
+
+pro11('Thyroid cancer','exposure to chemicals','family history','smoking','null','null');
+
+pro11('Cancer of Unknown primary site','environmental factors like food,exposures to radiations,oil refineries ','null','null','null','null');
+
+pro11('Ureter and renal pelvis, transitional cell cancer','smoking','exposure to dyes','null','null','null');
+
+pro11('Urethral cancer','history of bladder cancer','age greater than 60','null','null','null');
+
+pro11('Uterine cancer, endometrial','Past treatment with radiation therapy to the pelvis.','null','null','null','null');
+
+pro11('Neuroectodermal tumors','exposure to radiation','null','null','null','null');
+end;

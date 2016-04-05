@@ -1,0 +1,245 @@
+create or replace procedure pro44
+(t in treatment.type%type,c1 in treatment.treatment%type,c2 in treatment.treatment%type,c3 in treatment.treatment%type,c4 in treatment.treatment%type,c5 in treatment.treatment%type)
+is
+begin
+insert into treatment
+values(t,c1);
+if c2<>'null' then
+insert into treatment
+values(t,c2);
+else
+dbms_output.put_line('');
+end if;
+if c3<>'null' then
+insert into treatment
+values(t,c3);
+else
+dbms_output.put_line('');
+end if;
+if c4<>'null' then
+insert into treatment
+values(t,c4);
+else
+dbms_output.put_line('');
+end if;
+if c5<>'null' then
+insert into treatment
+values(t,c5);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+
+
+pro44('Acute lymphoblastic leukemia','Radiation therapy','chemotherapy','Hematopoietic stem cell transplantation','null','null');
+
+pro44('Acute myeloid leukemia','Combination chemotherapy.','High-dose combination chemotherapy.','Stem cell transplantation using donor stem cells.','All-trans retinoic acid (ATRA) plus chemotherapy.','Intrathecal chemotherapy.');
+
+pro44('Hairy cell leukemia','Surgery', 'Targeted therapy','Biologic therapy','chemotherapy','null');
+
+pro44('Head and neck cancer','External beam therapy (EBT)','Intensity-modulated radiation therapy (IMRT)','null','null','null');
+
+pro44('Heart cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Hepatocellular (liver) cancer','Sorafenib tosylate ','Radiation therapy','chemotherapy','surgery','null');
+
+pro44('Hodgkin lymphoma','Radiation therapy','chemotherapy','null','null','null');
+
+pro44('Hypopharyngeal cancer','Radiation therapy','chemotherapy','surgery','rehabilitation','null');
+
+pro44('Hypothalamic and visual pathway glioma, childhood','Watchful waiting','Radiation therapy','chemotherapy','surgery','null');
+
+pro44('Intraocular Melanoma','	Cryotherapy','Transpupillary thermotherapy ','Immunotherapy','Radiation therapy','chemotherapy');
+
+pro44('Islet Cell Carcinoma (Endocrine Pancreas)','Hormone therapy, Hepatic arterial occlusion or chemoembolization','chemotherapy','null','null','null');
+
+pro44('Kaposi sarcoma','Antiviral therapy against the AIDS virus','Combination chemotherapy','Freezing (cryotherapy)','Radiation therapy','null');
+
+pro44('Kidney cancer (renal cell cancer)','Radiation therapy','chemotherapy','surgery','biologic therapy',' targeted therapy');
+
+pro44('Laryngeal Cancer','Radiation therapy','chemotherapy','surgery','Chemoprevention', 'Radiosensitizers');
+
+pro44('Leukemias','watchful waiting', 'chemotherapy', 'targeted therapy', 'biological therapy', 'radiation therapy');
+
+pro44('Lip and Oral Cavity Cancer','Surgery', 'radiation therapy', 'chemotherapy', 'Hyperfractionated radiation therapy', 'Hyperthermia therapy');
+
+pro44('Liposarcoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Lung Cancer','Radiation therapy','chemotherapy','surgery','Palliative care','Interventional radiology');
+
+pro44('Lymphomas','Radiation therapy','chemotherapy','Biologic therapy','Bone marrow transplant','null');
+
+pro44('Malignant Fibrous Histiocytoma of bone','surgery', 'chemotherapy', 'radiation therapy', 'Samarium', 'Biologic therapy');
+
+pro44('Medulloblastoma, Childhood','surgery', 'chemotherapy', 'radiation therapy','Cerebrospinal fluid diversion','null');
+
+pro44('Melanoma','surgery', 'Adjuvant treatment', 'Chemotherapy and immunotherapy', 'Lentigo maligna treatment', 'radiation therapy');
+
+pro44('Merkel Cell Carcinoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Mesothelioma','Radiation therapy','chemotherapy','surgery','Multimodality Therapy','Immunotherapy');
+
+pro44('Metastatic Squamous Neck Cancer with Occult Primary','surgery', 'radiation therapy', 'chemotherapy', 'Hyperfractionated ','null');
+
+pro44('Multiple Endocrine Neoplasia Syndrome, Childhood','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Multiple Myeloma or Plasma Cell Neoplasm','chemotherapy', 'targeted therapy', 'steroids', 'stem cell transplantation','null');
+
+pro44('Mycosis Fungoides','simple sunlight', 'uv treatment',' topical steroids', 'systematic chemotherapies', 'local superficial radiotherapy');
+
+pro44('Myelodysplastic or Myeloproliferative Diseases','chemotherapy', 'other drug therapy','null','null','null');
+
+pro44('Nasal cavity and paranasal sinus cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Nasopharyngeal carcinoma','Radiation therapy','chemotherapy','Biologic therapy','surgery','null');
+
+pro44('Neuroblastoma','surgery', 'chemotherapy', 'radiation therapy', 'stem cell transplant','null');
+
+pro44('Non-Hodgkin lymphoma','chemotherapy',' radiation therapy', 'surgery',' bone marrow transplant', 'biological therapy');
+
+pro44('Waldenström macroglobulinemia','Biological therapy or immunotherapy','Plasmapheresis','Stem cell transplantation (SCT)','chemotherapy','null');
+
+pro44('Wilms tumor (kidney cancer), childhood','Biological therapy','Radiation therapy','chemotherapy','surgery','null');
+
+pro44('Adrenocortical carcinoma','Biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('AIDS','Active Antiretroviral Therapy ','null','null','null','null');
+
+pro44('AIDS-related lymphoma','Radiation therapy','chemotherapy','null','null','null');
+
+pro44('Anal cancer','Biological therapy','Radiation therapy','chemotherapy','null','null');
+
+pro44('Appendix cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Astrocytoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Basal-cell carcinoma','Cryosurgery','Mohs micrographic surgery','Curettage and desiccation','Radiation therapy','chemotherapy');
+
+pro44('Bladder cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Bone tumor','Cryosurgery','Radiation therapy','chemotherapy','surgery','null');
+
+pro44('Brain tumor','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Brainstem glioma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Breast cancer','Systemic Therapy','hormone therapy','Radiation therapy','chemotherapy','surgery');
+
+pro44('Bronchial adenomas','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Burkitts lymphoma','Rituximab','chemotherapy','null','null','null');
+
+pro44('Carcinoid tumor','Radiation therapy','drug therapy','surgery','null','null');
+
+pro44('Carcinoma of unknown primary','Radiation therapy','chemotherapy','surgery','Immunotherapy','Targeted therapy');
+
+pro44('Central nervous system lymphoma, primary','Radiation therapy','chemotherapy','null','null','null');
+
+pro44('Cerebellar astrocytoma','Radiation therapy','drug therapy','surgery','null','null');
+
+pro44('Cervical cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Cholangiocarcinoma','Radiation therapy','chemotherapy','surgery','Photodynamic therapy (PDT)','Stent insertion');
+
+pro44('Chronic lymphocytic leukemia','Radiation therapy','chemotherapy','surgery','Stem cell transplantation ','null');
+
+pro44('Chronic myelogenous leukemia','Biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Chronic myeloproliferative disorders','Biological therapy','Radiation therapy','chemotherapy','surgery','Stem Cell Transplantation');
+
+pro44('Colon Cancer','Radiation therapy','chemotherapy','surgery','Targeted Therapies for Colon Cancer','null');
+
+pro44('Cutaneous T-cell lymphoma','photodynamic therapy','Radiation therapy','chemotherapy','null','null');
+
+pro44('Desmoplastic small round cell tumor','Intraperitoneal Hyperthemic Chemoperfusion','Radiation therapy','chemotherapy','null','null');
+
+pro44('Endometrial cancer','Radiation therapy','chemotherapy','surgery','Hormone therapy ','null');
+
+pro44('Ependymoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Esophageal cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Ewings sarcoma in the Ewing family of tumors','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Eye Cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Gallbladder cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Gastric (Stomach) cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Gastrointestinal stromal tumor (GIST)','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Germ cell tumor','Radiation therapy','chemotherapy','surgery','immunotherapy','vaccine therapy');
+
+pro44('Gestational trophoblastic tumor','hysterectomy ','Radiation therapy','chemotherapy','null','null');
+
+pro44('Vaginal cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Vulvar cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Oral cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Oropharyngeal cancer','Radiation therapy','chemotherapy','surgery','immunotherapy','vaccine therapy');
+
+pro44('Ovarian cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Pancreatic cancer','Prognosis','Chemotherapy','Surgery','Epidemiology','null');
+
+pro44('Parathyroid cancer','The MIRP procedure (Minimally Invasive Radioguided Parathyroidectomy)','Minimal Parathyroid Surgery','null','null','null');
+
+pro44('Penile cancer','microsurgery','use of a fluorouracil cream','amputation','urination','null');
+
+pro44('Pharyngeal cancer','Radiation therapy','chemotherapy','surgery','Photodynamic therapy','Targeted therapy');
+
+pro44('Pheochromocytoma','laparotomy','laparoscopy','null','null','null');
+
+pro44('Pinealoma','Radiation therapy','chemotherapy','null','null','null');
+
+pro44('Pituitary adenoma','Prolactinomas','Somatotrophic adenomas','Surgery','null','null');
+
+pro44('Pleuropulmonary blastoma','chemotherapy','surgery','null','null','null');
+
+pro44('Primary central nervous system lymphoma','leukoencephalopathy','dementia','null','null','null');
+
+pro44('Rectal cancer','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Renal cell carcinoma (kidney cancer)','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Renal pelvis and ureter, transitional cell cancer','chemotherapy','surgery','null','null','null');
+
+pro44('Retinoblastoma','chemotherapy','surgery','null','null','null');
+
+pro44('Rhabdomyosarcoma, childhoods','genetic testing','morphology','surgery','chemotherapy','null');
+
+pro44('Salivary gland cancer','Radiation therapy','chemotherapy','surgery','Radiosensitizers','null');
+
+pro44('Sarcoma, Ewing family of tumors','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Sézary syndrome','biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Skin cancer','Mohs micrographic surgery','Surgical excision','Cryosurgery','Radiation therapy','chemotherapy');
+
+pro44('Soft tissue sarcoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Supratentorial primitive neuroectodermal tumor, childhood','Radiation therapy','chemotherapy','surgery','VP count','null');
+
+pro44('Testicular cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+
+pro44('Throat cancer','Photodynamic therapy','Radiation therapy','chemotherapy','surgery','targeted therapy');
+
+pro44('Thymoma','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Thyroid cancer','Radiation therapy','chemotherapy','null','null','null');
+
+pro44('Cancer of Unknown primary site','Radiation therapy','chemotherapy','surgery','null','null');
+
+pro44('Ureter and renal pelvis, transitional cell cancer','Surgery','Fulguration','Segmental resection of the renal pelvis','Laser surgery','Regional chemotherapy and regional biologic therapy');
+
+pro44('Urethral cancer','chemotherapy','surgery','null','null','null');
+
+pro44('Uterine cancer, endometrial','Radiation therapy','chemotherapy','surgery','hormone therapy','null');
+
+pro44('Neuroectodermal tumors','Radiation therapy','chemotherapy','surgery','blood stem cell transplant','bone marrow transplant');

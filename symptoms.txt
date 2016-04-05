@@ -1,0 +1,136 @@
+create or replace procedure ins_sym
+(t in symptoms.type%type,s1 in symptoms.symptoms%type,s2 in symptoms.symptoms%type,s3 in symptoms.symptoms%type,s4 in symptoms.symptoms%type,s5 in symptoms.symptoms%type)
+is
+begin
+insert into symptoms values(t,s1);
+if s2<>'null' then
+insert into symptoms values(t,s2);
+else
+dbms_output.put_line('');
+end if;
+if s3<>'null' then
+insert into symptoms values(t,s3);
+else
+dbms_output.put_line('');
+end if;
+if s4<>'null' then 
+insert into symptoms values(t,s4);
+else
+dbms_output.put_line('');
+end if;
+if s5<>'null' then
+insert into symptoms values(t,s5);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+
+begin
+ins_sym('Acute lymphoblastic leukemia','Generalized weakness and fatigue','Anemia','Frequent or unexplained fever and infection','Weight loss ','Breathlessness');
+ins_sym('Acute myeloid leukemia','fever','runny nose','cough','Chest pain or shortness of breath','Pain with urinating');
+ins_sym('Hairy cell leukemia','fatigue','weakness','weight loss','Easy bruising','Recurring infections');
+ins_sym('Head and neck cancer','Numb feeling in the mouth','Bleeding in the mouth or throat','A swelling or lump in the mouth','Pain or difficulty with swallowing or chewing','Pain in the face or upper jaw');
+ins_sym('Heart cancer','Chest pain or pressure','Irregular heart rhythm ','Shortness of breath','fatigue','fever');
+ins_sym('Hepatocellular (liver) cancer','weight loss','the sudden appearance ofascites','Abdominal pain','Easy bruising or bleeding','Yellow skin or eyes (jaundice)');
+ins_sym('Hodgkin lymphoma','itchy skin','night sweats','Unexplained weight loss','back pain','cyclical fever');
+ins_sym('Hypopharyngeal cancer','Swollen lymph nodes in the neck ','Pain that radiates from the throat to the ears','ear pain','fatigue','coughing up blood');
+ins_sym('Hypothalamic and visual pathway glioma, childhood','chest pain','loss of muscle control','weakness in limbs','loss of ability to feel changes in temperature','erectile dysfunction');
+ins_sym('Intraocular Melanoma','watery eyes','poor vision in one eye','a dark spot in the iris(which grows)','Blurry vision in one eye','Seeing flashing lights');
+ins_sym('Islet Cell Carcinoma (Endocrine Pancreas)','headache','hunger','anxiety','diarrhea','rapid heart rate');
+ins_sym('Kaposi sarcoma','painful swelling','bluish-red or purple bumps on the skin','shortness of breath','bloody sputum','null');
+ins_sym('Kidney cancer (renal cell cancer)','A lump in the abdomen.','abnormal urine color ','loin pain','anemia','constipation');
+ins_sym('Laryngeal Cancer','A sore throat or cough that does not go away','ear pain','A lump in the neck or throat','bad breath','trouble breathing');
+ins_sym('Leukemias','fever','infection','fatigue','weight loss','pain in joints');
+ins_sym('Lip and Oral Cavity Cancer','A sore on the lip or in the mouth that does not heal','Change in voice.','Swelling of jaw.','ear pain','Bleeding, pain, or numbness in the lip or mouth');
+ins_sym('Liposarcoma','numbness',' fatigue',' enlargement of varicose veins',' reduction in the range of motion',' nausea');
+ins_sym('Lung Cancer','dyspnea (shortness of breath)','wheezing','chest pain or pain in the abdomen','dysphonia (hoarse voice)','fatigue');
+ins_sym('Lymphomas','anorexia','fatigue','night sweats','fever of unknown origin','weight loss');
+ins_sym('Malignant Fibrous Histiocytoma of bone','Swelling over a bone or bony part of the body','Pain in a bone or joint.','A bone that breaks for no known reason.','null','null');
+ins_sym('Medulloblastoma, Childhood','Seizures','Nausea and vomiting','Unusual sleepiness or change in energy level.','Change in personality or behavior.','Unexplained weight loss or weight gain.');
+ins_sym('Melanoma','A change in an existing mole','The development of a new, unusual-looking growth on your skin','null','null','null');
+ins_sym('Merkel Cell Carcinoma','Growth of painless lumps in the skin','Change of skin locally','Mole change their appearance','Solitary red nodules','abnormal skin growths');
+ins_sym('Mesothelioma','shortness of breath','fatigue','weight loss','Low blood sugar level','Wheezing, hoarseness, or cough');
+ins_sym('Metastatic Squamous Neck Cancer with Occult Primary','lump or pain in the neck or throat','null','null','null','null');
+ins_sym('Multiple Endocrine Neoplasia Syndrome, Childhood','hyperplasia or tumors of several endocrine glands','null','null','null','null');
+ins_sym('Multiple Myeloma or Plasma Cell Neoplasm','bone pain','infection','weight loss','feeling very thirsty','frequent urination');
+ins_sym('Mycosis Fungoides','skin tumors',' patches',' lesions',' itching',' skin redness');
+ins_sym('Myelodysplastic or Myeloproliferative Diseases','shortness of breath','weakness or feeling tired','easy bruising or bleeding','fever or frequent infections','having skin that is paler than usual');
+ins_sym('Nasal cavity and paranasal sinus cancer','runny nose','nose bleeds','pain or pressure in ear','headaches or pain in sinus areas','numbness or tingling in the face');
+ins_sym('Nasopharyngeal carcinoma','nose bleeds','trouble hearing','A sore throat','A lump in the nose or neck','null');
+ins_sym('Neuroblastoma','bulging eyes','bone pain','weakness or paralysis','Dark circles around the eyes ("black eyes").','Lump in the abdomen, neck, or chest');
+ins_sym('Non-Hodgkin lymphoma','night sweats','itchy skin','Swollen lymph nodes','fatigue','Unexplained fever');
+ins_sym('Waldenström macroglobulinemia','nosebleeds',' dizziness',' gum bleeding',' weight loss',' bruising');
+ins_sym('Wilms tumor (kidney cancer), childhood','fever','abdominal pain','nausea and vomiting','blood in the urine','high blood pressure in some cases');
+ins_sym('Adrenocortical carcinoma','baldness','deep voice','infertility','weakness','loss of scalp hair');
+ins_sym('AIDS','fever','headache','tiredness','depression','pneumonia');
+ins_sym('AIDS-related lymphoma','painless swelling in the lymph nodes in the neck, underarm, or groin','fever','night sweats','tiredness','weight loss');
+ins_sym('Anal cancer','vomitting','tiredness','weight loss','Stools that are narrower than usual','Blood, either bright red or very dark in the stool');
+ins_sym('Appendix cancer','Bloating','infertility','Appendicitis','Pain in the abdomen or pelvis area','Changes in bowel function');
+ins_sym('Astrocytoma','vomitting','nausea','loss of appetite','tiredness','headache');
+ins_sym('Basal-cell carcinoma','A pearly white or waxy bump','A flat, scaly, brown or flesh-colored patch','More rarely, a white, waxy scar','null','null');
+ins_sym('Bladder cancer','Blood in the Urine ','painful urination','frequent urination','null','null');
+ins_sym('Bone tumor','bone fracture','bone pain','null','null','null');
+ins_sym('Brain tumor','headache','nausea','vomitting','problems with memory','Problems balancing or walking ');
+ins_sym('Brainstem glioma','Lack of facial control','Double vision','headache','weakness','balance problems');
+ins_sym('Breast cancer','breast pain','swelling of all or part of the breast','skin irritation or dimpling','nipple pain or the nipple turning inward','a lump in the underarm area');
+ins_sym('Bronchial adenomas','difficulty breathing','Stridor','Wheezing','fever','coughing up blood');
+ins_sym('Burkitts lymphoma','swelling','inflammation of the jaw line','swelling of the facial bone','problems in digestion','weakness even while sitting idle');
+ins_sym('Carcinoid tumor','flushing','diarrhea','abdominal pain','wheezing','valvular heart disease');
+ins_sym('Carcinoma of unknown primary','Light-colored skin','A skin sore that bleeds easily','Oozing or crusting spots in a sore','Irregular blood vessels in or around the spot','Appearance of a scar-like sore without having injured the area');
+ins_sym('Central nervous system lymphoma, primary','Problems with balance or walking','headache','nausea','vomitting','Problems with thinking or memory');
+ins_sym('Cerebellar astrocytoma','confusion','dizziness','nausea','vomitting','memory loss');
+ins_sym('Cervical cancer','vaginal bleeding','Pain during sex','null','null','null');
+ins_sym('Cholangiocarcinoma','jaundice','weight loss','poor appetite','weakness','fatigue');
+ins_sym('Chronic lymphocytic leukemia','Asymptomatic in early stages','Enlarged lymph node','Easily tired','Shortness of breath','Swollen spleen');
+ins_sym('Chronic myelogenous leukemia','Pain or a feeling of fullness below the ribs on the left side','weight loss','fever','feeling tired','night sweats');
+ins_sym('Chronic myeloproliferative disorders','Shortness of breath during exertion','weakness','fatigue','pale skin','Prolonged bleeding from minor cuts');
+ins_sym('Colon Cancer','Changes in your bowel habits','constipation','diarrhea','Bright red or dark red blood in your stools','Stools that are thinner than normal ');
+ins_sym('Cutaneous T-cell lymphoma','dry, red, scaly patches on skin','lymph nodes are normal or larger than normal','tumors on the skin ','null','null');
+ins_sym('Desmoplastic small round cell tumor','back pain','loss of appetite','anemia','Kidney Problems','blood clots');
+ins_sym('Endometrial cancer','weakness','fatigue','pale appearance','lightheadedness','shortness of breath');
+ins_sym('Ependymoma','headache','vomitting','nausea','back pain','numbness');
+ins_sym('Esophageal cancer','Unintentional Weight Loss','Pain and/or Difficulty Swallowing','heartburn','Hoarseness','Persistant Cough');
+ins_sym('Ewings sarcoma in the Ewing family of tumors','pain at the tumor site','fever','fatigue','loss of appetite','weight loss');
+ins_sym('Eye Cancer','blurred vision in one eye','change in iris color or dark spot on iris','red and/or painful eye','bulging eye','loss of peripheral vision');
+ins_sym('Gallbladder cancer','Pain above the stomach','jaundice','fever','nausea','vomitting');
+ins_sym('Gastric (Stomach) cancer','abdominal pain','nausea','vomitting','weight loss','bleeding');
+ins_sym('Gastrointestinal stromal tumor (GIST)','Pain or discomfort in the abdomen','nausea','vomitting','fatigue','null');
+ins_sym('Germ cell tumor','unusual increase in waist size','trouble breathing ','back pain','coughing','constipation');
+ins_sym('Gestational trophoblastic tumor','Irregular vaginal bleeding','Ovarian cysts','Uneven swelling of the uterus','pain','null');
+ins_sym('Vaginal cancer','Abnormal Vaginal Bleeding','Vaginal Discharge','Pelvic Pain','Vaginal Mass','Changes in Urination');
+ins_sym('Vulvar cancer','itching, burning and soreness of the vulva','a lump, swelling or wart-like growth','burning pain when passing urine','a sore or ulcerated area on the vulva','bleeding, or a blood-stained vaginal discharge');
+ins_sym('Oral cancer','tongue problems','swallowing difficulty','A white or red patch in the mouth','Difficulty moving the jaw or tongue','Pain in one ear without hearing loss');
+ins_sym('Oropharyngeal cancer','A sore throat that persists','unexplained weight loss','ear pain','voice changes','cough');
+ins_sym('Ovarian cancer','bloating',' back pain',' urinary urgency',' constipation',' tiredness');
+ins_sym('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','gas and indigestion ','abnormal bleeding from the vagina','constipation','nausea','vomitting');
+ins_sym('Pancreatic cancer','Pain in the upper abdomen','Loss of appetite','Clinical depression','Trousseau sign','null');
+ins_sym('Parathyroid cancer','experience moderate to severe hypercalcemia','high parathyroid hormone levels','A large mass in the neck','null','null');
+ins_sym('Penile cancer','lump on the penis','unusual liquid discharges from the penis','Pain or bleeding in the genital area','null','null');
+ins_sym('Pharyngeal cancer','neck pain','bad breath','ear pain','Lump in the lip, mouth or gums ','sore tongue');
+ins_sym('Pheochromocytoma','Skin sensations ','headache','weight loss',' anxiety','pallor');
+ins_sym('Pinealoma','visual changes','seizures','headache','nausea','vomitting');
+ins_sym('Pituitary adenoma','dry skin','nausea','loss of appetite','muscle pain','constipation');
+ins_sym('Pleuropulmonary blastoma','coughing',' an upper respiratory tract infection',' shortness of breath',' chest pain','null');
+ins_sym('Primary central nervous system lymphoma','fever', 'night sweats','weight loss','null','null');
+ins_sym('Rectal cancer','iron deficiency anemia','constipation', 'abdominal pain', 'abdominal distension' ,'vomiting');
+ins_sym('Renal cell carcinoma (kidney cancer)','night sweats','severe weight loss','loin pain','abdominal pain','abnormal urine color ');
+ins_sym('Renal pelvis and ureter, transitional cell cancer','Flank pain','back pain','fatigue','weight loss','Need to urinate frequently at night');
+ins_sym('Retinoblastoma','abnormal appearance of the pupil','null','null','null','null');
+ins_sym('Rhabdomyosarcoma, childhoods','weakness','fatigue','null','null','null');
+ins_sym('Salivary gland cancer','Fluid draining from the ear','Trouble swallowing or opening the mouth widely','Numbness or weakness in the face','Pain in the face that does not go away','null');
+ins_sym('Sarcoma, Ewing family of tumors','pain at the tumor site','fever','fatigue','weight loss','loss of appetite');
+ins_sym('Sézary syndrome','A scaly, red rash in areas of the body that usually are not exposed to the sun','Thin, reddened, eczema -like rash','Thickened, red patches or reddened skin','Tumors form on the skin','null');
+ins_sym('Skin cancer','A sore or spot that bleeds or become crusty','Rough and scaly patches on the skin','Flat scaly areas of the skin that are red or brown','null','null');
+ins_sym('Soft tissue sarcoma','A lump that is painless at first','Pain or soreness as the lump grows and presses against nerves and muscles','null','null','null');
+ins_sym('Supratentorial primitive neuroectodermal tumor, childhood','eye movement problems ','headache','vomitting','fatigue','null');
+ins_sym('Testicular cancer','a lump in one testis which may or may not be painful','sharp pain or a dull ache in the lower abdomen or scrotum','a feeling often described as "heaviness" in the scrotum','breast enlargement ','null');
+ins_sym('Throat cancer','neck pain','bad breath','sore tongue','ear pain','lump in the lip');
+ins_sym('Thymoma','Persistent cough','fatigue','dizziness','muscle weakness','double vision');
+ins_sym('Thyroid cancer','Enlargement of the neck','difficulty breathing','difficulty swallowing','pain in neck','hoarseness');
+ins_sym('Cancer of Unknown primary site','Swollen lymph nodes','Shortness of breath','Pain in the bones','Chest or abdominal pain or fullness','Poor appetite ');
+ins_sym('Ureter and renal pelvis, transitional cell cancer','Blood in the urine','tiredness','weight loss','frequent urination','back pain');
+ins_sym('Urethral cancer','blood in the urine','Weak or interrupted flow of urine','Urination occurs often','Discharge from the urethra','A lump or thickness in the perineum or penis');
+ins_sym('Uterine cancer, endometrial','Bleeding that is not part of menstrual periods','Bleeding after menopause','A mass in the vagina','Pain or a feeling of fullness in the abdomen','frequent urination');
+ins_sym('Neuroectodermal tumors','Asymptomatic in early stages','pain','headache','swelling','lump');
+end;

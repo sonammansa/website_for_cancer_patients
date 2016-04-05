@@ -1,0 +1,53 @@
+create or replace procedure ins_sp1
+(id in s_educ.sid%type,d1 in s_educ.degrees%type,d2 in s_educ.degrees%type,d3 in s_educ.degrees%type,d4 in s_educ.degrees%type)
+is
+begin
+insert into s_educ values(id,d1);
+if d2<>'null' then
+insert into s_educ values(id,d2);
+else
+dbms_output.put_line('');
+end if;
+if d3<>'null' then
+insert into s_educ values(id,d3);
+else
+dbms_output.put_line('');
+end if;
+if d4<>'null' then
+insert into s_educ values(id,d4);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+begin
+ins_sp1(101,'MD','null','null','null');
+ins_sp1(102,'MBBS','MD','DNB','null');
+ins_sp1(103,'MS','DNB','FCPS','null');
+ins_sp1(104,'BAMS','null','null','null');
+ins_sp1(105,'MBBS','MD','null','null');
+ins_sp1(106,'MS','MCh','null','null');
+ins_sp1(107,'MD','DMRT','null','null');
+ins_sp1(108,'DMRT','null','null','null');
+ins_sp1(109,'MBBS','MS','MCh','DNB');
+ins_sp1(110,'MD','null','null','null');
+ins_sp1(111,'MD','DM','null','null');
+ins_sp1(112,'MBBS','MS','FELLOWSHIP THORACIC SURGERY','null');
+ins_sp1(113,'MS','MRCS','Mch','null');
+ins_sp1(114,'MS','Mch','DHM','null');
+ins_sp1(115,'DM','null','null','null');
+ins_sp1(116,'MBBS','MD','DNB','null');
+ins_sp1(117,'FICOG','FIAMS','FICMCH','MD');
+ins_sp1(118,'MS','Fellowship in GI Oncosurgery at Tata Memorial Hospital','null','null');
+ins_sp1(119,'MBBS','MD','null','null');
+ins_sp1(120,'MBBS','MD','DM','null');
+ins_sp1(121,'MBBS','MD','null','null');
+ins_sp1(122,'MBBS','MS','DNB','MCh');
+ins_sp1(123,'MBBS','MD','null','null');
+ins_sp1(124,'MBBS','DCH','MD','null');
+ins_sp1(125,'MS','Mch','null','null');
+ins_sp1(126,'MD','SENIOR FELLOW, AIIMS. NEW DELHI','null','null');
+ins_sp1(127,'DM','MD','MBBS','null');
+ins_sp1(128,'DM','MD','MBBS','null');
+ins_sp1(129,'MBBS','MD','DNB','ESMO Medical Oncology Board');
+end;

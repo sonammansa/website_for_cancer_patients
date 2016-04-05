@@ -1,0 +1,421 @@
+begin
+  2  pro11('Pancreatic cancer','age','smoking','diet
+  3  ','alcohal','null');
+  4  
+  5  pro11('Parathyroid cancer','hyperparathyroidism-jaw tumor syndrome','null','null','null','null');
+  6  
+  7  pro11('Penile cancer','Being age 60 or
+  8  older.','null','null','null','null');
+  9  
+ 10  pro11('Pharyngeal cancer','alcohal','tabacoo','cigar','null','null');
+ 11  
+ 12  pro11('Pheochromocytoma','mutation of genes','null','null','null','null');
+ 13  
+ 14  pro11
+ 15  ('Pinealoma','age','gender','null','null','null');
+ 16  
+ 17  pro11('Pituitary adenoma','family
+ 18  history','null','null','null','null');
+ 19  
+ 20  pro11('Pleuropulmonary blastoma','inheritance','age','null','null','null');
+ 21  
+ 22  pro11('Primary central nervous system lymphoma','hiv
+ 23  infection','null','null','null','null');
+ 24  end;
+ 25  /
+
+PL/SQL procedure successfully completed.
+
+
+SQL> begin
+  2  pro11('Rectal cancer','smoking','diet','alcohal','null','null');
+  3  
+  4  pro11('Renal cell carcinoma (kidney cancer)','being
+  5  male','being over 50','smoking','alcohal','family
+  6  history');
+  7  
+  8  pro11('Renal pelvis and ureter, transitional cell cancer','Analgesic nephropathy','exposure to certain
+  9  dyes','age','null','null');
+ 10  
+ 11  pro11('Retinoblastoma','mutation on chromosome
+ 12  13','null','null','null','null');
+ 13  
+ 14  pro11('Rhabdomyosarcoma, childhoods','age ','birth
+ 15  defects','mutations','null','null');
+ 16  end;
+ 17  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro11('Salivary gland cancer','old age','exposure to
+  3  some things','null','null','null');
+  4  
+  5  pro11('Sarcoma, Ewing family of tumors','translocation between chromosomes 11 and
+  6  22','null','null','null','null');
+  7  
+  8  pro11('Sézary syndrome','htlv','null','null','null','null');
+  9  
+ 10  pro11('Skin cancer','exposure to radioactive
+ 11  substance','use of tanning booths','contacts with
+ 12  certain chemicals like arsenic','null','null');
+ 13  
+ 14  pro11('Soft tissue sarcoma','exposure to certain
+ 15  chemicals', 'genetic diseases', 'past radiation
+ 16  therapy','null','null');
+ 17  
+ 18  pro11('Supratentorial primitive neuroectodermal tumor, childhood','gestational exposure to alcohol, hair
+ 19  coloring products, farms, and substances containing
+ 20  N-nitroso compounds','null','null','null','null');
+ 21  end;
+ 22  /
+
+PL/SQL procedure successfully completed.
+
+
+SQL> begin
+  2  pro11('Testicular cancer','Undescended testicle: ','null','null','null','null');
+  3  
+  4  pro11('Throat cancer','alcohal','cigar','exposure to
+  5  chemicals','null','null');
+  6  
+  7  pro11('Thymoma','age','null','null','null','null');
+  8  
+  9  pro11('Thyroid cancer','exposure to chemicals','family
+ 10  history','smoking','null','null');
+ 11  
+ 12  pro11('Cancer of Unknown primary site','environmental factors like food,exposures to radiations,oil
+ 13  refineries ','null','null','null','null');
+ 14  
+ 15  pro11('Ureter and renal pelvis, transitional cell cancer','smoking','exposure to dyes','null','null','null');
+ 16  
+ 17  pro11('Urethral cancer','history of bladder cancer','age greater than 60','null','null','null');
+ 18  
+ 19  pro11('Uterine cancer, endometrial','Past treatment with radiation therapy to the
+ 20  pelvis.','null','null','null','null');
+ 21  
+ 22  pro11('Neuroectodermal tumors','exposure to radiation','null','null','null','null');
+ 23  end;
+ 24  /
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure ins_sym
+  2  (t in symptoms.type%type,s1 in symptoms.symptoms%type,s2 in symptoms.symptoms%type,s3 in symptoms.symptoms%type,s4 in symptoms.symptoms%type,s5 in symptoms.symptoms%type)
+  3  is
+  4  begin
+  5  insert into symptoms values(t,s1);
+  6  if s2<>'null' then
+  7  insert into symptoms values(t,s2);
+  8  else
+  9  dbms_output.put_line('');
+ 10  end if;
+ 11  if s3<>'null' then
+ 12  insert into symptoms values(t,s3);
+ 13  else
+ 14  dbms_output.put_line('');
+ 15  end if;
+ 16  if s4<>'null' then
+ 17  insert into symptoms values(t,s4);
+ 18  else
+ 19  dbms_output.put_line('');
+ 20  end if;
+ 21  if s5<>'null' then
+ 22  insert into symptoms values(t,s5);
+ 23  else
+ 24  dbms_output.put_line('');
+ 25  end if;
+ 26  end;
+ 27  /
+
+Procedure created.
+
+SQL> begin
+  2  ins_sym('Acute lymphoblastic leukemia','Generalized weakness and fatigue','Anemia','Frequent or unexplained fever and infection','Weight loss ','Breathlessness');
+  3  ins_sym('Acute myeloid leukemia','fever','runny nose','cough','Chest pain or shortness of breath','Pain with urinating');
+  4  ins_sym('Hairy cell leukemia','fatigue','weakness','weight loss','Easy bruising','Recurring infections');
+  5  ins_sym('Head and neck cancer','Numb feeling in the mouth','Bleeding in the mouth or throat','A swelling or lump in the mouth','Pain or difficulty with swallowing or chewing','Pain in the face or upper jaw');
+  6  ins_sym('Heart cancer','Chest pain or pressure','Irregular heart rhythm ','Shortness of breath','fatigue','fever');
+  7  ins_sym('Hepatocellular (liver) cancer','weight loss','the sudden appearance ofascites','Abdominal pain','Easy bruising or bleeding','Yellow skin or eyes (jaundice)');
+  8  ins_sym('Hodgkin lymphoma','itchy skin','night sweats','Unexplained weight loss','back pain','cyclical fever');
+  9  ins_sym('Hypopharyngeal cancer','Swollen lymph nodes in the neck ','Pain that radiates from the throat to the ears','ear pain','fatigue','coughing up blood');
+ 10  ins_sym('Hypothalamic and visual pathway glioma, childhood','chest pain','loss of muscle control','weakness in limbs','loss of ability to feel changes in temperature','erectile dysfunction');
+ 11  ins_sym('Intraocular Melanoma','watery eyes','poor vision in one eye','a dark spot in the iris(which grows)','Blurry vision in one eye','Seeing flashing lights');
+ 12  ins_sym('Islet Cell Carcinoma (Endocrine Pancreas)','headache','hunger','anxiety','diarrhea','rapid heart rate');
+ 13  ins_sym('Kaposi sarcoma','painful swelling','bluish-red or purple bumps on the skin','shortness of breath','bloody sputum','null');
+ 14  ins_sym('Kidney cancer (renal cell cancer)','A lump in the abdomen.','abnormal urine color ','loin pain','anemia','constipation');
+ 15  end;
+ 16  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_sym('Laryngeal Cancer','A sore throat or cough that does not go away','ear pain','A lump in the neck or throat','bad breath','trouble breathing');
+  3  ins_sym('Leukemias','fever','infection','fatigue','weight loss','pain in joints');
+  4  ins_sym('Lip and Oral Cavity Cancer','A sore on the lip or in the mouth that does not heal','Change in voice.','Swelling of jaw.','ear pain','Bleeding, pain, or numbness in the lip or mouth');
+  5  ins_sym('Liposarcoma','numbness',' fatigue',' enlargement of varicose veins',' reduction in the range of motion',' nausea');
+  6  ins_sym('Lung Cancer','dyspnea (shortness of breath)','wheezing','chest pain or pain in the abdomen','dysphonia (hoarse voice)','fatigue');
+  7  ins_sym('Lymphomas','anorexia','fatigue','night sweats','fever of unknown origin','weight loss');
+  8  ins_sym('Malignant Fibrous Histiocytoma of bone','Swelling over a bone or bony part of the body','Pain in a bone or joint.','A bone that breaks for no known reason.','null','null');
+  9  ins_sym('Medulloblastoma, Childhood','Seizures','Nausea and vomiting','Unusual sleepiness or change in energy level.','Change in personality or behavior.','Unexplained weight loss or weight gain.');
+ 10  ins_sym('Melanoma','A change in an existing mole','The development of a new, unusual-looking growth on your skin','null','null','null');
+ 11  ins_sym('Merkel Cell Carcinoma','Growth of painless lumps in the skin','Change of skin locally','Mole change their appearance','Solitary red nodules','abnormal skin growths');
+ 12  ins_sym('Mesothelioma','shortness of breath','fatigue','weight loss','Low blood sugar level','Wheezing, hoarseness, or cough');
+ 13  ins_sym('Metastatic Squamous Neck Cancer with Occult Primary','lump or pain in the neck or throat','null','null','null','null');
+ 14  ins_sym('Multiple Endocrine Neoplasia Syndrome, Childhood','hyperplasia or tumors of several endocrine glands','null','null','null','null');
+ 15  ins_sym('Multiple Myeloma or Plasma Cell Neoplasm','bone pain','infection','weight loss','feeling very thirsty','frequent urination');
+ 16  ins_sym('Mycosis Fungoides','skin tumors',' patches',' lesions',' itching',' skin redness');
+ 17  ins_sym('Myelodysplastic or Myeloproliferative Diseases','shortness of breath','weakness or feeling tired','easy bruising or bleeding','fever or frequent infections','having skin that is paler than usual');
+ 18  end;
+ 19  /
+
+PL/SQL procedure successfully completed.
+
+
+SQL> begin
+  2  ins_sym('Nasal cavity and paranasal sinus cancer','runny nose','nose bleeds','pain or pressure in ear','headaches or pain in sinus areas','numbness or tingling in the face');
+  3  ins_sym('Nasopharyngeal carcinoma','nose bleeds','trouble hearing','A sore throat','A lump in the nose or neck','null');
+  4  ins_sym('Neuroblastoma','bulging eyes','bone pain','weakness or paralysis','Dark circles around the eyes ("black eyes").','Lump in the abdomen, neck, or chest');
+  5  ins_sym('Non-Hodgkin lymphoma','night sweats','itchy skin','Swollen lymph nodes','fatigue','Unexplained fever');
+  6  ins_sym('Waldenström macroglobulinemia','nosebleeds',' dizziness',' gum bleeding',' weight loss',' bruising');
+  7  ins_sym('Wilms tumor (kidney cancer), childhood','fever','abdominal pain','nausea and vomiting','blood in the urine','high blood pressure in some cases');
+  8  ins_sym('Adrenocortical carcinoma','baldness','deep voice','infertility','weakness','loss of scalp hair');
+  9  ins_sym('AIDS','fever','headache','tiredness','depression','pneumonia');
+ 10  ins_sym('AIDS-related lymphoma','painless swelling in the lymph nodes in the neck, underarm, or groin','fever','night sweats','tiredness','weight loss');
+ 11  ins_sym('Anal cancer','vomitting','tiredness','weight loss','Stools that are narrower than usual','Blood, either bright red or very dark in the stool');
+ 12  ins_sym('Appendix cancer','Bloating','infertility','Appendicitis','Pain in the abdomen or pelvis area','Changes in bowel function');
+ 13  ins_sym('Astrocytoma','vomitting','nausea','loss of appetite','tiredness','headache');
+ 14  ins_sym('Basal-cell carcinoma','A pearly white or waxy bump','A flat, scaly, brown or flesh-colored patch','More rarely, a white, waxy scar','null','null');
+ 15  ins_sym('Bladder cancer','Blood in the Urine ','painful urination','frequent urination','null','null');
+ 16  ins_sym('Bone tumor','bone fracture','bone pain','null','null','null');
+ 17  ins_sym('Brain tumor','headache','nausea','vomitting','problems with memory','Problems balancing or walking ');
+ 18  ins_sym('Brainstem glioma','Lack of facial control','Double vision','headache','weakness','balance problems');
+ 19  ins_sym('Breast cancer','breast pain','swelling of all or part of the breast','skin irritation or dimpling','nipple pain or the nipple turning inward','a lump in the underarm area');
+ 20  ins_sym('Bronchial adenomas','difficulty breathing','Stridor','Wheezing','fever','coughing up blood');
+ 21  ins_sym('Burkitts lymphoma','swelling','inflammation of the jaw line','swelling of the facial bone','problems in digestion','weakness even while sitting idle');
+ 22  end;
+ 23  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_sym('Carcinoid tumor','flushing','diarrhea','abdominal pain','wheezing','valvular heart disease');
+  3  ins_sym('Carcinoma of unknown primary','Light-colored skin','A skin sore that bleeds easily','Oozing or crusting spots in a sore','Irregular blood vessels in or around the spot','Appearance of a scar-like sore without having injured the area');
+  4  ins_sym('Central nervous system lymphoma, primary','Problems with balance or walking','headache','nausea','vomitting','Problems with thinking or memory');
+  5  ins_sym('Cerebellar astrocytoma','confusion','dizziness','nausea','vomitting','memory loss');
+  6  ins_sym('Cervical cancer','vaginal bleeding','Pain during sex','null','null','null');
+  7  ins_sym('Cholangiocarcinoma','jaundice','weight loss','poor appetite','weakness','fatigue');
+  8  ins_sym('Chronic lymphocytic leukemia','Asymptomatic in early stages','Enlarged lymph node','Easily tired','Shortness of breath','Swollen spleen');
+  9  ins_sym('Chronic myelogenous leukemia','Pain or a feeling of fullness below the ribs on the left side','weight loss','fever','feeling tired','night sweats');
+ 10  ins_sym('Chronic myeloproliferative disorders','Shortness of breath during exertion','weakness','fatigue','pale skin','Prolonged bleeding from minor cuts');
+ 11  ins_sym('Colon Cancer','Changes in your bowel habits','constipation','diarrhea','Bright red or dark red blood in your stools','Stools that are thinner than normal ');
+ 12  ins_sym('Cutaneous T-cell lymphoma','dry, red, scaly patches on skin','lymph nodes are normal or larger than normal','tumors on the skin ','null','null');
+ 13  ins_sym('Desmoplastic small round cell tumor','back pain','loss of appetite','anemia','Kidney Problems','blood clots');
+ 14  ins_sym('Endometrial cancer','weakness','fatigue','pale appearance','lightheadedness','shortness of breath');
+ 15  ins_sym('Ependymoma','headache','vomitting','nausea','back pain','numbness');
+ 16  ins_sym('Esophageal cancer','Unintentional Weight Loss','Pain and/or Difficulty Swallowing','heartburn','Hoarseness','Persistant Cough');
+ 17  ins_sym('Ewings sarcoma in the Ewing family of tumors','pain at the tumor site','fever','fatigue','loss of appetite','weight loss');
+ 18  ins_sym('Eye Cancer','blurred vision in one eye','change in iris color or dark spot on iris','red and/or painful eye','bulging eye','loss of peripheral vision');
+ 19  end;
+ 20  /
+
+PL/SQL procedure successfully completed.
+
+
+SQL> begin
+  2  ins_sym('Gallbladder cancer','Pain above the stomach','jaundice','fever','nausea','vomitting');
+  3  ins_sym('Gastric (Stomach) cancer','abdominal pain','nausea','vomitting','weight loss','bleeding');
+  4  ins_sym('Gastrointestinal stromal tumor (GIST)','Pain or discomfort in the abdomen','nausea','vomitting','fatigue','null');
+  5  ins_sym('Germ cell tumor','unusual increase in waist size','trouble breathing ','back pain','coughing','constipation');
+  6  ins_sym('Gestational trophoblastic tumor','Irregular vaginal bleeding','Ovarian cysts','Uneven swelling of the uterus','pain','null');
+  7  ins_sym('Vaginal cancer','Abnormal Vaginal Bleeding','Vaginal Discharge','Pelvic Pain','Vaginal Mass','Changes in Urination');
+  8  ins_sym('Vulvar cancer','itching, burning and soreness of the vulva','a lump, swelling or wart-like growth','burning pain when passing urine','a sore or ulcerated area on the vulva','bleeding, or a blood-stained vaginal discharge');
+  9  ins_sym('Oral cancer','tongue problems','swallowing difficulty','A white or red patch in the mouth','Difficulty moving the jaw or tongue','Pain in one ear without hearing loss');
+ 10  ins_sym('Oropharyngeal cancer','A sore throat that persists','unexplained weight loss','ear pain','voice changes','cough');
+ 11  ins_sym('Ovarian cancer','bloating',' back pain',' urinary urgency',' constipation',' tiredness');
+ 12  ins_sym('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','gas and indigestion ','abnormal bleeding from the vagina','constipation','nausea','vomitting');
+ 13  ins_sym('Pancreatic cancer','Pain in the upper abdomen','Loss of appetite','Clinical depression','Trousseau sign','null');
+ 14  ins_sym('Parathyroid cancer','experience moderate to severe hypercalcemia','high parathyroid hormone levels','A large mass in the neck','null','null');
+ 15  ins_sym('Penile cancer','lump on the penis','unusual liquid discharges from the penis','Pain or bleeding in the genital area','null','null');
+ 16  ins_sym('Pharyngeal cancer','neck pain','bad breath','ear pain','Lump in the lip, mouth or gums ','sore tongue');
+ 17  ins_sym('Pheochromocytoma','Skin sensations ','headache','weight loss',' anxiety','pallor');
+ 18  ins_sym('Pinealoma','visual changes','seizures','headache','nausea','vomitting');
+ 19  ins_sym('Pituitary adenoma','dry skin','nausea','loss of appetite','muscle pain','constipation');
+ 20  ins_sym('Pleuropulmonary blastoma','coughing',' an upper respiratory tract infection',' shortness of breath',' chest pain','null');
+ 21  ins_sym('Primary central nervous system lymphoma','fever', 'night sweats','weight loss','null','null');
+ 22  end;
+ 23  /
+
+PL/SQL procedure successfully completed.
+
+
+SQL> begin
+  2  ins_sym('Rectal cancer','iron deficiency anemia','constipation', 'abdominal pain', 'abdominal distension' ,'vomiting');
+  3  ins_sym('Renal cell carcinoma (kidney cancer)','night sweats','severe weight loss','loin pain','abdominal pain','abnormal urine color ');
+  4  ins_sym('Renal pelvis and ureter, transitional cell cancer','Flank pain','back pain','fatigue','weight loss','Need to urinate frequently at night');
+  5  ins_sym('Retinoblastoma','abnormal appearance of the pupil','null','null','null','null');
+  6  ins_sym('Rhabdomyosarcoma, childhoods','weakness','fatigue','null','null','null');
+  7  ins_sym('Salivary gland cancer','Fluid draining from the ear','Trouble swallowing or opening the mouth widely','Numbness or weakness in the face','Pain in the face that does not go away','null');
+  8  ins_sym('Sarcoma, Ewing family of tumors','pain at the tumor site','fever','fatigue','weight loss','loss of appetite');
+  9  ins_sym('Sézary syndrome','A scaly, red rash in areas of the body that usually are not exposed to the sun','Thin, reddened, eczema -like rash','Thickened, red patches or reddened skin','Tumors form on the skin','null');
+ 10  ins_sym('Skin cancer','A sore or spot that bleeds or become crusty','Rough and scaly patches on the skin','Flat scaly areas of the skin that are red or brown','null','null');
+ 11  ins_sym('Soft tissue sarcoma','A lump that is painless at first','Pain or soreness as the lump grows and presses against nerves and muscles','null','null','null');
+ 12  ins_sym('Supratentorial primitive neuroectodermal tumor, childhood','eye movement problems ','headache','vomitting','fatigue','null');
+ 13  ins_sym('Testicular cancer','a lump in one testis which may or may not be painful','sharp pain or a dull ache in the lower abdomen or scrotum','a feeling often described as "heaviness" in the scrotum','breast enlargement ','null');
+ 14  ins_sym('Throat cancer','neck pain','bad breath','sore tongue','ear pain','lump in the lip');
+ 15  ins_sym('Thymoma','Persistent cough','fatigue','dizziness','muscle weakness','double vision');
+ 16  ins_sym('Thyroid cancer','Enlargement of the neck','difficulty breathing','difficulty swallowing','pain in neck','hoarseness');
+ 17  ins_sym('Cancer of Unknown primary site','Swollen lymph nodes','Shortness of breath','Pain in the bones','Chest or abdominal pain or fullness','Poor appetite ');
+ 18  ins_sym('Ureter and renal pelvis, transitional cell cancer','Blood in the urine','tiredness','weight loss','frequent urination','back pain');
+ 19  ins_sym('Urethral cancer','blood in the urine','Weak or interrupted flow of urine','Urination occurs often','Discharge from the urethra','A lump or thickness in the perineum or penis');
+ 20  ins_sym('Uterine cancer, endometrial','Bleeding that is not part of menstrual periods','Bleeding after menopause','A mass in the vagina','Pain or a feeling of fullness in the abdomen','frequent urination');
+ 21  ins_sym('Neuroectodermal tumors','Asymptomatic in early stages','pain','headache','swelling','lump');
+ 22  end;
+ 23  /
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure ins_dia
+  2  (t in diagnosis.type%type,c1 in diagnosis.tests%type,c2 in diagnosis.tests%type,c3 in diagnosis.tests%type,c4 in diagnosis.tests%type,c5 in diagnosis.tests%type)
+  3  is
+  4  begin
+  5  insert into diagnosis
+  6  values(t,c1);
+  7  if c2<>'null' then
+  8  insert into diagnosis values(t,c2);
+  9  else
+ 10  dbms_output.put_line('');
+ 11  end if;
+ 12  if c3<>'null' then
+ 13  insert into diagnosis values(t,c3);
+ 14  else
+ 15  dbms_output.put_line('');
+ 16  end if;
+ 17  if c4<>'null' then
+ 18  insert into diagnosis values(t,c4);
+ 19  else
+ 20  dbms_output.put_line('');
+ 21  end if;
+ 22  if c5<>'null' then
+ 23  insert into diagnosis values(t,c5);
+ 24  else
+ 25  dbms_output.put_line('');
+ 26  end if;
+ 27  end;
+ 28  /
+
+Procedure created.
+
+SQL> begin
+  2  ins_dia('Acute lymphoblastic leukemia','bone marrow examination','ct scan','biopsy','complete blood count','null');
+  3  ins_dia('Acute myeloid leukemia','Bone marrow aspiration and biopsy','Peripheral blood smear','biopsy','complete blood count','null');
+  4  ins_dia('Hairy cell leukemia','physical exam', 'abdominal CT scan',  'complete blood count' , 'Blood tests', 'a bone marrow biopsy');
+  5  ins_dia('Head and neck cancer','Fine needle aspiration biopsy','imaging studies','Evaluation for distant metastases','Incidence of second and multiple primaries','Future molecular staging methods');
+  6  ins_dia('Heart cancer','Chest X-Ray','CT Heart Scan',' Myocardial Biopsy',' Heart MRI',' Pericardiocentesis');
+  7  ins_dia('Hepatocellular (liver) cancer','Abdominal CT scan','Liver biopsy','Liver mri','Liver function tests','Abdominal ultrasound');
+  8  ins_dia('Hodgkin lymphoma','lymph node biopsy','Bone marrow biopsy','CT scans of the chest, abdomen, and pelvis','Complete blood count (CBC) ','PET scan');
+  9  ins_dia('Hypopharyngeal cancer','physical exam','biopsy','endoscopy','Chest xray','Laryngoscopy.');
+ 10  ins_dia('Hypothalamic and visual pathway glioma, childhood','ct scan','mri','biopsy','null','null');
+ 11  ins_dia('Intraocular Melanoma','Ophthalmoscopy','Ultrasound','Flourescein angiography',' blood tests','biopsy');
+ 12  ins_dia('Islet Cell Carcinoma (Endocrine Pancreas)','Abdominal CT scan','Gucose tolerance test','Serum glucagon level','Serum insulin C-peptide','Serum insulin level');
+ 13  ins_dia('Kaposi sarcoma','Bronchoscopy','CT scan','Endoscopy','skin biopsy','null');
+ 14  ins_dia('Kidney cancer (renal cell cancer)','Physical exam and history','Blood chemistry studies','Urinalysis','Liver function test','Intravenous pyelogram (IVP)');
+ 15  ins_dia('Laryngeal Cancer','laryngoscopy','Endoscopy','Barium swallow','biopsy','imaging studies');
+ 16  ins_dia('Leukemias','PhysicalExam',' peripheral blood smear',' cytogenic analysis',' bone marrow Biopsy',' Lumbar Puncture/Spinal Tap');
+ 17  ins_dia('Lip and Oral Cavity Cancer','Physical exam of lips and oral cavity','endoscopy','Barium swallow','biopsy','imaging studies');
+ 18  ins_dia('Liposarcoma','ct scan','mri','pet scan','x-ray','biopsy');
+ 19  ins_dia('Lung Cancer','chest xray',' ct scan',' mri',' pet scan',' Sputum Cytology');
+ 20  ins_dia('Lymphomas','Bone marrow examination','Organ function test','Lumbar puncture','Gallium scan','Lymphangiogram');
+ 21  end;
+ 22  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_dia('Malignant Fibrous Histiocytoma of bone','Fine-needle aspiration (FNA) biopsy',' Core biopsy',' Incisional biopsy',' Light and electron microscopy', 'Cytogenetic analysis');
+  3  ins_dia('Medulloblastoma, Childhood','ct scan',' mri',' biopsy',' lumbar puncture','null');
+  4  ins_dia('Melanoma','epiluminescence microscopy (also called dermatoscopy)',' skin biopsy','null','null','null');
+  5  ins_dia('Merkel Cell Carcinoma','Physical exam',' Removing a sample of suspicious skin',' Sentinel node biopsy',' Imaging tests','null');
+  6  ins_dia('Mesothelioma','Video-Assisted Thoracoscopic Surgery (VATS)',' Thoracoscopy',' Peritoneoscopy',' biopsy','ct scan');
+  7  ins_dia('Metastatic Squamous Neck Cancer with Occult Primary','Serum tumor marker test','biopsy',' sinus xray',' chest xray',' branchoscopy');
+  8  ins_dia('Multiple Endocrine Neoplasia Syndrome, Childhood','ct scan','mri','biopsy','null','null');
+  9  ins_dia('Multiple Myeloma or Plasma Cell Neoplasm','blood test',' xray',' urine test',' biopsy','null');
+ 10  ins_dia('Mycosis Fungoides','skin biopsy','null','null','null','null');
+ 11  ins_dia('Myelodysplastic or Myeloproliferative Diseases','Bone marrow aspiration and biopsy','Cytogenetic analysis','Peripheral blood smear','Blood chemistry studies','Complete blood count (CBC) with differential');
+ 12  ins_dia('Nasal cavity and paranasal sinus cancer','biopsy','nasoscopy','X-rays of the head, neck, and chest','physical exam','null');
+ 13  ins_dia('Nasopharyngeal carcinoma','Nasoscopy','Neurological exam','Head and chest x-rays','Biopsy','laboratory tests');
+ 14  ins_dia('Neuroblastoma','Twenty-four-hour urine test','Blood chemistry studies','Cytogenetic analysis','Bone marrow aspiration and biopsy','Neurological exam');
+ 15  ins_dia('Non-Hodgkin lymphoma','a lymph node biopsy','Bone marrow biopsy','Gallium scan','blood tests','Complete blood count (CBC)');
+ 16  end;
+ 17  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_dia('Waldenström macroglobulinemia','Quantitative immunoglobulins','Blood counts','Laboratory tests ','null','null');
+  3  ins_dia('Wilms tumor (kidney cancer), childhood','Urinalysis.','Renal function test','Liver function test','Blood chemistry studies','Ultrasound exam');
+  4  ins_dia('Adrenocortical carcinoma','dexamethasone suppression test','Twenty-four-hour urine test','Blood chemistry study','Adrenal angiography','Adrenal venography');
+  5  ins_dia('AIDS','home test','saliva test','viral load test','elisa test','western blot');
+  6  ins_dia('AIDS-related lymphoma','biopsy','staging','null','null','null');
+  7  ins_dia('Anal cancer','Digital Rectal Exam','Barium Enema','Fecal Occult Blood Test','Colonoscopy','Sigmoidoscopy');
+  8  ins_dia('Appendix cancer','Radionuclide scanning (OctreoScan)','ct scan','mri','ultrasound','biopsy');
+  9  ins_dia('Astrocytoma','Angiogram','biopsy','ct scan','mri','null');
+ 10  ins_dia('Basal-cell carcinoma','biopsy','null','null','null','null');
+ 11  ins_dia('Bladder cancer','Cystoscopy','Urine cytology','Bladder biopsies','Urine tumor marker tests','Urine culture');
+ 12  ins_dia('Bone tumor','Bone biopsy','Bone scan','Bone xray','mri','null');
+ 13  ins_dia('Brain tumor','stereotactic biopsy','mri','ct scan','pet scan','null');
+ 14  ins_dia('Brainstem glioma','mri','ct scan','biopsy','null','null');
+ 15  ins_dia('Breast cancer','Mammogram','Ultra-Sonography','Aspiration','Surgical Biopsy ','null');
+ 16  ins_dia('Bronchial adenomas','CT-guided fine-needle aspiration','Bronchoscopy','Octreotide','ct scan','mri');
+ 17  ins_dia('Burkitts lymphoma','biopsy','ct scan','mri','null','null');
+ 18  end;
+ 19  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_dia('Carcinoid tumor','Endoscopic ultrasonography','ct scan','mri','null','null');
+  3  ins_dia('Carcinoma of unknown primary','biopsy','null','null','null','null');
+  4  ins_dia('Central nervous system lymphoma, primary','Spinal tap','brain biopsy','ct scan','mri','null');
+  5  ins_dia('Cerebellar astrocytoma','ct scan','xray','null','null','null');
+  6  ins_dia('Cervical cancer','Colposcopy Exam','Intravenous pyelogram (IVP)','cytoscopy','ct scan','mri');
+  7  ins_dia('Cholangiocarcinoma','Angiogram','Laparotomy','Biopsy','mri','ct scan');
+  8  ins_dia('Chronic lymphocytic leukemia','Blood test ','Bone marrow biopsy','Cytogenetic analysis','Immunophenotyping','null');
+  9  ins_dia('Chronic myelogenous leukemia','bone marrow biopsy','null','null','null','null');
+ 10  ins_dia('Chronic myeloproliferative disorders','Bone marrow aspiration/biopsy','mri','ct scan','complete blood count','xray');
+ 11  ins_dia('Colon Cancer','Angiography','ct scan','mri','biopsy','complete blood count');
+ 12  ins_dia('Cutaneous T-cell lymphoma','biopsy','null','null','null','null');
+ 13  ins_dia('Desmoplastic small round cell tumor','stereotactic radiosurgery','radiofrequency ablation','cryoablation','null','null');
+ 14  ins_dia('Endometrial cancer','ultrasound','ct scan','biopsy','null','null');
+ 15  ins_dia('Ependymoma','mri','ct scan','null','null','null');
+ 16  ins_dia('Esophageal cancer','Barium swallow','Endoscopic ultrasound ','Esophagogastroduodenoscopy (EGD) ','biopsy','ct scan');
+ 17  ins_dia('Ewings sarcoma in the Ewing family of tumors','bone scan','mri','ct scan','biopsy','null');
+ 18  ins_dia('Eye Cancer','Eye examination ','Fluorescein angiography ','ultrasound','ct scan','biopsy');
+ 19  ins_dia('Gallbladder cancer','Liver function tests','ultrasound','Laparoscopy','ct scan','biopsy');
+ 20  ins_dia('Gastric (Stomach) cancer','ct scan','blood tests','mri','biopsy','null');
+ 21  ins_dia('Gastrointestinal stromal tumor (GIST)','Barium x-rays','Endoscopic ultrasound','biopsy','ct scan','mri');
+ 22  ins_dia('Germ cell tumor','Bone scan','ct scan','mri','xray','null');
+ 23  ins_dia('Gestational trophoblastic tumor','Quantitative serum HCG','Kidney function tests','Lung function tests','ct scan','mri');
+ 24  end;
+ 25  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  ins_dia('Vaginal cancer','pet scan','mri','ct scan','chest xray','null');
+  3  ins_dia('Vulvar cancer','pet scan','mri','ct scan','chest xray','blood tests');
+  4  ins_dia('Oral cancer','Mouth and throat examination ','biopsy','null','null','null');
+  5  ins_dia('Oropharyngeal cancer','ct scan','mri','biopsy','pet scan','ultrasound');
+  6  ins_dia('Ovarian cancer','pelvic examination','blood test',' transvaginal ultrasound',' biopsy','measure of serum BHCG level' );
+  7  ins_dia('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','Pelvic Exam','mri','Intravenous Pyelogram (IVP)','biopsy','ct scan');
+  8  ins_dia('Pancreatic cancer','liver function test','blood test','endoscopic ultrasound','ct scan','null');
+  9  ins_dia('Parathyroid cancer','surgery','blood test','sestamibi scan','null','null');
+ 10  ins_dia('Penile cancer','biopsy','null','null','null','null');
+ 11  ins_dia('Pharyngeal cancer','Histopathology','biopsy','null','null','null');
+ 12  ins_dia('Pheochromocytoma','Blood Test' ,'Urine Test','clonidine suppression test','null','null');
+ 13  ins_dia('Pinealoma','Angiogram','X-rays of the Head and Skull',' Brain Scans','ct scan','mri');
+ 14  ins_dia('Pituitary adenoma','vision test','urinalysis','imaging studies','null','null');
+ 15  ins_dia('Pleuropulmonary blastoma','xray','ct scan','mri','null','null');
+ 16  ins_dia('Primary central nervous system lymphoma','ring-enhancing lesions','ct scan','mru','null','null');
+ 17  ins_dia('Rectal cancer','Digital rectal exam (DRE)','Fecal occult blood test (FOBT)','Endoscopy','Virtual colonoscopy','Blood tests');
+ 18  ins_dia('Renal cell carcinoma (kidney cancer)','Radiology','Staging','Histopathology','null','null');

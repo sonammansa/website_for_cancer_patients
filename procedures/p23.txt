@@ -1,0 +1,17 @@
+create or replace procedure p23(dia in diagnosis.tests%type)
+as
+begin
+dbms_output.put_line('It is a test of --');
+for v1 in(select * from diagnosis where tests=dia) loop
+dbms_output.put_line(v1.type);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such value exists');
+end; 
+
+declare
+v_dia diagnosis.tests%type:=&test_name;
+begin
+p23(v_dia);
+end;

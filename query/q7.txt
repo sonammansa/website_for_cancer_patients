@@ -1,0 +1,14 @@
+declare
+v_hname hospital.hname%type;
+v_state hospital.state%type;
+v_hno h_phone.phone_no%type;
+begin
+for c1 in(select * from hospital) loop
+dbms_output.put_line(chr(10)||c1.hname|| chr (10) ||c1.state);
+dbms_output.put_line('phone numbers are = ');
+for v1 in(select phone_no,h.hid from h_phone p,hospital h where h.hid=p.hid and h.hname=c1.hname) loop
+dbms_output.put_line(v1.phone_no);
+end loop;
+end loop;
+end;
+

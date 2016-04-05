@@ -1,0 +1,44 @@
+create or replace procedure p4(t in cancer.type%type,w in varchar2)
+as
+v1 cancer.bodypart_affec%type;
+v2 cancer.cells_damaged%type;
+begin
+if w='body parts affected' then
+select bodypart_affec into v1 from cancer where type=t;
+dbms_output.put_line(v1);
+elsif w='cells affected' then
+select cells_damaged into v2 from cancer where type=t;
+dbms_output.put_line(v2);
+elsif w='causes' then
+dbms_output.put_line('causes are');
+for v1 in(select * from causes where type=t) loop
+dbms_output.put_line(v1.cause_riskfactor);
+end loop;
+elsif w='symptoms' then
+dbms_output.put_line('symptoms are');
+for v2 in(select * from symptoms where type=t) loop
+dbms_output.put_line(v2.symptoms);
+end loop;
+elsif w='diagnosis' then
+dbms_output.put_line('tests to be done are');
+for v3 in(select * from diagnosis where type=t)loop
+dbms_output.put_line(v3.tests);
+end loop;
+elsif w='treatment' then
+dbms_output.put_line('its treatment include');
+for v4 in(select * from treatment where type=t)loop
+dbms_output.put_line(v4.treatment);
+end loop;
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('no such type exists');
+end;
+
+
+declare
+v_t cancer.type%type:=&type;
+v_w varchar(50):=&what_to_display;
+begin
+p4(v_t,v_w);
+end;

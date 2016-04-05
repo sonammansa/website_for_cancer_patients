@@ -1,0 +1,17 @@
+create or replace function f27(sn in specialists.sname%type) return specialists.consult_fee%type
+as
+begin
+for v1 in(select * from specialists where sname=sn) loop
+return(v1.consult_fee);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such specialist exists');
+end;
+
+declare
+v_sname specialists.sname%type:=&specialist_name;
+begin
+dbms_output.put_line(v_sname||' has consultation fees of Rs.'||f27(v_sname));
+end;
+

@@ -1,0 +1,16 @@
+create or replace function f20(hn in hospital.hname%type) return int
+as
+c int;
+begin
+select count(w.sid) into c from hospital h,works_at w where h.hname=hn and h.hid=w.hid group by w.hid;
+return(c);
+exception
+when no_data_found then
+dbms_output.put_line('no such hospital name exists.');
+end;
+
+declare
+v_hn hospital.hname%type:=&hospital_name;
+begin
+dbms_output.put_line(v_hn||' has '||f20(v_hn)||' cancer specialists.');
+end;

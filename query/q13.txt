@@ -1,0 +1,10 @@
+declare
+v_hn hospital.hname%type:=&hospital_name;
+begin
+for v1 in(select s.sname,s.speciality,s.consult_fee from hospital h,works_at w,specialists s where h.hname=v_hn and h.hid=w.hid and w.sid=s.sid) loop
+dbms_output.put_line(v1.sname||chr(10)||'speciality- '||v1.speciality||chr(10)||'consultation fees- '||v1.consult_fee||chr(10));
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such hospital exists');
+end;

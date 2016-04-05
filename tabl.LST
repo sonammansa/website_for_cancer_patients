@@ -1,0 +1,2541 @@
+create table cancer
+  2  (type varchar(255) not null,
+  3  bodypart_affec varchar(255),
+  4  cells_damaged varchar(255),
+  5  primary key(type));
+
+Table created.
+
+SQL> 
+SQL> create table causes
+  2  (type varchar(255) not null,
+  3  cause_riskfactor varchar(255),
+  4  primary key(type,cause_riskfactor),
+  5  foreign key(type) references cancer(type));
+
+Table created.
+
+SQL> 
+SQL> create table symptoms
+  2  (type varchar(255) not null,
+  3  symptoms varchar(255),
+  4  primary key(type,symptoms),
+  5  foreign key(type) references cancer(type));
+
+Table created.
+
+SQL> 
+SQL> create table diagnosis
+  2  (type varchar(255) not null,
+  3  tests varchar(255),
+  4  primary key(type,tests),
+  5  foreign key(type) references cancer(type));
+
+Table created.
+
+SQL> 
+SQL> create table treatment
+  2  (type varchar(255) not null,
+  3  treatment varchar(255),
+  4  primary key(type,treatment),
+  5  foreign key(type) references cancer(type));
+
+Table created.
+
+SQL> 
+SQL> create table specialists
+  2  (sid int not null,
+  3  sname varchar(255),
+  4  DOB date,
+  5  age int,
+  6  speciality varchar(255),
+  7  consult_fee number(10),
+  8  primary key(sid));
+
+Table created.
+
+SQL> 
+SQL> create table s_educ
+  2  (sid int not null,
+  3  degrees varchar(255),
+  4  primary key(sid,degrees),
+  5  foreign key(sid) references specialists(sid));
+
+Table created.
+
+SQL> 
+SQL> create table hospital
+  2  (hid int not null,
+  3  hname varchar(255),
+  4  building varchar(255),
+  5  town varchar(255),
+  6  city varchar(255),
+  7  state varchar(255),
+  8  primary key(hid));
+
+Table created.
+
+SQL> 
+SQL> create table works_at
+  2  (sid int not null,
+  3  hid int,
+  4  primary key(sid,hid),
+  5  foreign key(sid) references specialists(sid),
+  6  foreign key(hid) references hospital(hid));
+
+Table created.
+
+SQL> 
+SQL> create table h_phone
+  2  (hid int not null,
+  3  phone_no number(20),
+  4  primary key(hid,phone_no),
+  5  foreign key(hid) references hospital(hid));
+
+Table created.
+
+SQL> insert into cancer values('Acute lymphoblastic leukemia','bone marrow','white blood cells');
+
+1 row created.
+
+SQL> insert into cancer values('Acute myeloid leukemia','','');
+
+1 row created.
+
+SQL> insert into cancer values('Hairy cell leukemia','bone marrow,spleen','white blood cell called a B¬lymphocyte');
+
+1 row created.
+
+SQL> insert into cancer values('Head and neck cancer','lip, oral cavity (mouth),nasal cavity(inside the nose), paranasal sinuses, pharynx, and larynx','squamous cells that line the mucosal surfaces in the head and neck');
+
+1 row created.
+
+SQL> insert into cancer values('Heart cancer','heart','heart cells');
+
+1 row created.
+
+SQL> insert into cancer values('Hepatocellular (liver) cancer','liver','liver cells');
+
+1 row created.
+
+SQL> insert into cancer values('Hodgkin lymphoma','lymph nodes,lymph vessels,lymph fluid,thymus,spleen,liver,bone marrow','white blood cells(lymphocytes)');
+
+1 row created.
+
+SQL> insert into cancer values('Hypopharyngeal cancer','hypopharynx','flat, squamous cells in the lining of the organs');
+
+1 row created.
+
+SQL> insert into cancer values('Hypothalamic and visual pathway glioma, childhood','brain','brain cells called astrocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Intraocular Melanoma','eye involving the iris, ciliary body, or choroid (collectively referred to as the uvea)','pigment cells (melanocytes) that reside within the uvea giving color to the eye');
+
+1 row created.
+
+SQL> insert into cancer values('Islet Cell Carcinoma (Endocrine Pancreas)','pancreas','neuroendocrine cells');
+
+1 row created.
+
+SQL> insert into cancer values('Kaposi sarcoma','under the skin,lining of the mouth,nose, and throat','cells that line lymph or blood vessels');
+
+1 row created.
+
+SQL> insert into cancer values('Kidney cancer (renal cell cancer)',' lining of tubules (very small tubes) in the kidney','kidney cells');
+
+1 row created.
+
+SQL> insert into cancer values('Laryngeal Cancer','larynx','squamous cells, the thin, flat cells lining the inside of the larynx');
+
+1 row created.
+
+SQL> insert into cancer values('Leukemias','blood, bone marrow and lymphoid system','white blood cells');
+
+1 row created.
+
+SQL> insert into cancer values('Lip and Oral Cavity Cancer','lips n oral cavity','thin, flat cells that line the lips and oral cavity. ');
+
+1 row created.
+
+SQL> insert into cancer values('Liposarcoma','abdominal cavity, the thigh or upper arm','fat cells in deep soft tissue');
+
+1 row created.
+
+SQL> insert into cancer values('Lung Cancer','lungs','epithelial cells of lungs');
+
+1 row created.
+
+SQL> insert into cancer values('Lymphomas','lymph nodes,  skin, brain, bowels and bone','lymphatic cells of the immune system');
+
+1 row created.
+
+SQL> insert into cancer values('Malignant Fibrous Histiocytoma of bone','bones of the arms and legs. around the knee, soft tissue or organs in the chest or abdomen','osteoblasts, which are a type of bone cell that grows into new bone tissue');
+
+1 row created.
+
+SQL> insert into cancer values('Medulloblastoma, Childhood','cerebellum','fetal cells that remain in the cerebellum after birth');
+
+1 row created.
+
+SQL> insert into cancer values('Melanoma','skin, bowel, eye, any part of the body that contains melanocytes','Melanocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Merkel Cell Carcinoma','on or just beneath the skin and in hair follicles, face, head or neck','Merkel cells');
+
+1 row created.
+
+SQL> insert into cancer values('Mesothelioma','pleura (outer lining of the lungs and internal chest wall), but it may also occur in the peritoneum (the lining of the abdominal cavity), the pericardium (a sac that surrounds the heart),[2] or the tunica vaginalis (a sac that surrounds the testis)','mesothelium');
+
+1 row created.
+
+SQL> insert into cancer values('Metastatic Squamous Neck Cancer with Occult Primary','lymph nodes in the neck or around the collarbone','squamous cells');
+
+1 row created.
+
+SQL> insert into cancer values('Multiple Endocrine Neoplasia Syndrome, Childhood','thyroid and other hormonal(endocrine) glands of the body','hormones');
+
+1 row created.
+
+SQL> insert into cancer values('Multiple Myeloma or Plasma Cell Neoplasm','bones, bone marrow, kidney','plasma cells');
+
+1 row created.
+
+SQL> insert into cancer values('Mycosis Fungoides','skin','t cell lymphocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Myelodysplastic or Myeloproliferative Diseases','blood, bone marow','white blood cell, blood stem cells');
+
+1 row created.
+
+SQL> insert into cancer values('Nasal cavity and paranasal sinus cancer','paranasal sinuses and nasal cavity','squamous cells (thin, flat cells) lining the inside of the paranasal sinuses and the nasal cavity');
+
+1 row created.
+
+SQL> insert into cancer values('Nasopharyngeal carcinoma','nasopharynx','cells that line the nasopharynx');
+
+1 row created.
+
+SQL> insert into cancer values('Neuroblastoma','adrenal gland, neck, chest, or spinal cord','nerve tissue, neuroblasts');
+
+1 row created.
+
+SQL> insert into cancer values('Non-Hodgkin lymphoma','lymph nodes, spleen, and other organs of the immune system','cells in the lymphatic system called lymphocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Waldenström macroglobulinemia','bone marrow, lymph nodes','white blood cells called lymphocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Wilms tumor (kidney cancer), childhood','kidney','kidney cells');
+
+1 row created.
+
+SQL> insert into cancer values('Adrenocortical carcinoma','cortex (steroid hormone-producing tissue) of the adrenal gland','cortex (outer layer), medulla (inner area)');
+
+1 row created.
+
+SQL> insert into cancer values('AIDS','immune system','immune cells');
+
+1 row created.
+
+SQL> insert into cancer values('AIDS-related lymphoma','lymph nodes',' lymphoid cells');
+
+1 row created.
+
+SQL> insert into cancer values('Anal cancer','squamocolumnar junction','squamocolumnar cells');
+
+1 row created.
+
+SQL> insert into cancer values('Appendix cancer',' vermiform appendix','vermiform cells');
+
+1 row created.
+
+SQL> insert into cancer values('Astrocytoma','astrocytes','brain cells');
+
+1 row created.
+
+SQL> insert into cancer values('Basal-cell carcinoma','Skin of head n neck mainly','Skin cells');
+
+1 row created.
+
+SQL> insert into cancer values('Bladder cancer','urinary bladder','Urinary cells');
+
+1 row created.
+
+SQL> insert into cancer values('Bone tumor','bone','bone tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Brain tumor','brain or spinal canal','brain cells');
+
+1 row created.
+
+SQL> insert into cancer values('Brainstem glioma','brainstem','Brain tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Breast cancer','milk ducts or the lobules','breast tissue');
+
+1 row created.
+
+SQL> insert into cancer values('Bronchial adenomas','adrenal glands','adrenal gland cells');
+
+1 row created.
+
+SQL> insert into cancer values('Burkitts lymphoma','lymphatic system','lymphatic cells');
+
+1 row created.
+
+SQL> insert into cancer values('Carcinoid tumor','Neuroendocrine system','Cells of neuroendocrine system');
+
+1 row created.
+
+SQL> insert into cancer values('Carcinoma of unknown primary','Lungs,liver,pancreas,abdomen,basel cells','Inner or outer surface of Body tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Central nervous system lymphoma, primary','Nervous system','Brain cells');
+
+1 row created.
+
+SQL> insert into cancer values('Cerebellar astrocytoma','brain or spine','brain cells');
+
+1 row created.
+
+SQL> insert into cancer values('Cervical cancer','cervix uteri','Uteri  cells');
+
+1 row created.
+
+SQL> insert into cancer values('Cholangiocarcinoma','liver,small intestine','bile ducts');
+
+1 row created.
+
+SQL> insert into cancer values('Chronic lymphocytic leukemia','bone marrow,lymph nodes','B cell lymphocytes');
+
+1 row created.
+
+SQL> insert into cancer values('Chronic myelogenous leukemia','bone marrow','white blood cells');
+
+1 row created.
+
+SQL> insert into cancer values('Chronic myeloproliferative disorders','bone marrow','bone marrow cells');
+
+1 row created.
+
+SQL> insert into cancer values('Colon Cancer','colon, rectum, or vermiform appendix','anus tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Cutaneous T-cell lymphoma','immune system','immune system cells');
+
+1 row created.
+
+SQL> insert into cancer values('Desmoplastic small round cell tumor','abdomen,lymph nodes','lymph tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Endometrial cancer','uterus','endometrial adenocarcinoma cells');
+
+1 row created.
+
+SQL> insert into cancer values('Ependymoma','central nervous system','tissue of the central nervous system');
+
+1 row created.
+
+SQL> insert into cancer values('Esophageal cancer','esophagus','squamous cell');
+
+1 row created.
+
+SQL> insert into cancer values('Ewings sarcoma in the Ewing family of tumors','bone or in soft tissue','bone cells or in soft tissue.');
+
+1 row created.
+
+SQL> insert into cancer values('Eye Cancer','eye and its adnexa','Eye cells');
+
+1 row created.
+
+SQL> insert into cancer values('Gallbladder cancer','gallbladder, part of liver and lymph nodes','gallbladder cells');
+
+1 row created.
+
+SQL> insert into cancer values('Gastric (Stomach) cancer','stomach','stomach cells');
+
+1 row created.
+
+SQL> insert into cancer values('Gastrointestinal stromal tumor (GIST)','stomach','stomach cells');
+
+1 row created.
+
+SQL> insert into cancer values('Germ cell tumor','gonads (ovary and testis)','gonads cells');
+
+1 row created.
+
+SQL> insert into cancer values('Gestational trophoblastic tumor','uterus','cells in the womb');
+
+1 row created.
+
+SQL> insert into cancer values('Vaginal cancer','vagina','vagina cells');
+
+1 row created.
+
+SQL> insert into cancer values('Vulvar cancer','vulva','vulva cells');
+
+1 row created.
+
+SQL> insert into cancer values('Oral cancer','oral cavity,tongue,gums','mouth cells');
+
+1 row created.
+
+SQL> insert into cancer values('Oropharyngeal cancer','middle part of throat, tongue,tonsils,soft palate,walls of pharynx','mouth cells');
+
+1 row created.
+
+SQL> insert into cancer values('Ovarian cancer','ovary','egg cells');
+
+1 row created.
+
+SQL> insert into cancer values('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','ovary','cells that line the surface of ovaries');
+
+1 row created.
+
+SQL> insert into cancer values('Pancreatic cancer','malignant neoplasm of the pancreas','islet cells');
+
+1 row created.
+
+SQL> insert into cancer values('Parathyroid cancer','parathyroid glands(which helps the body store and use calcium)','parathyroid cells');
+
+1 row created.
+
+SQL> insert into cancer values('Penile cancer','external skin and in the tissues of the penis','malignant cells');
+
+1 row created.
+
+SQL> insert into cancer values('Pharyngeal cancer','head and neck,lip, oral cavity (mouth), nasal cavity(inside the nose)','mainly head n neck tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Pheochromocytoma','adrenal glands,ganglia, sympathetic nervous system','PC12 cell');
+
+1 row created.
+
+SQL> insert into cancer values('Pinealoma','pineal gland','pineal gland cells');
+
+1 row created.
+
+SQL> insert into cancer values('Pituitary adenoma','piturity gland','piturity gland cells');
+
+1 row created.
+
+SQL> insert into cancer values('Pleuropulmonary blastoma','pleural cells','lung or pleural cavity');
+
+1 row created.
+
+SQL> insert into cancer values('Primary central nervous system lymphoma','brain','brain cells');
+
+1 row created.
+
+SQL> insert into cancer values('Rectal cancer','anus','anus tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Renal cell carcinoma (kidney cancer)','kidney','kidney cells');
+
+1 row created.
+
+SQL> insert into cancer values('Renal pelvis and ureter, transitional cell cancer','kidneys,urinary bladder','Ureter cells');
+
+1 row created.
+
+SQL> insert into cancer values('Retinoblastoma','eyes','retina cells');
+
+1 row created.
+
+SQL> insert into cancer values('Rhabdomyosarcoma, childhoods','skeletal muscle progenitors','connective tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Salivary gland cancer','salivary gland','tissues of a salivary gland');
+
+1 row created.
+
+SQL> insert into cancer values('Sarcoma, Ewing family of tumors',' pelvis, the femur, the humerus, the ribs and clavicle','soft tissue');
+
+1 row created.
+
+SQL> insert into cancer values('Sézary syndrome','skin','t cells');
+
+1 row created.
+
+SQL> insert into cancer values('Skin cancer','the outermost layer of skin','skin cells');
+
+1 row created.
+
+SQL> insert into cancer values('Soft tissue sarcoma','muscle, fat, fibrous tissue, blood vessels','connective tissue');
+
+1 row created.
+
+SQL> insert into cancer values('Supratentorial primitive neuroectodermal tumor, childhood','central or peripheral nervous system','primitive (undifferentiated) nerve cells');
+
+1 row created.
+
+SQL> insert into cancer values('Testicular cancer','testicles','testicles tissues');
+
+1 row created.
+
+SQL> insert into cancer values('Throat cancer','lip, oral cavity (mouth), nasal cavity(inside the nose), paranasal sinuses, pharynx, and larynx','squamous cell carcinomas');
+
+1 row created.
+
+SQL> insert into cancer values('Thymoma','thymus','epithelial cells');
+
+1 row created.
+
+SQL> insert into cancer values('Thyroid cancer','thyroid gland','thyroid gland cells');
+
+1 row created.
+
+SQL> insert into cancer values('Cancer of Unknown primary site','any where in body','body cells');
+
+1 row created.
+
+SQL> insert into cancer values('Ureter and renal pelvis, transitional cell cancer','lining of the bladder, ureter, or renal pelvis','transitional cells');
+
+1 row created.
+
+SQL> insert into cancer values('Urethral cancer','urethra','tissues of urethra');
+
+1 row created.
+
+SQL> insert into cancer values('Uterine cancer, endometrial','uterus','connective tissue of the uterus');
+
+1 row created.
+
+SQL> insert into cancer values('Neuroectodermal tumors','central or peripheral nervous system','nervous system cells');
+
+1 row created.
+
+SQL> select * from cancer;
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Acute lymphoblastic leukemia                                                    
+bone marrow                                                                     
+white blood cells                                                               
+                                                                                
+Acute myeloid leukemia                                                          
+                                                                                
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Hairy cell leukemia                                                             
+bone marrow,spleen                                                              
+white blood cell called a B¬lymphocyte                                          
+                                                                                
+Head and neck cancer                                                            
+lip, oral cavity (mouth),nasal cavity(inside the nose), paranasal sinuses, phary
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+nx, and larynx                                                                  
+squamous cells that line the mucosal surfaces in the head and neck              
+                                                                                
+Heart cancer                                                                    
+heart                                                                           
+heart cells                                                                     
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Hepatocellular (liver) cancer                                                   
+liver                                                                           
+liver cells                                                                     
+                                                                                
+Hodgkin lymphoma                                                                
+lymph nodes,lymph vessels,lymph fluid,thymus,spleen,liver,bone marrow           
+white blood cells(lymphocytes)                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Hypopharyngeal cancer                                                           
+hypopharynx                                                                     
+flat, squamous cells in the lining of the organs                                
+                                                                                
+Hypothalamic and visual pathway glioma, childhood                               
+brain                                                                           
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+brain cells called astrocytes                                                   
+                                                                                
+Intraocular Melanoma                                                            
+eye involving the iris, ciliary body, or choroid (collectively referred to as th
+e uvea)                                                                         
+pigment cells (melanocytes) that reside within the uvea giving color to the eye 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Islet Cell Carcinoma (Endocrine Pancreas)                                       
+pancreas                                                                        
+neuroendocrine cells                                                            
+                                                                                
+Kaposi sarcoma                                                                  
+under the skin,lining of the mouth,nose, and throat                             
+cells that line lymph or blood vessels                                          
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Kidney cancer (renal cell cancer)                                               
+ lining of tubules (very small tubes) in the kidney                             
+kidney cells                                                                    
+                                                                                
+Laryngeal Cancer                                                                
+larynx                                                                          
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+squamous cells, the thin, flat cells lining the inside of the larynx            
+                                                                                
+Leukemias                                                                       
+blood, bone marrow and lymphoid system                                          
+white blood cells                                                               
+                                                                                
+Lip and Oral Cavity Cancer                                                      
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+lips n oral cavity                                                              
+thin, flat cells that line the lips and oral cavity.                            
+                                                                                
+Liposarcoma                                                                     
+abdominal cavity, the thigh or upper arm                                        
+fat cells in deep soft tissue                                                   
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Lung Cancer                                                                     
+lungs                                                                           
+epithelial cells of lungs                                                       
+                                                                                
+Lymphomas                                                                       
+lymph nodes,  skin, brain, bowels and bone                                      
+lymphatic cells of the immune system                                            
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Malignant Fibrous Histiocytoma of bone                                          
+bones of the arms and legs. around the knee, soft tissue or organs in the chest 
+or abdomen                                                                      
+osteoblasts, which are a type of bone cell that grows into new bone tissue      
+                                                                                
+Medulloblastoma, Childhood                                                      
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+cerebellum                                                                      
+fetal cells that remain in the cerebellum after birth                           
+                                                                                
+Melanoma                                                                        
+skin, bowel, eye, any part of the body that contains melanocytes                
+Melanocytes                                                                     
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Merkel Cell Carcinoma                                                           
+on or just beneath the skin and in hair follicles, face, head or neck           
+Merkel cells                                                                    
+                                                                                
+Mesothelioma                                                                    
+pleura (outer lining of the lungs and internal chest wall), but it may also occu
+r in the peritoneum (the lining of the abdominal cavity), the pericardium (a sac
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+ that surrounds the heart),[2] or the tunica vaginalis (a sac that surrounds the
+ testis)                                                                        
+mesothelium                                                                     
+                                                                                
+Metastatic Squamous Neck Cancer with Occult Primary                             
+lymph nodes in the neck or around the collarbone                                
+squamous cells                                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Multiple Endocrine Neoplasia Syndrome, Childhood                                
+thyroid and other hormonal(endocrine) glands of the body                        
+hormones                                                                        
+                                                                                
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+bones, bone marrow, kidney                                                      
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+plasma cells                                                                    
+                                                                                
+Mycosis Fungoides                                                               
+skin                                                                            
+t cell lymphocytes                                                              
+                                                                                
+Myelodysplastic or Myeloproliferative Diseases                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+blood, bone marow                                                               
+white blood cell, blood stem cells                                              
+                                                                                
+Nasal cavity and paranasal sinus cancer                                         
+paranasal sinuses and nasal cavity                                              
+squamous cells (thin, flat cells) lining the inside of the paranasal sinuses and
+ the nasal cavity                                                               
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Nasopharyngeal carcinoma                                                        
+nasopharynx                                                                     
+cells that line the nasopharynx                                                 
+                                                                                
+Neuroblastoma                                                                   
+adrenal gland, neck, chest, or spinal cord                                      
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+nerve tissue, neuroblasts                                                       
+                                                                                
+Non-Hodgkin lymphoma                                                            
+lymph nodes, spleen, and other organs of the immune system                      
+cells in the lymphatic system called lymphocytes                                
+                                                                                
+Waldenström macroglobulinemia                                                   
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+bone marrow, lymph nodes                                                        
+white blood cells called lymphocytes                                            
+                                                                                
+Wilms tumor (kidney cancer), childhood                                          
+kidney                                                                          
+kidney cells                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Adrenocortical carcinoma                                                        
+cortex (steroid hormone-producing tissue) of the adrenal gland                  
+cortex (outer layer), medulla (inner area)                                      
+                                                                                
+AIDS                                                                            
+immune system                                                                   
+immune cells                                                                    
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+AIDS-related lymphoma                                                           
+lymph nodes                                                                     
+ lymphoid cells                                                                 
+                                                                                
+Anal cancer                                                                     
+squamocolumnar junction                                                         
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+squamocolumnar cells                                                            
+                                                                                
+Appendix cancer                                                                 
+ vermiform appendix                                                             
+vermiform cells                                                                 
+                                                                                
+Astrocytoma                                                                     
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+astrocytes                                                                      
+brain cells                                                                     
+                                                                                
+Basal-cell carcinoma                                                            
+Skin of head n neck mainly                                                      
+Skin cells                                                                      
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Bladder cancer                                                                  
+urinary bladder                                                                 
+Urinary cells                                                                   
+                                                                                
+Bone tumor                                                                      
+bone                                                                            
+bone tissues                                                                    
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Brain tumor                                                                     
+brain or spinal canal                                                           
+brain cells                                                                     
+                                                                                
+Brainstem glioma                                                                
+brainstem                                                                       
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Brain tissues                                                                   
+                                                                                
+Breast cancer                                                                   
+milk ducts or the lobules                                                       
+breast tissue                                                                   
+                                                                                
+Bronchial adenomas                                                              
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+adrenal glands                                                                  
+adrenal gland cells                                                             
+                                                                                
+Burkitts lymphoma                                                               
+lymphatic system                                                                
+lymphatic cells                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Carcinoid tumor                                                                 
+Neuroendocrine system                                                           
+Cells of neuroendocrine system                                                  
+                                                                                
+Carcinoma of unknown primary                                                    
+Lungs,liver,pancreas,abdomen,basel cells                                        
+Inner or outer surface of Body tissues                                          
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Central nervous system lymphoma, primary                                        
+Nervous system                                                                  
+Brain cells                                                                     
+                                                                                
+Cerebellar astrocytoma                                                          
+brain or spine                                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+brain cells                                                                     
+                                                                                
+Cervical cancer                                                                 
+cervix uteri                                                                    
+Uteri  cells                                                                    
+                                                                                
+Cholangiocarcinoma                                                              
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+liver,small intestine                                                           
+bile ducts                                                                      
+                                                                                
+Chronic lymphocytic leukemia                                                    
+bone marrow,lymph nodes                                                         
+B cell lymphocytes                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Chronic myelogenous leukemia                                                    
+bone marrow                                                                     
+white blood cells                                                               
+                                                                                
+Chronic myeloproliferative disorders                                            
+bone marrow                                                                     
+bone marrow cells                                                               
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Colon Cancer                                                                    
+colon, rectum, or vermiform appendix                                            
+anus tissues                                                                    
+                                                                                
+Cutaneous T-cell lymphoma                                                       
+immune system                                                                   
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+immune system cells                                                             
+                                                                                
+Desmoplastic small round cell tumor                                             
+abdomen,lymph nodes                                                             
+lymph tissues                                                                   
+                                                                                
+Endometrial cancer                                                              
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+uterus                                                                          
+endometrial adenocarcinoma cells                                                
+                                                                                
+Ependymoma                                                                      
+central nervous system                                                          
+tissue of the central nervous system                                            
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Esophageal cancer                                                               
+esophagus                                                                       
+squamous cell                                                                   
+                                                                                
+Ewings sarcoma in the Ewing family of tumors                                    
+bone or in soft tissue                                                          
+bone cells or in soft tissue.                                                   
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Eye Cancer                                                                      
+eye and its adnexa                                                              
+Eye cells                                                                       
+                                                                                
+Gallbladder cancer                                                              
+gallbladder, part of liver and lymph nodes                                      
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+gallbladder cells                                                               
+                                                                                
+Gastric (Stomach) cancer                                                        
+stomach                                                                         
+stomach cells                                                                   
+                                                                                
+Gastrointestinal stromal tumor (GIST)                                           
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+stomach                                                                         
+stomach cells                                                                   
+                                                                                
+Germ cell tumor                                                                 
+gonads (ovary and testis)                                                       
+gonads cells                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Gestational trophoblastic tumor                                                 
+uterus                                                                          
+cells in the womb                                                               
+                                                                                
+Vaginal cancer                                                                  
+vagina                                                                          
+vagina cells                                                                    
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Vulvar cancer                                                                   
+vulva                                                                           
+vulva cells                                                                     
+                                                                                
+Oral cancer                                                                     
+oral cavity,tongue,gums                                                         
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+mouth cells                                                                     
+                                                                                
+Oropharyngeal cancer                                                            
+middle part of throat, tongue,tonsils,soft palate,walls of pharynx              
+mouth cells                                                                     
+                                                                                
+Ovarian cancer                                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+ovary                                                                           
+egg cells                                                                       
+                                                                                
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+ovary                                                                           
+cells that line the surface of ovaries                                          
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Pancreatic cancer                                                               
+malignant neoplasm of the pancreas                                              
+islet cells                                                                     
+                                                                                
+Parathyroid cancer                                                              
+parathyroid glands(which helps the body store and use calcium)                  
+parathyroid cells                                                               
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Penile cancer                                                                   
+external skin and in the tissues of the penis                                   
+malignant cells                                                                 
+                                                                                
+Pharyngeal cancer                                                               
+head and neck,lip, oral cavity (mouth), nasal cavity(inside the nose)           
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+mainly head n neck tissues                                                      
+                                                                                
+Pheochromocytoma                                                                
+adrenal glands,ganglia, sympathetic nervous system                              
+PC12 cell                                                                       
+                                                                                
+Pinealoma                                                                       
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+pineal gland                                                                    
+pineal gland cells                                                              
+                                                                                
+Pituitary adenoma                                                               
+piturity gland                                                                  
+piturity gland cells                                                            
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Pleuropulmonary blastoma                                                        
+pleural cells                                                                   
+lung or pleural cavity                                                          
+                                                                                
+Primary central nervous system lymphoma                                         
+brain                                                                           
+brain cells                                                                     
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Rectal cancer                                                                   
+anus                                                                            
+anus tissues                                                                    
+                                                                                
+Renal cell carcinoma (kidney cancer)                                            
+kidney                                                                          
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+kidney cells                                                                    
+                                                                                
+Renal pelvis and ureter, transitional cell cancer                               
+kidneys,urinary bladder                                                         
+Ureter cells                                                                    
+                                                                                
+Retinoblastoma                                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+eyes                                                                            
+retina cells                                                                    
+                                                                                
+Rhabdomyosarcoma, childhoods                                                    
+skeletal muscle progenitors                                                     
+connective tissues                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Salivary gland cancer                                                           
+salivary gland                                                                  
+tissues of a salivary gland                                                     
+                                                                                
+Sarcoma, Ewing family of tumors                                                 
+ pelvis, the femur, the humerus, the ribs and clavicle                          
+soft tissue                                                                     
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Sézary syndrome                                                                 
+skin                                                                            
+t cells                                                                         
+                                                                                
+Skin cancer                                                                     
+the outermost layer of skin                                                     
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+skin cells                                                                      
+                                                                                
+Soft tissue sarcoma                                                             
+muscle, fat, fibrous tissue, blood vessels                                      
+connective tissue                                                               
+                                                                                
+Supratentorial primitive neuroectodermal tumor, childhood                       
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+central or peripheral nervous system                                            
+primitive (undifferentiated) nerve cells                                        
+                                                                                
+Testicular cancer                                                               
+testicles                                                                       
+testicles tissues                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Throat cancer                                                                   
+lip, oral cavity (mouth), nasal cavity(inside the nose), paranasal sinuses, phar
+ynx, and larynx                                                                 
+squamous cell carcinomas                                                        
+                                                                                
+Thymoma                                                                         
+thymus                                                                          
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+epithelial cells                                                                
+                                                                                
+Thyroid cancer                                                                  
+thyroid gland                                                                   
+thyroid gland cells                                                             
+                                                                                
+Cancer of Unknown primary site                                                  
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+any where in body                                                               
+body cells                                                                      
+                                                                                
+Ureter and renal pelvis, transitional cell cancer                               
+lining of the bladder, ureter, or renal pelvis                                  
+transitional cells                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+Urethral cancer                                                                 
+urethra                                                                         
+tissues of urethra                                                              
+                                                                                
+Uterine cancer, endometrial                                                     
+uterus                                                                          
+connective tissue of the uterus                                                 
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+BODYPART_AFFEC                                                                  
+--------------------------------------------------------------------------------
+CELLS_DAMAGED                                                                   
+--------------------------------------------------------------------------------
+                                                                                
+Neuroectodermal tumors                                                          
+central or peripheral nervous system                                            
+nervous system cells                                                            
+                                                                                
+
+106 rows selected.
+
+
+SQL> create or replace trigger spc
+  2  before insert or update on specialists
+  3  for each row
+  4  declare
+  5  d date;
+  6  begin
+  7  select sysdate into d from dual;
+  8  :new.age:=(d-:new.DOB)/365;
+  9  end;
+ 10  /
+
+Trigger created.
+
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(101,'Dr.(Mrs.)Ronak P.Bhansali','21-oct-1960','Oncologist(Gynec-oncologist)',30000);
+
+1 row created.
+
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(102,'Dr. Amitabh Ray','19-oct-1972','Oncologist',12000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(103,'Dr. Amitkumar Jaiswal','27-jul-1966','Oncologist(surgical oncologist)',27000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(104,'Dr. Bhagwan D Jindal','10-nov-1964','Oncologist(cancer consultant)',33000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(105,'Dr. Bindhu Joseph','01-nov-1968','Oncologist',25000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(106,'Dr. Dinesh Chandra Katiyar','28-apr-1970','Oncologist(Cancer Surgery)',43000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(107,'Dr. E Prasad','11-oct-1968','Oncologist(Radiation Oncologist)',47000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(108,'Dr. G.Amarnath','15-oct-1961','Oncologist(Radiation oncology)',41000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(109,'Dr. Hemanth Vudayaraju','28-oct-1965','Oncologist(Surgical Oncologist)',25000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(110,'Dr. Jawahar Ticku','04-nov-1969','Oncologist(Hematology)',43000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(111,'Dr. Jebasingh J','23-mar-1961','Oncologist(Medical Oncologist)',30000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(112,'Dr. LM.Darlong','14-jun-1964','Oncologist(Thoraric Surgical Oncology)',40000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(113,'Dr. Mudit Agarwal','05-may-1970','Oncologist(Surgical Oncologist)',34000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(114,'Dr. Nagendra Parvataneni','29-jan-1963','Oncologist(Surgical Oncologist)',25000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(115,'Dr. P.K.Das','08-jan-1962','Oncologist(Medical Oncologist)',27000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(116,'Dr. Prasad Dandekar','21-apr-1971','Oncologist',18000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(117,'Dr. S.K.Das','30-jun-1967','Oncologist(Gynae-Oncology)',20000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(118,'Dr. Samir Ray','20-feb-1968','Oncologist(Consultant GI Oncosurgeon)',25000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(119,'Dr. Sapna Nangia','31-sep-1966','Oncologist(Radiation Oncology)',23000);
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(119,'Dr. Sapna Nangia','31-sep-1966','Oncologist(Radiation Oncology)',23000)
+                                                                                            *
+ERROR at line 1:
+ORA-01830: date format picture ends before converting entire input string 
+
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(120,'Dr. Satish Kumar','04-sep-1963','Oncologist(Hematology)',17000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(121,'Dr. Shankar Lal Jakhar','28-sep-1960','Oncologist(Radiation Oncology)',29000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(122,'Dr. Shuaib Zaidi','14-aug-1964','Oncologist',21000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(123,'Dr. Swarupa Mitra','27-aug-1967','Oncologist(Radiation Oncologist)',36000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(124,'Dr. T N Vijayashree','05-sep-1969','Oncologist(Radiation Oncology)',40000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(125,'Dr. Tarang Patel','18-jul-1965','Oncologist(Consultant Onco Surgeon)',34000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra';
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra'
+                                                                                              *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra','21-jan-1968','Oncologist(PET SCAN)',28000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(127,'Dr. Tushar V Patil','30-oct-1969','Oncologist(Hematology)',34000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(128,'Dr. V. Vedhamoorthy','07-oct-1966','Oncologist(Cancer Specialist)',29000);
+
+1 row created.
+
+SQL> 
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(129,'Dr. Vijay Anand P Reddy','25-dec-1962','Oncologist',37000);
+
+1 row created.
+
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra','21-jan-1968','Oncologist(PET SCAN)',28000);
+insert into specialists(sid,sname,DOB,speciality,consult_fee) values(126,'Dr. Tushar Mohapatra','21-jan-1968','Oncologist(PET SCAN)',28000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C005633) violated 
+
+
+SQL> insert into specialists(sid,sname,DOB,speciality,consult_fee) values(119,'Dr. Sapna Nangia','19-sep-1966','Oncologist(Radiation Oncology)',23000);
+
+1 row created.
+
+SQL> select * from specialists;
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       101                                                                      
+Dr.(Mrs.)Ronak P.Bhansali                                                       
+21-OCT-60         51                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Gynec-oncologist)                                                    
+      30000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       102                                                                      
+Dr. Amitabh Ray                                                                 
+19-OCT-72         39                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist                                                                      
+      12000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       103                                                                      
+Dr. Amitkumar Jaiswal                                                           
+27-JUL-66         45                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(surgical oncologist)                                                 
+      27000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       104                                                                      
+Dr. Bhagwan D Jindal                                                            
+10-NOV-64         47                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(cancer consultant)                                                   
+      33000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       105                                                                      
+Dr. Bindhu Joseph                                                               
+01-NOV-68         43                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist                                                                      
+      25000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       106                                                                      
+Dr. Dinesh Chandra Katiyar                                                      
+28-APR-70         42                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Cancer Surgery)                                                      
+      43000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       107                                                                      
+Dr. E Prasad                                                                    
+11-OCT-68         43                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation Oncologist)                                                
+      47000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       108                                                                      
+Dr. G.Amarnath                                                                  
+15-OCT-61         50                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation oncology)                                                  
+      41000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       109                                                                      
+Dr. Hemanth Vudayaraju                                                          
+28-OCT-65         46                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Surgical Oncologist)                                                 
+      25000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       110                                                                      
+Dr. Jawahar Ticku                                                               
+04-NOV-69         42                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Hematology)                                                          
+      43000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       111                                                                      
+Dr. Jebasingh J                                                                 
+23-MAR-61         51                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Medical Oncologist)                                                  
+      30000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       112                                                                      
+Dr. LM.Darlong                                                                  
+14-JUN-64         47                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Thoraric Surgical Oncology)                                          
+      40000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       113                                                                      
+Dr. Mudit Agarwal                                                               
+05-MAY-70         42                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Surgical Oncologist)                                                 
+      34000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       114                                                                      
+Dr. Nagendra Parvataneni                                                        
+29-JAN-63         49                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Surgical Oncologist)                                                 
+      25000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       115                                                                      
+Dr. P.K.Das                                                                     
+08-JAN-62         50                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Medical Oncologist)                                                  
+      27000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       116                                                                      
+Dr. Prasad Dandekar                                                             
+21-APR-71         41                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist                                                                      
+      18000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       117                                                                      
+Dr. S.K.Das                                                                     
+30-JUN-67         44                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Gynae-Oncology)                                                      
+      20000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       118                                                                      
+Dr. Samir Ray                                                                   
+20-FEB-68         44                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Consultant GI Oncosurgeon)                                           
+      25000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       120                                                                      
+Dr. Satish Kumar                                                                
+04-SEP-63         48                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Hematology)                                                          
+      17000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       121                                                                      
+Dr. Shankar Lal Jakhar                                                          
+28-SEP-60         51                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation Oncology)                                                  
+      29000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       122                                                                      
+Dr. Shuaib Zaidi                                                                
+14-AUG-64         47                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist                                                                      
+      21000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       123                                                                      
+Dr. Swarupa Mitra                                                               
+27-AUG-67         44                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation Oncologist)                                                
+      36000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       124                                                                      
+Dr. T N Vijayashree                                                             
+05-SEP-69         42                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation Oncology)                                                  
+      40000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       125                                                                      
+Dr. Tarang Patel                                                                
+18-JUL-65         46                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Consultant Onco Surgeon)                                             
+      34000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       126                                                                      
+Dr. Tushar Mohapatra                                                            
+21-JAN-68         44                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(PET SCAN)                                                            
+      28000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       127                                                                      
+Dr. Tushar V Patil                                                              
+30-OCT-69         42                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Hematology)                                                          
+      34000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       128                                                                      
+Dr. V. Vedhamoorthy                                                             
+07-OCT-66         45                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Cancer Specialist)                                                   
+      29000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       129                                                                      
+Dr. Vijay Anand P Reddy                                                         
+25-DEC-62         49                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist                                                                      
+      37000                                                                     
+                                                                                
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+       119                                                                      
+Dr. Sapna Nangia                                                                
+19-SEP-66         45                                                            
+
+       SID                                                                      
+----------                                                                      
+SNAME                                                                           
+--------------------------------------------------------------------------------
+DOB              AGE                                                            
+--------- ----------                                                            
+SPECIALITY                                                                      
+--------------------------------------------------------------------------------
+CONSULT_FEE                                                                     
+-----------                                                                     
+Oncologist(Radiation Oncology)                                                  
+      23000                                                                     
+                                                                                
+
+29 rows selected.
+
+SQL> insert into hospital values(01,'Sainath raw-houses','A\15','Maninagar,'Ahmedabad','Gujrat');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> 
+SQL> insert into hospital values(02,'AMRI Hospitals',null,'Dhakuria','Kolkata','West Bengal');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(03,'CARE HOSPITAL',null,'civil lines','Nagpur','Maharashtra');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(04,'Jindal Clinic','near police chownki,dhanas','Sector-38','Chandigarh','Chandigarh');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(05,'Kidwai Memorial Institute of Oncology',null,'marigowda road,near diary circle','Belgaum','Karnataka');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(06,'SMH Curie Cancer Centre','2, Institutional Area','Vikas Marg Extn.','Karkardooma','Delhi');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(07,'Apollo Speciality Hospital',null,'KK Nagar','Madurai','Tamilnadu');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(08,'KIMS Hospital','1-8-31/1','Minister Road','Secunderabad','Andhra Pradesh');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(09,'Colombia Asia Hospital',null,'Palam Vihar','Gugraon','Delhi');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(10,'Asirvatham Speciality Hospital','22','Rajaji Street,Gandhinagar','Madurai','Tamilnadu');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(11,'FORTIS HOSPITAL','B-22','Sector-62','Noida','Uttar Pradesh');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(12,'Dharamshila Cancer Hospital & Research',null,null,null,'Delhi');
+Enter value for research: 
+old   1: insert into hospital values(12,'Dharamshila Cancer Hospital & Research',null,null,null,'Delhi')
+new   1: insert into hospital values(12,'Dharamshila Cancer Hospital ',null,null,null,'Delhi')
+
+1 row created.
+
+SQL> insert into hospital values(13,'Indo American Cancer Hospital and Research Centre',null,'Road No. 14, Banjara Hills','Hyderabad','Andhra Pradesh');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(14,'Apollo Hospital',null,'Sarita Vihar','South Delhi','Delhi');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(15,'Narayana Hrudayalaya',null,'Bommasandra, Hosur Road','Bangalore','Karnataka');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(16,'Center for Prevention of CACX','B-202,Welcome Appartments','Rohini,Sector-9','North West Delhi,'Delhi');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> 
+SQL> insert into hospital values(17,'Ashirwad Hospital','Bh. Polo Ground','Kirti Stambh','Vadodara','Gujrat');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(18,'Columbia asia Hospital',null,'Yeshwantpur','Bangalore','Karnataka');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(19,'PBM Hospital','B 4/11','Patel nagar','Bikaner','Rajasthan');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(20,'Cancer Cure Clinic','B-7, Azad Apartment, Plot 111, IP Extension','Patparganj','Delhi','Delhi');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(21,'Artemis Health Institute','EG 37 Ashiana Garden Alwar','Bhiwadi','South Delhi','Delhi');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(22,'DR T N VIJAYASREE','NO.1155/10 STATION ROAD, V R NAGAR','KORATTUR','Chennai','Tamilnadu');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(23,'KRISHNA Heart & Super Specialty Institute','DEV Complex, Opp. Parimal Garden','Ambawadi','Ahmedabad','Gujrat');
+Enter value for super: o
+old   1: insert into hospital values(23,'KRISHNA Heart & Super Specialty Institute','DEV Complex, Opp. Parimal Garden','Ambawadi','Ahmedabad','Gujrat')
+new   1: insert into hospital values(23,'KRISHNA Heart o Specialty Institute','DEV Complex, Opp. Parimal Garden','Ambawadi','Ahmedabad','Gujrat')
+
+1 row created.
+
+SQL> delete from hospital where hid=23;
+
+1 row deleted.
+
+SQL> insert into hospital values(23,'KRISHNA Heart n Super Specialty Institute','DEV Complex, Opp. Parimal Garden','Ambawadi','Ahmedabad','Gujrat');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(24,'YASHODA HOSPITALS','2ND FLOOR, C BLOCK','SOMAJIGUDA','Hyderabad','Andhra Pradesh');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(25,'SAHYADRI SPECIALITY HOSPITALS','30C, ERANDAWANE','KARVE ROAD','Pune','Maharashtra');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(26,'Dr. U. Mohan Rau Memorial Hospital','962','Poonamallee High Road','Chennai','Tamilnadu');
+
+1 row created.
+
+SQL> 
+SQL> insert into hospital values(27,'Apollo Cancer Hospital',null,'Apollo Health City, Jubilee Hills','Hyderabad','Andhra Pradesh');
+
+1 row created.
+
+SQL> insert into hospital values(16,'Center for Prevention of CACX','B-202,Welcome Appartments','Rohini,Sector-9','North West Delhi','Delhi');
+
+1 row created.
+
+SQL> insert into hospital values(01,'Sainath raw-houses','A\15','Maninagar','Ahmedabad','Gujrat');
+
+1 row created.
+

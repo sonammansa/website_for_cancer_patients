@@ -1,1 +1,5 @@
 # website_for_cancer_patients
+
+Cancer is the uncontrolled growth of abnormal cells in the body.Normal cells in body follow an orderly path of growth,division & death.Programmed cell death is called apoptosis & when this process breaks down,cancer begins to form.There are many different kinds of cancer & each is classified by type of cell which is initially affected.Cancers can develop in almost any organ or tissue such as lungs, colon, breast, skin, bones or nerve tissue.some cancers are more common in certain parts of the world.
+
+My project 'A GUIDE TO CANCER' is one of its kind.it provides complete information on different types of cancer, their causes, symptoms, diagnosis, treatments ,hospitals & their specialists across the nation.The user will be able to get any information about cancer through this project.Our database management project contains the real data which can help any person who want to know about cancer.

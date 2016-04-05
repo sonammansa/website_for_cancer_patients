@@ -1,0 +1,13 @@
+declare
+v_spe specialists%rowtype;
+cursor c1 is select * from specialists;
+begin
+open c1;
+loop
+fetch c1 into v_spe;
+exit when c1%notfound;
+dbms_output.put_line('sid = '||v_spe.sid|| chr(10) ||'specialist name is = '||v_spe.sname|| chr(10) ||'birthdate = '||v_spe.DOB|| chr(10) ||'age is = '||v_spe.age||' doctors speciality = '||v_spe.speciality|| chr(10) ||' fees = '||v_spe.consult_fee|| chr(10) );
+end loop;
+close c1;
+end;
+/

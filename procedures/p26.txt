@@ -1,0 +1,15 @@
+create or replace procedure p26(min in specialists.consult_fee%type,max in specialists.consult_fee%type)
+as
+begin
+for v1 in(select * from specialists where consult_fee>=min and consult_fee<=max) loop
+dbms_output.put_line(v1.sname||' with sid '||v1.sid||' has the fees Rs.'||v1.consult_fee);
+end loop;
+end;
+
+declare
+v_min specialists.consult_fee%type:=&min_fees_u_want;
+v_max specialists.consult_fee%type:=&max_fees_u_want;
+begin
+dbms_output.put_line('Specialists having consultation fees in the range of Rs.'||v_min||' and Rs.'||v_max);
+p26(v_min,v_max);
+end;

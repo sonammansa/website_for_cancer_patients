@@ -1,0 +1,53 @@
+insert into hospital values(01,'Sainath raw-houses','A\15','Maninagar','Ahmedabad','Gujrat');
+
+insert into hospital values(02,'AMRI Hospitals',' ','Dhakuria','Kolkata','West Bengal');
+
+insert into hospital values(03,'CARE HOSPITAL',' ','civil lines','Nagpur','Maharashtra');
+
+insert into hospital values(04,'Jindal Clinic','near police chownki,dhanas','Sector-38','Chandigarh','Chandigarh');
+
+insert into hospital values(05,'Kidwai Memorial Institute of Oncology',' ','marigowda road,near diary circle','Belgaum','Karnataka');
+
+insert into hospital values(06,'SMH Curie Cancer Centre','2, Institutional Area','Vikas Marg Extn.','Karkardooma','Delhi');
+
+insert into hospital values(07,'Apollo Speciality Hospital',' ','KK Nagar','Madurai','Tamilnadu');
+
+insert into hospital values(08,'KIMS Hospital','1-8-31/1','Minister Road','Secunderabad','Andhra Pradesh');
+
+insert into hospital values(09,'Colombia Asia Hospital',' ','Palam Vihar','Gugraon','Delhi');
+
+insert into hospital values(10,'Asirvatham Speciality Hospital','22','Rajaji Street,Gandhinagar','Madurai','Tamilnadu');
+
+insert into hospital values(11,'FORTIS HOSPITAL','B-22','Sector-62','Noida','Uttar Pradesh');
+
+insert into hospital values(12,'Dharamshila Cancer Hospital & Research',' ',' ',' ','Delhi');
+
+insert into hospital values(13,'Indo American Cancer Hospital and Research Centre',' ','Road No. 14, Banjara Hills','Hyderabad','Andhra Pradesh');
+
+insert into hospital values(14,'Apollo Hospital',' ','Sarita Vihar','South Delhi','Delhi');
+
+insert into hospital values(15,'Narayana Hrudayalaya',' ','Bommasandra, Hosur Road','Bangalore','Karnataka');
+
+insert into hospital values(16,'Center for Prevention of CACX','B-202,Welcome Appartments','Rohini,Sector-9','North West Delhi','Delhi');
+
+insert into hospital values(17,'Ashirwad Hospital','Bh. Polo Ground','Kirti Stambh','Vadodara','Gujrat');
+
+insert into hospital values(18,'Columbia asia Hospital',' ','Yeshwantpur','Bangalore','Karnataka');
+
+insert into hospital values(19,'PBM Hospital','B 4/11','Patel nagar','Bikaner','Rajasthan');
+
+insert into hospital values(20,'Cancer Cure Clinic','B-7, Azad Apartment, Plot 111, IP Extension','Patparganj','Delhi','Delhi');
+
+insert into hospital values(21,'Artemis Health Institute','EG 37 Ashiana Garden Alwar','Bhiwadi','South Delhi','Delhi');
+
+insert into hospital values(22,'DR T N VIJAYASREE','NO.1155/10 STATION ROAD, V R NAGAR','KORATTUR','Chennai','Tamilnadu');
+
+insert into hospital values(23,'KRISHNA Heart n Super Specialty Institute','DEV Complex, Opp. Parimal Garden','Ambawadi','Ahmedabad','Gujrat');
+
+insert into hospital values(24,'YASHODA HOSPITALS','2ND FLOOR, C BLOCK','SOMAJIGUDA','Hyderabad','Andhra Pradesh');
+
+insert into hospital values(25,'SAHYADRI SPECIALITY HOSPITALS','30C, ERANDAWANE','KARVE ROAD','Pune','Maharashtra');
+
+insert into hospital values(26,'Dr. U. Mohan Rau Memorial Hospital','962','Poonamallee High Road','Chennai','Tamilnadu');
+
+insert into hospital values(27,'Apollo Cancer Hospital',' ','Apollo Health City, Jubilee Hills','Hyderabad','Andhra Pradesh');

@@ -1,0 +1,10 @@
+declare
+v_tre treatment.treatment%type:=&treatment;
+begin
+for v1 in(select * from treatment where treatment=v_tre) loop
+dbms_output.put_line('it is a treatment of '||v1.type);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such value exists');
+end; 

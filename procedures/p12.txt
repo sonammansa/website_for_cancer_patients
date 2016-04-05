@@ -1,0 +1,24 @@
+create or replace procedure p12(nm in specialists.sname%type)
+as
+begin
+for v1 in(select h.hname,h.state from specialists s,works_at w,hospital h where s.sname=nm and s.sid=w.sid and w.hid=h.hid)loop
+dbms_output.put_line(nm|| chr(10) ||v1.hname||chr(10)||v1.state);
+dbms_output.put_line('phone numbers-');
+for v2 in(select phone_no,h.hname from h_phone p,hospital h where h.hid=p.hid and h.hname=v1.hname) loop
+dbms_output.put_line(v2.phone_no);
+end loop;
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such specialists exists');
+end;
+
+
+
+
+
+declare
+v_sname specialists.sname%type:=&specialist_name;
+begin
+p12(v_sname);
+end;

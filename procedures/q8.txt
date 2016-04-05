@@ -1,0 +1,46 @@
+create or replace procedure p8(cnt in int)
+as
+v_max int:=0;
+begin
+if(cnt>=v_max) then
+	v_max:=cnt;
+end if;
+dbms_output.put_line('Specialists with max no of degrees('||v_max||') are--'||chr(10));
+for c1 in(select count(degrees),sname from s_educ e,specialists s where e.sid=s.sid group by s.sid having count(degrees)=v_max) loop
+dbms_output.put_line(c1.sname||chr(10));
+end loop;
+end;
+
+begin
+for c1 in(select count(degrees) as cd from specialists s,s_educ e where s.sid=e.sid group by s.sid) loop
+p8(c1.cd);
+end loop;
+end;
+
+declare
+m int;
+id specialists.sid%type;
+begin
+for c1 in(select count(degrees) as cd from specialists s,s_educ e where s.sid=e.sid group by s.sid) loop
+m:=f8(c1.cd);
+end loop;
+dbms_output.put_line('Specialists with max no of degrees('||m||') are--'||chr(10));
+for c2 in(select count(degrees),sid from s_educ e group by sid having count(degrees)=m) loop
+id:=c2.sid;
+end loop;
+for c3 in(select * from specialists where sid=id) loop
+dbms_output.put_line(c3.sname||chr(10));
+end loop;
+end;
+
+
+
+
+
+select a1.sname 
+from specialists a1
+where a1.sid=(select a2.sid,count(b1.degrees) from s_educ b1,specialists a2
+	      where b1.sid=a2.sid
+	      having count(b1.degrees)=(select max(count(b2.degrees))from s_educ b2,specialists a3
+					where b2.sid=a3.sid
+					group by a3.sid));	

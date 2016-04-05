@@ -1,0 +1,17 @@
+create or replace procedure p28(deg in s_educ.degrees%type)
+as
+begin
+for v1 in(select s.sname,e.degrees from specialists s,s_educ e where e.degrees=deg and e.sid=s.sid) loop
+dbms_output.put_line(v1.sname);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('specialists with this degree does not exist');
+end;
+
+declare
+v_deg s_educ.degrees%type:=&degree;
+begin
+dbms_output.put_line('specialists with degree '||v_deg||' are:');
+p28(v_deg);
+end;

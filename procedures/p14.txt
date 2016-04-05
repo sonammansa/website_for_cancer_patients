@@ -1,0 +1,25 @@
+create or replace procedure p14(nm in specialists.sname%type)
+as
+begin
+for v1 in(select * from specialists where sname=nm) loop
+dbms_output.put_line(nm|| chr(10) ||'sid- '||v1.sid|| chr(10) ||'dob- '||v1.dob||'  age- '||v1.age|| chr(10) ||'speciality- '||v1.speciality|| chr(10) ||'consultation fees- Rs.'||v1.consult_fee);
+dbms_output.put_line('degrees--');
+for v2 in(select e.degrees,s.sid from specialists s,s_educ e where s.sid=e.sid and s.sname=nm) loop
+dbms_output.put_line(v2.degrees);
+end loop;
+dbms_output.put_line('hospital--');
+for v3 in(select h.hname,h.state from hospital h,works_at w,specialists s where s.sname=nm and s.sid=w.sid and w.hid=h.hid) loop
+dbms_output.put_line(v3.hname||','||v3.state);
+end loop;
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such specialist exists');
+end;
+
+
+declare
+v_sname specialists.sname%type:=&specialist_name;
+begin
+p14(v_sname);
+end;

@@ -1,0 +1,8 @@
+declare
+m_age specialists.age%type;
+begin
+select max(age) into m_age from specialists;
+for v1 in(select * from specialists where age=m_age) loop
+dbms_output.put_line(v1.sid||' '||v1.sname||' has the maximum age of '||m_age);
+end loop;
+end;

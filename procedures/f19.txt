@@ -1,0 +1,17 @@
+create or replace function f19(st in hospital.state%type) return int
+as
+c int;
+begin
+select count(hid) into c from hospital where state=st group by state;
+return(c);
+exception
+when no_data_found then
+dbms_output.put_line('no such state in our database');
+end;
+
+
+declare
+v_s hospital.state%type:=&state;
+begin
+dbms_output.put_line(v_s||' has '||f19(v_s)||' hospitals with cancer specialists.');
+end;

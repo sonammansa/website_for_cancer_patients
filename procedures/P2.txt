@@ -1,0 +1,33 @@
+create or replace procedure p2(t in cancer.type%type)
+as
+v_bdy cancer.bodypart_affec%type;
+v_cel cancer.cells_damaged%type;
+begin
+select bodypart_affec,cells_damaged into v_bdy,v_cel from cancer where type=t;
+dbms_output.put_line(t||' affects '||v_bdy||' and '||v_cel|| chr(10));
+dbms_output.put_line('causes are');
+for v1 in(select * from causes where type=t) loop
+dbms_output.put_line(v1.cause_riskfactor);
+end loop;
+dbms_output.put_line(chr(10)||'symptoms are');
+for v2 in(select * from symptoms where type=t) loop
+dbms_output.put_line(v2.symptoms);
+end loop;
+dbms_output.put_line(chr(10)||'tests to be done are');
+for v3 in(select * from diagnosis where type=t)loop
+dbms_output.put_line(v3.tests);
+end loop;
+dbms_output.put_line(chr(10)||'its treatment include');
+for v4 in(select * from treatment where type=t)loop
+dbms_output.put_line(v4.treatment);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such type exists');
+end;
+
+declare
+v_type cancer.type%type:=&type;
+begin
+p2(v_type);
+end;

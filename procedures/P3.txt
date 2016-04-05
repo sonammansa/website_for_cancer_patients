@@ -1,0 +1,18 @@
+create or replace procedure p3(t in cancer.type%type,b out cancer.bodypart_affec%type,c out cancer.cells_damaged%type)
+as
+begin
+select bodypart_affec,cells_damaged into b,c from cancer  where cancer.type=t;
+exception
+when no_data_found then
+dbms_output.put_line('no such type exists');
+end;
+
+
+declare
+v_type cancer.type%type:=&type;
+bodypart_affec1 cancer.bodypart_affec%type;
+cells_damaged1 cancer.cells_damaged%type;
+begin
+p3(v_type,bodypart_affec1,cells_damaged1);
+dbms_output.put_line('It affects '||bodypart_affec1||' body parts and '||cells_damaged1||'.');
+end;

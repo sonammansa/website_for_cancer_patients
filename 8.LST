@@ -1,0 +1,2125 @@
+SQL> create or replace procedure pro44
+  2  (t in treatment.type%type,c1 in treatment.treatment%type,c2 in treatment.treatment%type,c3 in treatment.treatment%type,c4 in treatment.treatment%type,c5 in treatment.treatment%type)
+  3  is
+  4  begin
+  5  insert into treatment
+  6  values(t,c1);
+  7  if c2<>'null' then
+  8  insert into treatment
+  9  values(t,c2);
+ 10  else
+ 11  dbms_output.put_line('');
+ 12  end if;
+ 13  if c3<>'null' then
+ 14  insert into treatment
+ 15  values(t,c3);
+ 16  else
+ 17  dbms_output.put_line('');
+ 18  end if;
+ 19  if c4<>'null' then
+ 20  insert into treatment
+ 21  values(t,c4);
+ 22  else
+ 23  dbms_output.put_line('');
+ 24  end if;
+ 25  if c5<>'null' then
+ 26  insert into treatment
+ 27  values(t,c5);
+ 28  else
+ 29  dbms_output.put_line('');
+ 30  end if;
+ 31  end;
+ 32  /
+
+Procedure created.
+
+SQL> begin
+  2  pro44('Acute lymphoblastic leukemia','Radiation therapy','chemotherapy','Hematopoietic stem cell transplantation','null','null');
+  3  
+  4  pro44('Acute myeloid leukemia','Combination chemotherapy.','High-dose combination chemotherapy.','Stem cell transplantation using donor stem cells.','All-trans retinoic acid (ATRA) plus chemotherapy.','Intrathecal chemotherapy.');
+  5  
+  6  pro44('Hairy cell leukemia','Surgery', 'Targeted therapy','Biologic therapy','chemotherapy','null');
+  7  
+  8  pro44('Head and neck cancer','External beam therapy (EBT)','Intensity-modulated radiation therapy (IMRT)','null','null','null');
+  9  
+ 10  pro44('Heart cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 11  
+ 12  pro44('Hepatocellular (liver) cancer','Sorafenib tosylate ','Radiation therapy','chemotherapy','surgery','null');
+ 13  
+ 14  pro44('Hodgkin lymphoma','Radiation therapy','chemotherapy','null','null','null');
+ 15  
+ 16  pro44('Hypopharyngeal cancer','Radiation therapy','chemotherapy','surgery','rehabilitation','null');
+ 17  
+ 18  pro44('Hypothalamic and visual pathway glioma, childhood','Watchful waiting','Radiation therapy','chemotherapy','surgery','null');
+ 19  
+ 20  pro44('Intraocular Melanoma',' Cryotherapy','Transpupillary thermotherapy ','Immunotherapy','Radiation therapy','chemotherapy');
+ 21  
+ 22  pro44('Islet Cell Carcinoma (Endocrine Pancreas)','Hormone therapy, Hepatic arterial occlusion or chemoembolization','chemotherapy','null','null','null');
+ 23  
+ 24  pro44('Kaposi sarcoma','Antiviral therapy against the AIDS virus','Combination chemotherapy','Freezing (cryotherapy)','Radiation therapy','null');
+ 25  
+ 26  pro44('Kidney cancer (renal cell cancer)','Radiation therapy','chemotherapy','surgery','biologic therapy',' targeted therapy');
+ 27  end;
+ 28  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro44('Laryngeal Cancer','Radiation therapy','chemotherapy','surgery','Chemoprevention', 'Radiosensitizers');
+  3  
+  4  pro44('Leukemias','watchful waiting', 'chemotherapy', 'targeted therapy', 'biological therapy', 'radiation therapy');
+  5  
+  6  pro44('Lip and Oral Cavity Cancer','Surgery', 'radiation therapy', 'chemotherapy', 'Hyperfractionated radiation therapy', 'Hyperthermia therapy');
+  7  
+  8  pro44('Liposarcoma','Radiation therapy','chemotherapy','surgery','null','null');
+  9  
+ 10  pro44('Lung Cancer','Radiation therapy','chemotherapy','surgery','Palliative care','Interventional radiology');
+ 11  
+ 12  pro44('Lymphomas','Radiation therapy','chemotherapy','Biologic therapy','Bone marrow transplant','null');
+ 13  
+ 14  pro44('Malignant Fibrous Histiocytoma of bone','surgery', 'chemotherapy', 'radiation therapy', 'Samarium', 'Biologic therapy');
+ 15  
+ 16  pro44('Medulloblastoma, Childhood','surgery', 'chemotherapy', 'radiation therapy','Cerebrospinal fluid diversion','null');
+ 17  
+ 18  pro44('Melanoma','surgery', 'Adjuvant treatment', 'Chemotherapy and immunotherapy', 'Lentigo maligna treatment', 'radiation therapy');
+ 19  
+ 20  pro44('Merkel Cell Carcinoma','Radiation therapy','chemotherapy','surgery','null','null');
+ 21  
+ 22  pro44('Mesothelioma','Radiation therapy','chemotherapy','surgery','Multimodality Therapy','Immunotherapy');
+ 23  
+ 24  pro44('Metastatic Squamous Neck Cancer with Occult Primary','surgery', 'radiation therapy', 'chemotherapy', 'Hyperfractionated ','null');
+ 25  
+ 26  pro44('Multiple Endocrine Neoplasia Syndrome, Childhood','Radiation therapy','chemotherapy','surgery','null','null');
+ 27  
+ 28  pro44('Multiple Myeloma or Plasma Cell Neoplasm','chemotherapy', 'targeted therapy', 'steroids', 'stem cell transplantation','null');
+ 29  
+ 30  pro44('Mycosis Fungoides','simple sunlight', 'uv treatment',' topical steroids', 'systematic chemotherapies', 'local superficial radiotherapy');
+ 31  
+ 32  pro44('Myelodysplastic or Myeloproliferative Diseases','chemotherapy', 'other drug therapy','null','null','null');
+ 33  end;
+ 34  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro44('Nasal cavity and paranasal sinus cancer','Radiation therapy','chemotherapy','surgery','null','null');
+  3  
+  4  pro44('Nasopharyngeal carcinoma','Radiation therapy','chemotherapy','Biologic therapy','surgery','null');
+  5  
+  6  pro44('Neuroblastoma','surgery', 'chemotherapy', 'radiation therapy', 'stem cell transplant','null');
+  7  
+  8  pro44('Non-Hodgkin lymphoma','chemotherapy',' radiation therapy', 'surgery',' bone marrow transplant', 'biological therapy');
+  9  
+ 10  pro44('Waldenström macroglobulinemia','Biological therapy or immunotherapy','Plasmapheresis','Stem cell transplantation (SCT)','chemotherapy','null');
+ 11  
+ 12  pro44('Wilms tumor (kidney cancer), childhood','Biological therapy','Radiation therapy','chemotherapy','surgery','null');
+ 13  
+ 14  pro44('Adrenocortical carcinoma','Biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 15  
+ 16  pro44('AIDS','Active Antiretroviral Therapy ','null','null','null','null');
+ 17  
+ 18  pro44('AIDS-related lymphoma','Radiation therapy','chemotherapy','null','null','null');
+ 19  
+ 20  pro44('Anal cancer','Biological therapy','Radiation therapy','chemotherapy','null','null');
+ 21  
+ 22  pro44('Appendix cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 23  
+ 24  pro44('Astrocytoma','Radiation therapy','chemotherapy','surgery','null','null');
+ 25  
+ 26  pro44('Basal-cell carcinoma','Cryosurgery','Mohs micrographic surgery','Curettage and desiccation','Radiation therapy','chemotherapy');
+ 27  
+ 28  pro44('Bladder cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 29  
+ 30  pro44('Bone tumor','Cryosurgery','Radiation therapy','chemotherapy','surgery','null');
+ 31  
+ 32  pro44('Brain tumor','Radiation therapy','chemotherapy','surgery','null','null');
+ 33  
+ 34  pro44('Brainstem glioma','Radiation therapy','chemotherapy','surgery','null','null');
+ 35  
+ 36  pro44('Breast cancer','Systemic Therapy','hormone therapy','Radiation therapy','chemotherapy','surgery');
+ 37  
+ 38  pro44('Bronchial adenomas','Radiation therapy','chemotherapy','surgery','null','null');
+ 39  
+ 40  pro44('Burkitts lymphoma','Rituximab','chemotherapy','null','null','null');
+ 41  end;
+ 42  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro44('Carcinoid tumor','Radiation therapy','drug therapy','surgery','null','null');
+  3  
+  4  pro44('Carcinoma of unknown primary','Radiation therapy','chemotherapy','surgery','Immunotherapy','Targeted therapy');
+  5  
+  6  pro44('Central nervous system lymphoma, primary','Radiation therapy','chemotherapy','null','null','null');
+  7  
+  8  pro44('Cerebellar astrocytoma','Radiation therapy','drug therapy','surgery','null','null');
+  9  
+ 10  pro44('Cervical cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 11  
+ 12  pro44('Cholangiocarcinoma','Radiation therapy','chemotherapy','surgery','Photodynamic therapy (PDT)','Stent insertion');
+ 13  
+ 14  pro44('Chronic lymphocytic leukemia','Radiation therapy','chemotherapy','surgery','Stem cell transplantation ','null');
+ 15  
+ 16  pro44('Chronic myelogenous leukemia','Biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 17  
+ 18  pro44('Chronic myeloproliferative disorders','Biological therapy','Radiation therapy','chemotherapy','surgery','Stem Cell Transplantation');
+ 19  
+ 20  pro44('Colon Cancer','Radiation therapy','chemotherapy','surgery','Targeted Therapies for Colon Cancer','null');
+ 21  
+ 22  pro44('Cutaneous T-cell lymphoma','photodynamic therapy','Radiation therapy','chemotherapy','null','null');
+ 23  
+ 24  pro44('Desmoplastic small round cell tumor','Intraperitoneal Hyperthemic Chemoperfusion','Radiation therapy','chemotherapy','null','null');
+ 25  
+ 26  pro44('Endometrial cancer','Radiation therapy','chemotherapy','surgery','Hormone therapy ','null');
+ 27  
+ 28  pro44('Ependymoma','Radiation therapy','chemotherapy','surgery','null','null');
+ 29  
+ 30  pro44('Esophageal cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 31  
+ 32  pro44('Ewings sarcoma in the Ewing family of tumors','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 33  
+ 34  pro44('Eye Cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 35  
+ 36  pro44('Gallbladder cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 37  
+ 38  pro44('Gastric (Stomach) cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 39  
+ 40  pro44('Gastrointestinal stromal tumor (GIST)','Radiation therapy','chemotherapy','surgery','null','null');
+ 41  
+ 42  pro44('Germ cell tumor','Radiation therapy','chemotherapy','surgery','immunotherapy','vaccine therapy');
+ 43  
+ 44  pro44('Gestational trophoblastic tumor','hysterectomy ','Radiation therapy','chemotherapy','null','null');
+ 45  end;
+ 46  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro44('Vaginal cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+  3  
+  4  pro44('Vulvar cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+  5  
+  6  pro44('Oral cancer','Radiation therapy','chemotherapy','surgery','null','null');
+  7  
+  8  pro44('Oropharyngeal cancer','Radiation therapy','chemotherapy','surgery','immunotherapy','vaccine therapy');
+  9  
+ 10  pro44('Ovarian cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 11  
+ 12  pro44('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 13  
+ 14  pro44('Pancreatic cancer','Prognosis','Chemotherapy','Surgery','Epidemiology','null');
+ 15  
+ 16  pro44('Parathyroid cancer','The MIRP procedure (Minimally Invasive Radioguided Parathyroidectomy)','Minimal Parathyroid Surgery','null','null','null');
+ 17  
+ 18  pro44('Penile cancer','microsurgery','use of a fluorouracil cream','amputation','urination','null');
+ 19  
+ 20  pro44('Pharyngeal cancer','Radiation therapy','chemotherapy','surgery','Photodynamic therapy','Targeted therapy');
+ 21  
+ 22  pro44('Pheochromocytoma','laparotomy','laparoscopy','null','null','null');
+ 23  
+ 24  pro44('Pinealoma','Radiation therapy','chemotherapy','null','null','null');
+ 25  
+ 26  pro44('Pituitary adenoma','Prolactinomas','Somatotrophic adenomas','Surgery','null','null');
+ 27  
+ 28  pro44('Pleuropulmonary blastoma','chemotherapy','surgery','null','null','null');
+ 29  
+ 30  pro44('Primary central nervous system lymphoma','leukoencephalopathy','dementia','null','null','null');
+ 31  
+ 32  pro44('Rectal cancer','Radiation therapy','chemotherapy','surgery','null','null');
+ 33  
+ 34  pro44('Renal cell carcinoma (kidney cancer)','Radiation therapy','chemotherapy','surgery','null','null');
+ 35  
+ 36  pro44('Renal pelvis and ureter, transitional cell cancer','chemotherapy','surgery','null','null','null');
+ 37  
+ 38  pro44('Retinoblastoma','chemotherapy','surgery','null','null','null');
+ 39  
+ 40  pro44('Rhabdomyosarcoma, childhoods','genetic testing','morphology','surgery','chemotherapy','null');
+ 41  end;
+ 42  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  pro44('Salivary gland cancer','Radiation therapy','chemotherapy','surgery','Radiosensitizers','null');
+  3  
+  4  pro44('Sarcoma, Ewing family of tumors','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+  5  
+  6  pro44('Sézary syndrome','biological therapy','Radiation therapy','chemotherapy','surgery','clinical trials');
+  7  
+  8  pro44('Skin cancer','Mohs micrographic surgery','Surgical excision','Cryosurgery','Radiation therapy','chemotherapy');
+  9  
+ 10  pro44('Soft tissue sarcoma','Radiation therapy','chemotherapy','surgery','null','null');
+ 11  
+ 12  pro44('Supratentorial primitive neuroectodermal tumor, childhood','Radiation therapy','chemotherapy','surgery','VP count','null');
+ 13  
+ 14  pro44('Testicular cancer','Managing Treatment Side Effects','Radiation therapy','chemotherapy','surgery','clinical trials');
+ 15  
+ 16  pro44('Throat cancer','Photodynamic therapy','Radiation therapy','chemotherapy','surgery','targeted therapy');
+ 17  
+ 18  pro44('Thymoma','Radiation therapy','chemotherapy','surgery','null','null');
+ 19  
+ 20  pro44('Thyroid cancer','Radiation therapy','chemotherapy','null','null','null');
+ 21  
+ 22  pro44('Cancer of Unknown primary site','Radiation therapy','chemotherapy','surgery','null','null');
+ 23  
+ 24  pro44('Ureter and renal pelvis, transitional cell cancer','Surgery','Fulguration','Segmental resection of the renal pelvis','Laser surgery','Regional chemotherapy and regional biologic therapy');
+ 25  
+ 26  pro44('Urethral cancer','chemotherapy','surgery','null','null','null');
+ 27  
+ 28  pro44('Uterine cancer, endometrial','Radiation therapy','chemotherapy','surgery','hormone therapy','null');
+ 29  
+ 30  pro44('Neuroectodermal tumors','Radiation therapy','chemotherapy','surgery','blood stem cell transplant','bone marrow transplant');
+ 31  end;
+ 32  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from treatment;
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+AIDS                                                                            
+Active Antiretroviral Therapy                                                   
+                                                                                
+AIDS-related lymphoma                                                           
+Radiation therapy                                                               
+                                                                                
+AIDS-related lymphoma                                                           
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Acute lymphoblastic leukemia                                                    
+Hematopoietic stem cell transplantation                                         
+                                                                                
+Acute lymphoblastic leukemia                                                    
+Radiation therapy                                                               
+                                                                                
+Acute lymphoblastic leukemia                                                    
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Acute myeloid leukemia                                                          
+All-trans retinoic acid (ATRA) plus chemotherapy.                               
+                                                                                
+Acute myeloid leukemia                                                          
+Combination chemotherapy.                                                       
+                                                                                
+Acute myeloid leukemia                                                          
+High-dose combination chemotherapy.                                             
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Acute myeloid leukemia                                                          
+Intrathecal chemotherapy.                                                       
+                                                                                
+Acute myeloid leukemia                                                          
+Stem cell transplantation using donor stem cells.                               
+                                                                                
+Adrenocortical carcinoma                                                        
+Biological therapy                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Adrenocortical carcinoma                                                        
+Radiation therapy                                                               
+                                                                                
+Adrenocortical carcinoma                                                        
+chemotherapy                                                                    
+                                                                                
+Adrenocortical carcinoma                                                        
+clinical trials                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Adrenocortical carcinoma                                                        
+surgery                                                                         
+                                                                                
+Anal cancer                                                                     
+Biological therapy                                                              
+                                                                                
+Anal cancer                                                                     
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Anal cancer                                                                     
+chemotherapy                                                                    
+                                                                                
+Appendix cancer                                                                 
+Radiation therapy                                                               
+                                                                                
+Appendix cancer                                                                 
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Appendix cancer                                                                 
+surgery                                                                         
+                                                                                
+Astrocytoma                                                                     
+Radiation therapy                                                               
+                                                                                
+Astrocytoma                                                                     
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Astrocytoma                                                                     
+surgery                                                                         
+                                                                                
+Basal-cell carcinoma                                                            
+Cryosurgery                                                                     
+                                                                                
+Basal-cell carcinoma                                                            
+Curettage and desiccation                                                       
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Basal-cell carcinoma                                                            
+Mohs micrographic surgery                                                       
+                                                                                
+Basal-cell carcinoma                                                            
+Radiation therapy                                                               
+                                                                                
+Basal-cell carcinoma                                                            
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Bladder cancer                                                                  
+Radiation therapy                                                               
+                                                                                
+Bladder cancer                                                                  
+chemotherapy                                                                    
+                                                                                
+Bladder cancer                                                                  
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Bone tumor                                                                      
+Cryosurgery                                                                     
+                                                                                
+Bone tumor                                                                      
+Radiation therapy                                                               
+                                                                                
+Bone tumor                                                                      
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Bone tumor                                                                      
+surgery                                                                         
+                                                                                
+Brain tumor                                                                     
+Radiation therapy                                                               
+                                                                                
+Brain tumor                                                                     
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Brain tumor                                                                     
+surgery                                                                         
+                                                                                
+Brainstem glioma                                                                
+Radiation therapy                                                               
+                                                                                
+Brainstem glioma                                                                
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Brainstem glioma                                                                
+surgery                                                                         
+                                                                                
+Breast cancer                                                                   
+Radiation therapy                                                               
+                                                                                
+Breast cancer                                                                   
+Systemic Therapy                                                                
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Breast cancer                                                                   
+chemotherapy                                                                    
+                                                                                
+Breast cancer                                                                   
+hormone therapy                                                                 
+                                                                                
+Breast cancer                                                                   
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Bronchial adenomas                                                              
+Radiation therapy                                                               
+                                                                                
+Bronchial adenomas                                                              
+chemotherapy                                                                    
+                                                                                
+Bronchial adenomas                                                              
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Burkitts lymphoma                                                               
+Rituximab                                                                       
+                                                                                
+Burkitts lymphoma                                                               
+chemotherapy                                                                    
+                                                                                
+Cancer of Unknown primary site                                                  
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cancer of Unknown primary site                                                  
+chemotherapy                                                                    
+                                                                                
+Cancer of Unknown primary site                                                  
+surgery                                                                         
+                                                                                
+Carcinoid tumor                                                                 
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Carcinoid tumor                                                                 
+drug therapy                                                                    
+                                                                                
+Carcinoid tumor                                                                 
+surgery                                                                         
+                                                                                
+Carcinoma of unknown primary                                                    
+Immunotherapy                                                                   
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Carcinoma of unknown primary                                                    
+Radiation therapy                                                               
+                                                                                
+Carcinoma of unknown primary                                                    
+Targeted therapy                                                                
+                                                                                
+Carcinoma of unknown primary                                                    
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Carcinoma of unknown primary                                                    
+surgery                                                                         
+                                                                                
+Central nervous system lymphoma, primary                                        
+Radiation therapy                                                               
+                                                                                
+Central nervous system lymphoma, primary                                        
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cerebellar astrocytoma                                                          
+Radiation therapy                                                               
+                                                                                
+Cerebellar astrocytoma                                                          
+drug therapy                                                                    
+                                                                                
+Cerebellar astrocytoma                                                          
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cervical cancer                                                                 
+Radiation therapy                                                               
+                                                                                
+Cervical cancer                                                                 
+chemotherapy                                                                    
+                                                                                
+Cervical cancer                                                                 
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cholangiocarcinoma                                                              
+Photodynamic therapy (PDT)                                                      
+                                                                                
+Cholangiocarcinoma                                                              
+Radiation therapy                                                               
+                                                                                
+Cholangiocarcinoma                                                              
+Stent insertion                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cholangiocarcinoma                                                              
+chemotherapy                                                                    
+                                                                                
+Cholangiocarcinoma                                                              
+surgery                                                                         
+                                                                                
+Chronic lymphocytic leukemia                                                    
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Chronic lymphocytic leukemia                                                    
+Stem cell transplantation                                                       
+                                                                                
+Chronic lymphocytic leukemia                                                    
+chemotherapy                                                                    
+                                                                                
+Chronic lymphocytic leukemia                                                    
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Chronic myelogenous leukemia                                                    
+Biological therapy                                                              
+                                                                                
+Chronic myelogenous leukemia                                                    
+Radiation therapy                                                               
+                                                                                
+Chronic myelogenous leukemia                                                    
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Chronic myelogenous leukemia                                                    
+clinical trials                                                                 
+                                                                                
+Chronic myelogenous leukemia                                                    
+surgery                                                                         
+                                                                                
+Chronic myeloproliferative disorders                                            
+Biological therapy                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Chronic myeloproliferative disorders                                            
+Radiation therapy                                                               
+                                                                                
+Chronic myeloproliferative disorders                                            
+Stem Cell Transplantation                                                       
+                                                                                
+Chronic myeloproliferative disorders                                            
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Chronic myeloproliferative disorders                                            
+surgery                                                                         
+                                                                                
+Colon Cancer                                                                    
+Radiation therapy                                                               
+                                                                                
+Colon Cancer                                                                    
+Targeted Therapies for Colon Cancer                                             
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Colon Cancer                                                                    
+chemotherapy                                                                    
+                                                                                
+Colon Cancer                                                                    
+surgery                                                                         
+                                                                                
+Cutaneous T-cell lymphoma                                                       
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Cutaneous T-cell lymphoma                                                       
+chemotherapy                                                                    
+                                                                                
+Cutaneous T-cell lymphoma                                                       
+photodynamic therapy                                                            
+                                                                                
+Desmoplastic small round cell tumor                                             
+Intraperitoneal Hyperthemic Chemoperfusion                                      
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Desmoplastic small round cell tumor                                             
+Radiation therapy                                                               
+                                                                                
+Desmoplastic small round cell tumor                                             
+chemotherapy                                                                    
+                                                                                
+Endometrial cancer                                                              
+Hormone therapy                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Endometrial cancer                                                              
+Radiation therapy                                                               
+                                                                                
+Endometrial cancer                                                              
+chemotherapy                                                                    
+                                                                                
+Endometrial cancer                                                              
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ependymoma                                                                      
+Radiation therapy                                                               
+                                                                                
+Ependymoma                                                                      
+chemotherapy                                                                    
+                                                                                
+Ependymoma                                                                      
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Esophageal cancer                                                               
+Managing Treatment Side Effects                                                 
+                                                                                
+Esophageal cancer                                                               
+Radiation therapy                                                               
+                                                                                
+Esophageal cancer                                                               
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Esophageal cancer                                                               
+clinical trials                                                                 
+                                                                                
+Esophageal cancer                                                               
+surgery                                                                         
+                                                                                
+Ewings sarcoma in the Ewing family of tumors                                    
+Managing Treatment Side Effects                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ewings sarcoma in the Ewing family of tumors                                    
+Radiation therapy                                                               
+                                                                                
+Ewings sarcoma in the Ewing family of tumors                                    
+chemotherapy                                                                    
+                                                                                
+Ewings sarcoma in the Ewing family of tumors                                    
+clinical trials                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ewings sarcoma in the Ewing family of tumors                                    
+surgery                                                                         
+                                                                                
+Eye Cancer                                                                      
+Managing Treatment Side Effects                                                 
+                                                                                
+Eye Cancer                                                                      
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Eye Cancer                                                                      
+chemotherapy                                                                    
+                                                                                
+Eye Cancer                                                                      
+clinical trials                                                                 
+                                                                                
+Eye Cancer                                                                      
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Gallbladder cancer                                                              
+Managing Treatment Side Effects                                                 
+                                                                                
+Gallbladder cancer                                                              
+Radiation therapy                                                               
+                                                                                
+Gallbladder cancer                                                              
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Gallbladder cancer                                                              
+clinical trials                                                                 
+                                                                                
+Gallbladder cancer                                                              
+surgery                                                                         
+                                                                                
+Gastric (Stomach) cancer                                                        
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Gastric (Stomach) cancer                                                        
+chemotherapy                                                                    
+                                                                                
+Gastric (Stomach) cancer                                                        
+surgery                                                                         
+                                                                                
+Gastrointestinal stromal tumor (GIST)                                           
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Gastrointestinal stromal tumor (GIST)                                           
+chemotherapy                                                                    
+                                                                                
+Gastrointestinal stromal tumor (GIST)                                           
+surgery                                                                         
+                                                                                
+Germ cell tumor                                                                 
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Germ cell tumor                                                                 
+chemotherapy                                                                    
+                                                                                
+Germ cell tumor                                                                 
+immunotherapy                                                                   
+                                                                                
+Germ cell tumor                                                                 
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Germ cell tumor                                                                 
+vaccine therapy                                                                 
+                                                                                
+Gestational trophoblastic tumor                                                 
+Radiation therapy                                                               
+                                                                                
+Gestational trophoblastic tumor                                                 
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Gestational trophoblastic tumor                                                 
+hysterectomy                                                                    
+                                                                                
+Hairy cell leukemia                                                             
+Biologic therapy                                                                
+                                                                                
+Hairy cell leukemia                                                             
+Surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Hairy cell leukemia                                                             
+Targeted therapy                                                                
+                                                                                
+Hairy cell leukemia                                                             
+chemotherapy                                                                    
+                                                                                
+Head and neck cancer                                                            
+External beam therapy (EBT)                                                     
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Head and neck cancer                                                            
+Intensity-modulated radiation therapy (IMRT)                                    
+                                                                                
+Heart cancer                                                                    
+Radiation therapy                                                               
+                                                                                
+Heart cancer                                                                    
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Heart cancer                                                                    
+surgery                                                                         
+                                                                                
+Hepatocellular (liver) cancer                                                   
+Radiation therapy                                                               
+                                                                                
+Hepatocellular (liver) cancer                                                   
+Sorafenib tosylate                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Hepatocellular (liver) cancer                                                   
+chemotherapy                                                                    
+                                                                                
+Hepatocellular (liver) cancer                                                   
+surgery                                                                         
+                                                                                
+Hodgkin lymphoma                                                                
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Hodgkin lymphoma                                                                
+chemotherapy                                                                    
+                                                                                
+Hypopharyngeal cancer                                                           
+Radiation therapy                                                               
+                                                                                
+Hypopharyngeal cancer                                                           
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Hypopharyngeal cancer                                                           
+rehabilitation                                                                  
+                                                                                
+Hypopharyngeal cancer                                                           
+surgery                                                                         
+                                                                                
+Hypothalamic and visual pathway glioma, childhood                               
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Hypothalamic and visual pathway glioma, childhood                               
+Watchful waiting                                                                
+                                                                                
+Hypothalamic and visual pathway glioma, childhood                               
+chemotherapy                                                                    
+                                                                                
+Hypothalamic and visual pathway glioma, childhood                               
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Intraocular Melanoma                                                            
+ Cryotherapy                                                                    
+                                                                                
+Intraocular Melanoma                                                            
+Immunotherapy                                                                   
+                                                                                
+Intraocular Melanoma                                                            
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Intraocular Melanoma                                                            
+Transpupillary thermotherapy                                                    
+                                                                                
+Intraocular Melanoma                                                            
+chemotherapy                                                                    
+                                                                                
+Islet Cell Carcinoma (Endocrine Pancreas)                                       
+Hormone therapy, Hepatic arterial occlusion or chemoembolization                
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Islet Cell Carcinoma (Endocrine Pancreas)                                       
+chemotherapy                                                                    
+                                                                                
+Kaposi sarcoma                                                                  
+Antiviral therapy against the AIDS virus                                        
+                                                                                
+Kaposi sarcoma                                                                  
+Combination chemotherapy                                                        
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Kaposi sarcoma                                                                  
+Freezing (cryotherapy)                                                          
+                                                                                
+Kaposi sarcoma                                                                  
+Radiation therapy                                                               
+                                                                                
+Kidney cancer (renal cell cancer)                                               
+ targeted therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Kidney cancer (renal cell cancer)                                               
+Radiation therapy                                                               
+                                                                                
+Kidney cancer (renal cell cancer)                                               
+biologic therapy                                                                
+                                                                                
+Kidney cancer (renal cell cancer)                                               
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Kidney cancer (renal cell cancer)                                               
+surgery                                                                         
+                                                                                
+Laryngeal Cancer                                                                
+Chemoprevention                                                                 
+                                                                                
+Laryngeal Cancer                                                                
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Laryngeal Cancer                                                                
+Radiosensitizers                                                                
+                                                                                
+Laryngeal Cancer                                                                
+chemotherapy                                                                    
+                                                                                
+Laryngeal Cancer                                                                
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Leukemias                                                                       
+biological therapy                                                              
+                                                                                
+Leukemias                                                                       
+chemotherapy                                                                    
+                                                                                
+Leukemias                                                                       
+radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Leukemias                                                                       
+targeted therapy                                                                
+                                                                                
+Leukemias                                                                       
+watchful waiting                                                                
+                                                                                
+Lip and Oral Cavity Cancer                                                      
+Hyperfractionated radiation therapy                                             
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Lip and Oral Cavity Cancer                                                      
+Hyperthermia therapy                                                            
+                                                                                
+Lip and Oral Cavity Cancer                                                      
+Surgery                                                                         
+                                                                                
+Lip and Oral Cavity Cancer                                                      
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Lip and Oral Cavity Cancer                                                      
+radiation therapy                                                               
+                                                                                
+Liposarcoma                                                                     
+Radiation therapy                                                               
+                                                                                
+Liposarcoma                                                                     
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Liposarcoma                                                                     
+surgery                                                                         
+                                                                                
+Lung Cancer                                                                     
+Interventional radiology                                                        
+                                                                                
+Lung Cancer                                                                     
+Palliative care                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Lung Cancer                                                                     
+Radiation therapy                                                               
+                                                                                
+Lung Cancer                                                                     
+chemotherapy                                                                    
+                                                                                
+Lung Cancer                                                                     
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Lymphomas                                                                       
+Biologic therapy                                                                
+                                                                                
+Lymphomas                                                                       
+Bone marrow transplant                                                          
+                                                                                
+Lymphomas                                                                       
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Lymphomas                                                                       
+chemotherapy                                                                    
+                                                                                
+Malignant Fibrous Histiocytoma of bone                                          
+Biologic therapy                                                                
+                                                                                
+Malignant Fibrous Histiocytoma of bone                                          
+Samarium                                                                        
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Malignant Fibrous Histiocytoma of bone                                          
+chemotherapy                                                                    
+                                                                                
+Malignant Fibrous Histiocytoma of bone                                          
+radiation therapy                                                               
+                                                                                
+Malignant Fibrous Histiocytoma of bone                                          
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Medulloblastoma, Childhood                                                      
+Cerebrospinal fluid diversion                                                   
+                                                                                
+Medulloblastoma, Childhood                                                      
+chemotherapy                                                                    
+                                                                                
+Medulloblastoma, Childhood                                                      
+radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Medulloblastoma, Childhood                                                      
+surgery                                                                         
+                                                                                
+Melanoma                                                                        
+Adjuvant treatment                                                              
+                                                                                
+Melanoma                                                                        
+Chemotherapy and immunotherapy                                                  
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Melanoma                                                                        
+Lentigo maligna treatment                                                       
+                                                                                
+Melanoma                                                                        
+radiation therapy                                                               
+                                                                                
+Melanoma                                                                        
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Merkel Cell Carcinoma                                                           
+Radiation therapy                                                               
+                                                                                
+Merkel Cell Carcinoma                                                           
+chemotherapy                                                                    
+                                                                                
+Merkel Cell Carcinoma                                                           
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Mesothelioma                                                                    
+Immunotherapy                                                                   
+                                                                                
+Mesothelioma                                                                    
+Multimodality Therapy                                                           
+                                                                                
+Mesothelioma                                                                    
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Mesothelioma                                                                    
+chemotherapy                                                                    
+                                                                                
+Mesothelioma                                                                    
+surgery                                                                         
+                                                                                
+Metastatic Squamous Neck Cancer with Occult Primary                             
+Hyperfractionated                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Metastatic Squamous Neck Cancer with Occult Primary                             
+chemotherapy                                                                    
+                                                                                
+Metastatic Squamous Neck Cancer with Occult Primary                             
+radiation therapy                                                               
+                                                                                
+Metastatic Squamous Neck Cancer with Occult Primary                             
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Multiple Endocrine Neoplasia Syndrome, Childhood                                
+Radiation therapy                                                               
+                                                                                
+Multiple Endocrine Neoplasia Syndrome, Childhood                                
+chemotherapy                                                                    
+                                                                                
+Multiple Endocrine Neoplasia Syndrome, Childhood                                
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+chemotherapy                                                                    
+                                                                                
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+stem cell transplantation                                                       
+                                                                                
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+steroids                                                                        
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+targeted therapy                                                                
+                                                                                
+Mycosis Fungoides                                                               
+ topical steroids                                                               
+                                                                                
+Mycosis Fungoides                                                               
+local superficial radiotherapy                                                  
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Mycosis Fungoides                                                               
+simple sunlight                                                                 
+                                                                                
+Mycosis Fungoides                                                               
+systematic chemotherapies                                                       
+                                                                                
+Mycosis Fungoides                                                               
+uv treatment                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Myelodysplastic or Myeloproliferative Diseases                                  
+chemotherapy                                                                    
+                                                                                
+Myelodysplastic or Myeloproliferative Diseases                                  
+other drug therapy                                                              
+                                                                                
+Nasal cavity and paranasal sinus cancer                                         
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Nasal cavity and paranasal sinus cancer                                         
+chemotherapy                                                                    
+                                                                                
+Nasal cavity and paranasal sinus cancer                                         
+surgery                                                                         
+                                                                                
+Nasopharyngeal carcinoma                                                        
+Biologic therapy                                                                
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Nasopharyngeal carcinoma                                                        
+Radiation therapy                                                               
+                                                                                
+Nasopharyngeal carcinoma                                                        
+chemotherapy                                                                    
+                                                                                
+Nasopharyngeal carcinoma                                                        
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Neuroblastoma                                                                   
+chemotherapy                                                                    
+                                                                                
+Neuroblastoma                                                                   
+radiation therapy                                                               
+                                                                                
+Neuroblastoma                                                                   
+stem cell transplant                                                            
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Neuroblastoma                                                                   
+surgery                                                                         
+                                                                                
+Neuroectodermal tumors                                                          
+Radiation therapy                                                               
+                                                                                
+Neuroectodermal tumors                                                          
+blood stem cell transplant                                                      
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Neuroectodermal tumors                                                          
+bone marrow transplant                                                          
+                                                                                
+Neuroectodermal tumors                                                          
+chemotherapy                                                                    
+                                                                                
+Neuroectodermal tumors                                                          
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Non-Hodgkin lymphoma                                                            
+ bone marrow transplant                                                         
+                                                                                
+Non-Hodgkin lymphoma                                                            
+ radiation therapy                                                              
+                                                                                
+Non-Hodgkin lymphoma                                                            
+biological therapy                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Non-Hodgkin lymphoma                                                            
+chemotherapy                                                                    
+                                                                                
+Non-Hodgkin lymphoma                                                            
+surgery                                                                         
+                                                                                
+Oral cancer                                                                     
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Oral cancer                                                                     
+chemotherapy                                                                    
+                                                                                
+Oral cancer                                                                     
+surgery                                                                         
+                                                                                
+Oropharyngeal cancer                                                            
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Oropharyngeal cancer                                                            
+chemotherapy                                                                    
+                                                                                
+Oropharyngeal cancer                                                            
+immunotherapy                                                                   
+                                                                                
+Oropharyngeal cancer                                                            
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Oropharyngeal cancer                                                            
+vaccine therapy                                                                 
+                                                                                
+Ovarian cancer                                                                  
+Radiation therapy                                                               
+                                                                                
+Ovarian cancer                                                                  
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ovarian cancer                                                                  
+surgery                                                                         
+                                                                                
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+Managing Treatment Side Effects                                                 
+                                                                                
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+chemotherapy                                                                    
+                                                                                
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+clinical trials                                                                 
+                                                                                
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pancreatic cancer                                                               
+Chemotherapy                                                                    
+                                                                                
+Pancreatic cancer                                                               
+Epidemiology                                                                    
+                                                                                
+Pancreatic cancer                                                               
+Prognosis                                                                       
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pancreatic cancer                                                               
+Surgery                                                                         
+                                                                                
+Parathyroid cancer                                                              
+Minimal Parathyroid Surgery                                                     
+                                                                                
+Parathyroid cancer                                                              
+The MIRP procedure (Minimally Invasive Radioguided Parathyroidectomy)           
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Penile cancer                                                                   
+amputation                                                                      
+                                                                                
+Penile cancer                                                                   
+microsurgery                                                                    
+                                                                                
+Penile cancer                                                                   
+urination                                                                       
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Penile cancer                                                                   
+use of a fluorouracil cream                                                     
+                                                                                
+Pharyngeal cancer                                                               
+Photodynamic therapy                                                            
+                                                                                
+Pharyngeal cancer                                                               
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pharyngeal cancer                                                               
+Targeted therapy                                                                
+                                                                                
+Pharyngeal cancer                                                               
+chemotherapy                                                                    
+                                                                                
+Pharyngeal cancer                                                               
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pheochromocytoma                                                                
+laparoscopy                                                                     
+                                                                                
+Pheochromocytoma                                                                
+laparotomy                                                                      
+                                                                                
+Pinealoma                                                                       
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pinealoma                                                                       
+chemotherapy                                                                    
+                                                                                
+Pituitary adenoma                                                               
+Prolactinomas                                                                   
+                                                                                
+Pituitary adenoma                                                               
+Somatotrophic adenomas                                                          
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Pituitary adenoma                                                               
+Surgery                                                                         
+                                                                                
+Pleuropulmonary blastoma                                                        
+chemotherapy                                                                    
+                                                                                
+Pleuropulmonary blastoma                                                        
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Primary central nervous system lymphoma                                         
+dementia                                                                        
+                                                                                
+Primary central nervous system lymphoma                                         
+leukoencephalopathy                                                             
+                                                                                
+Rectal cancer                                                                   
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Rectal cancer                                                                   
+chemotherapy                                                                    
+                                                                                
+Rectal cancer                                                                   
+surgery                                                                         
+                                                                                
+Renal cell carcinoma (kidney cancer)                                            
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Renal cell carcinoma (kidney cancer)                                            
+chemotherapy                                                                    
+                                                                                
+Renal cell carcinoma (kidney cancer)                                            
+surgery                                                                         
+                                                                                
+Renal pelvis and ureter, transitional cell cancer                               
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Renal pelvis and ureter, transitional cell cancer                               
+surgery                                                                         
+                                                                                
+Retinoblastoma                                                                  
+chemotherapy                                                                    
+                                                                                
+Retinoblastoma                                                                  
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Rhabdomyosarcoma, childhoods                                                    
+chemotherapy                                                                    
+                                                                                
+Rhabdomyosarcoma, childhoods                                                    
+genetic testing                                                                 
+                                                                                
+Rhabdomyosarcoma, childhoods                                                    
+morphology                                                                      
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Rhabdomyosarcoma, childhoods                                                    
+surgery                                                                         
+                                                                                
+Salivary gland cancer                                                           
+Radiation therapy                                                               
+                                                                                
+Salivary gland cancer                                                           
+Radiosensitizers                                                                
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Salivary gland cancer                                                           
+chemotherapy                                                                    
+                                                                                
+Salivary gland cancer                                                           
+surgery                                                                         
+                                                                                
+Sarcoma, Ewing family of tumors                                                 
+Managing Treatment Side Effects                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Sarcoma, Ewing family of tumors                                                 
+Radiation therapy                                                               
+                                                                                
+Sarcoma, Ewing family of tumors                                                 
+chemotherapy                                                                    
+                                                                                
+Sarcoma, Ewing family of tumors                                                 
+clinical trials                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Sarcoma, Ewing family of tumors                                                 
+surgery                                                                         
+                                                                                
+Skin cancer                                                                     
+Cryosurgery                                                                     
+                                                                                
+Skin cancer                                                                     
+Mohs micrographic surgery                                                       
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Skin cancer                                                                     
+Radiation therapy                                                               
+                                                                                
+Skin cancer                                                                     
+Surgical excision                                                               
+                                                                                
+Skin cancer                                                                     
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Soft tissue sarcoma                                                             
+Radiation therapy                                                               
+                                                                                
+Soft tissue sarcoma                                                             
+chemotherapy                                                                    
+                                                                                
+Soft tissue sarcoma                                                             
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Supratentorial primitive neuroectodermal tumor, childhood                       
+Radiation therapy                                                               
+                                                                                
+Supratentorial primitive neuroectodermal tumor, childhood                       
+VP count                                                                        
+                                                                                
+Supratentorial primitive neuroectodermal tumor, childhood                       
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Supratentorial primitive neuroectodermal tumor, childhood                       
+surgery                                                                         
+                                                                                
+Sézary syndrome                                                                 
+Radiation therapy                                                               
+                                                                                
+Sézary syndrome                                                                 
+biological therapy                                                              
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Sézary syndrome                                                                 
+chemotherapy                                                                    
+                                                                                
+Sézary syndrome                                                                 
+clinical trials                                                                 
+                                                                                
+Sézary syndrome                                                                 
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Testicular cancer                                                               
+Managing Treatment Side Effects                                                 
+                                                                                
+Testicular cancer                                                               
+Radiation therapy                                                               
+                                                                                
+Testicular cancer                                                               
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Testicular cancer                                                               
+clinical trials                                                                 
+                                                                                
+Testicular cancer                                                               
+surgery                                                                         
+                                                                                
+Throat cancer                                                                   
+Photodynamic therapy                                                            
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Throat cancer                                                                   
+Radiation therapy                                                               
+                                                                                
+Throat cancer                                                                   
+chemotherapy                                                                    
+                                                                                
+Throat cancer                                                                   
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Throat cancer                                                                   
+targeted therapy                                                                
+                                                                                
+Thymoma                                                                         
+Radiation therapy                                                               
+                                                                                
+Thymoma                                                                         
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Thymoma                                                                         
+surgery                                                                         
+                                                                                
+Thyroid cancer                                                                  
+Radiation therapy                                                               
+                                                                                
+Thyroid cancer                                                                  
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ureter and renal pelvis, transitional cell cancer                               
+Fulguration                                                                     
+                                                                                
+Ureter and renal pelvis, transitional cell cancer                               
+Laser surgery                                                                   
+                                                                                
+Ureter and renal pelvis, transitional cell cancer                               
+Regional chemotherapy and regional biologic therapy                             
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Ureter and renal pelvis, transitional cell cancer                               
+Segmental resection of the renal pelvis                                         
+                                                                                
+Ureter and renal pelvis, transitional cell cancer                               
+Surgery                                                                         
+                                                                                
+Urethral cancer                                                                 
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Urethral cancer                                                                 
+surgery                                                                         
+                                                                                
+Uterine cancer, endometrial                                                     
+Radiation therapy                                                               
+                                                                                
+Uterine cancer, endometrial                                                     
+chemotherapy                                                                    
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Uterine cancer, endometrial                                                     
+hormone therapy                                                                 
+                                                                                
+Uterine cancer, endometrial                                                     
+surgery                                                                         
+                                                                                
+Vaginal cancer                                                                  
+Managing Treatment Side Effects                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Vaginal cancer                                                                  
+Radiation therapy                                                               
+                                                                                
+Vaginal cancer                                                                  
+chemotherapy                                                                    
+                                                                                
+Vaginal cancer                                                                  
+clinical trials                                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Vaginal cancer                                                                  
+surgery                                                                         
+                                                                                
+Vulvar cancer                                                                   
+Managing Treatment Side Effects                                                 
+                                                                                
+Vulvar cancer                                                                   
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Vulvar cancer                                                                   
+chemotherapy                                                                    
+                                                                                
+Vulvar cancer                                                                   
+clinical trials                                                                 
+                                                                                
+Vulvar cancer                                                                   
+surgery                                                                         
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Waldenström macroglobulinemia                                                   
+Biological therapy or immunotherapy                                             
+                                                                                
+Waldenström macroglobulinemia                                                   
+Plasmapheresis                                                                  
+                                                                                
+Waldenström macroglobulinemia                                                   
+Stem cell transplantation (SCT)                                                 
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Waldenström macroglobulinemia                                                   
+chemotherapy                                                                    
+                                                                                
+Wilms tumor (kidney cancer), childhood                                          
+Biological therapy                                                              
+                                                                                
+Wilms tumor (kidney cancer), childhood                                          
+Radiation therapy                                                               
+                                                                                
+
+TYPE                                                                            
+--------------------------------------------------------------------------------
+TREATMENT                                                                       
+--------------------------------------------------------------------------------
+Wilms tumor (kidney cancer), childhood                                          
+chemotherapy                                                                    
+                                                                                
+Wilms tumor (kidney cancer), childhood                                          
+surgery                                                                         
+                                                                                
+
+395 rows selected.

@@ -1,0 +1,10 @@
+declare
+v_sname specialists.sname%type:=&specialist_name;
+begin
+for v1 in(select * from specialists where sname=v_sname) loop
+dbms_output.put_line(v1.sname||' has consultation fees of Rs.'||v1.consult_fee);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such specialist exists');
+end;

@@ -1,0 +1,17 @@
+create or replace procedure p11(hn in hospital.hname%type)
+as
+begin
+dbms_output.put_line('phone numbers are = ');
+for v1 in(select phone_no,h.hid from h_phone p,hospital h where h.hid=p.hid and h.hname=hn) loop
+dbms_output.put_line(v1.phone_no||chr(10));
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('invalid hospital name');
+end;
+
+declare
+v_hn hospital.hname%type:=&hospital_name;
+begin
+p11(v_hn);
+end;

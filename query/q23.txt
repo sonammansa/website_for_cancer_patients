@@ -1,0 +1,10 @@
+declare
+v_dia diagnosis.tests%type:=&test_name;
+begin
+for v1 in(select * from diagnosis where tests=v_dia) loop
+dbms_output.put_line('it is a test of '||v1.type);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such value exists');
+end; 

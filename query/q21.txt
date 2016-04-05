@@ -1,0 +1,14 @@
+declare
+a char(3):=&alphabet;
+a1 char(3);
+begin
+for v1 in(select * from cancer) loop 
+select substr(v1.type,1,1) into a1 from dual;
+if a1=a then
+dbms_output.put_line(v1.type);
+end if;
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('invalid alphabet');
+end;

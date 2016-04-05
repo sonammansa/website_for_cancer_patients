@@ -1,0 +1,137 @@
+create or replace procedure ins_dia
+(t in diagnosis.type%type,c1 in diagnosis.tests%type,c2 in diagnosis.tests%type,c3 in diagnosis.tests%type,c4 in diagnosis.tests%type,c5 in diagnosis.tests%type)
+is
+begin
+insert into diagnosis
+values(t,c1);
+if c2<>'null' then
+insert into diagnosis values(t,c2);
+else
+dbms_output.put_line('');
+end if;
+if c3<>'null' then
+insert into diagnosis values(t,c3);
+else
+dbms_output.put_line('');
+end if;
+if c4<>'null' then
+insert into diagnosis values(t,c4);
+else
+dbms_output.put_line('');
+end if;
+if c5<>'null' then
+insert into diagnosis values(t,c5);
+else
+dbms_output.put_line('');
+end if;
+end;
+
+
+begin
+ins_dia('Acute lymphoblastic leukemia','bone marrow examination','ct scan','biopsy','complete blood count','null');
+ins_dia('Acute myeloid leukemia','Bone marrow aspiration and biopsy','Peripheral blood smear','biopsy','complete blood count','null');
+ins_dia('Hairy cell leukemia','physical exam', 'abdominal CT scan',  'complete blood count' , 'Blood tests', 'a bone marrow biopsy');
+ins_dia('Head and neck cancer','Fine needle aspiration biopsy','imaging studies','Evaluation for distant metastases','Incidence of second and multiple primaries','Future molecular staging methods');
+ins_dia('Heart cancer','Chest X-Ray','CT Heart Scan',' Myocardial Biopsy',' Heart MRI',' Pericardiocentesis');
+ins_dia('Hepatocellular (liver) cancer','Abdominal CT scan','Liver biopsy','Liver mri','Liver function tests','Abdominal ultrasound');
+ins_dia('Hodgkin lymphoma','lymph node biopsy','Bone marrow biopsy','CT scans of the chest, abdomen, and pelvis','Complete blood count (CBC) ','PET scan');
+ins_dia('Hypopharyngeal cancer','physical exam','biopsy','endoscopy','Chest xray','Laryngoscopy.');
+ins_dia('Hypothalamic and visual pathway glioma, childhood','ct scan','mri','biopsy','null','null');
+ins_dia('Intraocular Melanoma','Ophthalmoscopy','Ultrasound','Flourescein angiography',' blood tests','biopsy');
+ins_dia('Islet Cell Carcinoma (Endocrine Pancreas)','Abdominal CT scan','Gucose tolerance test','Serum glucagon level','Serum insulin C-peptide','Serum insulin level');
+ins_dia('Kaposi sarcoma','Bronchoscopy','CT scan','Endoscopy','skin biopsy','null');
+ins_dia('Kidney cancer (renal cell cancer)','Physical exam and history','Blood chemistry studies','Urinalysis','Liver function test','Intravenous pyelogram (IVP)');
+ins_dia('Laryngeal Cancer','laryngoscopy','Endoscopy','Barium swallow','biopsy','imaging studies');
+ins_dia('Leukemias','PhysicalExam',' peripheral blood smear',' cytogenic analysis',' bone marrow Biopsy',' Lumbar Puncture/Spinal Tap');
+ins_dia('Lip and Oral Cavity Cancer','Physical exam of lips and oral cavity','endoscopy','Barium swallow','biopsy','imaging studies');
+ins_dia('Liposarcoma','ct scan','mri','pet scan','x-ray','biopsy');
+ins_dia('Lung Cancer','chest xray',' ct scan',' mri',' pet scan',' Sputum Cytology');
+ins_dia('Lymphomas','Bone marrow examination','Organ function test','Lumbar puncture','Gallium scan','Lymphangiogram');
+ins_dia('Malignant Fibrous Histiocytoma of bone','Fine-needle aspiration (FNA) biopsy',' Core biopsy',' Incisional biopsy',' Light and electron microscopy', 'Cytogenetic analysis');
+ins_dia('Medulloblastoma, Childhood','ct scan',' mri',' biopsy',' lumbar puncture','null');
+ins_dia('Melanoma','epiluminescence microscopy (also called dermatoscopy)',' skin biopsy','null','null','null');
+ins_dia('Merkel Cell Carcinoma','Physical exam',' Removing a sample of suspicious skin',' Sentinel node biopsy',' Imaging tests','null');
+ins_dia('Mesothelioma','Video-Assisted Thoracoscopic Surgery (VATS)',' Thoracoscopy',' Peritoneoscopy',' biopsy','ct scan');
+ins_dia('Metastatic Squamous Neck Cancer with Occult Primary','Serum tumor marker test','biopsy',' sinus xray',' chest xray',' branchoscopy');
+ins_dia('Multiple Endocrine Neoplasia Syndrome, Childhood','ct scan','mri','biopsy','null','null');
+ins_dia('Multiple Myeloma or Plasma Cell Neoplasm','blood test',' xray',' urine test',' biopsy','null');
+ins_dia('Mycosis Fungoides','skin biopsy','null','null','null','null');
+ins_dia('Myelodysplastic or Myeloproliferative Diseases','Bone marrow aspiration and biopsy','Cytogenetic analysis','Peripheral blood smear','Blood chemistry studies','Complete blood count (CBC) with differential');
+ins_dia('Nasal cavity and paranasal sinus cancer','biopsy','nasoscopy','X-rays of the head, neck, and chest','physical exam','null');
+ins_dia('Nasopharyngeal carcinoma','Nasoscopy','Neurological exam','Head and chest x-rays','Biopsy','laboratory tests');
+ins_dia('Neuroblastoma','Twenty-four-hour urine test','Blood chemistry studies','Cytogenetic analysis','Bone marrow aspiration and biopsy','Neurological exam');
+ins_dia('Non-Hodgkin lymphoma','a lymph node biopsy','Bone marrow biopsy','Gallium scan','blood tests','Complete blood count (CBC)');
+ins_dia('Waldenström macroglobulinemia','Quantitative immunoglobulins','Blood counts','Laboratory tests ','null','null');
+ins_dia('Wilms tumor (kidney cancer), childhood','Urinalysis.','Renal function test','Liver function test','Blood chemistry studies','Ultrasound exam');
+ins_dia('Adrenocortical carcinoma','dexamethasone suppression test','Twenty-four-hour urine test','Blood chemistry study','Adrenal angiography','Adrenal venography');
+ins_dia('AIDS','home test','saliva test','viral load test','elisa test','western blot');
+ins_dia('AIDS-related lymphoma','biopsy','staging','null','null','null');
+ins_dia('Anal cancer','Digital Rectal Exam','Barium Enema','Fecal Occult Blood Test','Colonoscopy','Sigmoidoscopy');
+ins_dia('Appendix cancer','Radionuclide scanning (OctreoScan)','ct scan','mri','ultrasound','biopsy');
+ins_dia('Astrocytoma','Angiogram','biopsy','ct scan','mri','null');
+ins_dia('Basal-cell carcinoma','biopsy','null','null','null','null');
+ins_dia('Bladder cancer','Cystoscopy','Urine cytology','Bladder biopsies','Urine tumor marker tests','Urine culture');
+ins_dia('Bone tumor','Bone biopsy','Bone scan','Bone xray','mri','null');
+ins_dia('Brain tumor','stereotactic biopsy','mri','ct scan','pet scan','null');
+ins_dia('Brainstem glioma','mri','ct scan','biopsy','null','null');
+ins_dia('Breast cancer','Mammogram','Ultra-Sonography','Aspiration','Surgical Biopsy ','null');
+ins_dia('Bronchial adenomas','CT-guided fine-needle aspiration','Bronchoscopy','Octreotide','ct scan','mri');
+ins_dia('Burkitts lymphoma','biopsy','ct scan','mri','null','null');
+ins_dia('Carcinoid tumor','Endoscopic ultrasonography','ct scan','mri','null','null');
+ins_dia('Carcinoma of unknown primary','biopsy','null','null','null','null');
+ins_dia('Central nervous system lymphoma, primary','Spinal tap','brain biopsy','ct scan','mri','null');
+ins_dia('Cerebellar astrocytoma','ct scan','xray','null','null','null');
+ins_dia('Cervical cancer','Colposcopy Exam','Intravenous pyelogram (IVP)','cytoscopy','ct scan','mri');
+ins_dia('Cholangiocarcinoma','Angiogram','Laparotomy','Biopsy','mri','ct scan');
+ins_dia('Chronic lymphocytic leukemia','Blood test ','Bone marrow biopsy','Cytogenetic analysis','Immunophenotyping','null');
+ins_dia('Chronic myelogenous leukemia','bone marrow biopsy','null','null','null','null');
+ins_dia('Chronic myeloproliferative disorders','Bone marrow aspiration/biopsy','mri','ct scan','complete blood count','xray');
+ins_dia('Colon Cancer','Angiography','ct scan','mri','biopsy','complete blood count');
+ins_dia('Cutaneous T-cell lymphoma','biopsy','null','null','null','null');
+ins_dia('Desmoplastic small round cell tumor','stereotactic radiosurgery','radiofrequency ablation','cryoablation','null','null');
+ins_dia('Endometrial cancer','ultrasound','ct scan','biopsy','null','null');
+ins_dia('Ependymoma','mri','ct scan','null','null','null');
+ins_dia('Esophageal cancer','Barium swallow','Endoscopic ultrasound ','Esophagogastroduodenoscopy (EGD) ','biopsy','ct scan');
+ins_dia('Ewings sarcoma in the Ewing family of tumors','bone scan','mri','ct scan','biopsy','null');
+ins_dia('Eye Cancer','Eye examination ','Fluorescein angiography ','ultrasound','ct scan','biopsy');
+ins_dia('Gallbladder cancer','Liver function tests','ultrasound','Laparoscopy','ct scan','biopsy');
+ins_dia('Gastric (Stomach) cancer','ct scan','blood tests','mri','biopsy','null');
+ins_dia('Gastrointestinal stromal tumor (GIST)','Barium x-rays','Endoscopic ultrasound','biopsy','ct scan','mri');
+ins_dia('Germ cell tumor','Bone scan','ct scan','mri','xray','null');
+ins_dia('Gestational trophoblastic tumor','Quantitative serum HCG','Kidney function tests','Lung function tests','ct scan','mri');
+ins_dia('Vaginal cancer','pet scan','mri','ct scan','chest xray','null');
+ins_dia('Vulvar cancer','pet scan','mri','ct scan','chest xray','blood tests');
+ins_dia('Oral cancer','Mouth and throat examination ','biopsy','null','null','null');
+ins_dia('Oropharyngeal cancer','ct scan','mri','biopsy','pet scan','ultrasound');
+ins_dia('Ovarian cancer','pelvic examination','blood test',' transvaginal ultrasound',' biopsy','measure of serum BHCG level' );
+ins_dia('Ovarian epithelial cancer (Surface epithelial-stromal tumor)','Pelvic Exam','mri','Intravenous Pyelogram (IVP)','biopsy','ct scan');
+ins_dia('Pancreatic cancer','liver function test','blood test','endoscopic ultrasound','ct scan','null');
+ins_dia('Parathyroid cancer','surgery','blood test','sestamibi scan','null','null');
+ins_dia('Penile cancer','biopsy','null','null','null','null');
+ins_dia('Pharyngeal cancer','Histopathology','biopsy','null','null','null');
+ins_dia('Pheochromocytoma','Blood Test' ,'Urine Test','clonidine suppression test','null','null');
+ins_dia('Pinealoma','Angiogram','X-rays of the Head and Skull',' Brain Scans','ct scan','mri');
+ins_dia('Pituitary adenoma','vision test','urinalysis','imaging studies','null','null');
+ins_dia('Pleuropulmonary blastoma','xray','ct scan','mri','null','null');
+ins_dia('Primary central nervous system lymphoma','ring-enhancing lesions','ct scan','mru','null','null');
+ins_dia('Rectal cancer','Digital rectal exam (DRE)','Fecal occult blood test (FOBT)','Endoscopy','Virtual colonoscopy','Blood tests');
+ins_dia('Renal cell carcinoma (kidney cancer)','Radiology','Staging','Histopathology','null','null');
+ins_dia('Renal pelvis and ureter, transitional cell cancer','Urine cytology ','Abdominal CT scan','Intravenous pyelogram (IVP)','Kidney ultrasound','renal scan');
+ins_dia('Retinoblastoma','Persistent hyperplastic primary vitreous (PHPV)','Toxocara canis','Eye examination','Retinopathy of prematurity (ROP)','null');
+ins_dia('Rhabdomyosarcoma, childhoods','biopsy','ct scan','bone scan','mri','null');
+ins_dia('Salivary gland cancer','Endoscopy','Fine needle aspiration (FNA) biopsy','mri','ct scan','pet scan');
+ins_dia('Sarcoma, Ewing family of tumors','biopsy','null','null','null','null');
+ins_dia('Sézary syndrome','Immunophenotyping','biopsy','complete blood count','null','null');
+ins_dia('Skin cancer','biopsy','null','null','null','null');
+ins_dia('Soft tissue sarcoma','xray','ct scan','mri','biopsy','null');
+ins_dia('Supratentorial primitive neuroectodermal tumor, childhood','physical exam',' ct scan', 'mri','null','null');
+ins_dia('Testicular cancer','blood tests','ultra sound','biopsy','null','null');
+ins_dia('Throat cancer','needle biopsy','null','null','null','null');
+ins_dia('Thymoma','chest X-rays','null','null','null','null');
+ins_dia('Thyroid cancer','blood tests', 'imaging tests', 'x-rays','null','null');
+ins_dia('Cancer of Unknown primary site','Endoscopy','Somatostatin receptor scintigraphy','biopsy','ct scan','pet scan');
+ins_dia('Ureter and renal pelvis, transitional cell cancer','Urinalysis','Ureteroscopy','physical exam','ct scan','ultrasound');
+ins_dia('Urethral cancer','transurethral biopsy','null','null','null','null');
+ins_dia('Uterine cancer, endometrial','Pelvic exam','pap test','Endometrial biopsy','Dilatation and curettage','physical exam');
+ins_dia('Neuroectodermal tumors','mri','ct scan','xray','null','null');
+end;

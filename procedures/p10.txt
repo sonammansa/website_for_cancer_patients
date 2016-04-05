@@ -1,0 +1,15 @@
+create or replace procedure p10
+as
+m_age specialists.age%type;
+begin
+select min(age) into m_age from specialists;
+for v1 in(select * from specialists where age=m_age) loop
+dbms_output.put_line(v1.sid||' '||v1.sname||' has the minimum age of '||m_age);
+end loop;
+end;
+
+begin
+p10;
+end;
+
+

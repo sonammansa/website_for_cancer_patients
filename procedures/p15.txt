@@ -1,0 +1,21 @@
+create or replace procedure p15(hnm in hospital.hname%type)
+as
+begin
+for v1 in(select * from hospital where hname=hnm) loop
+dbms_output.put_line(chr(10)||v1.hname|| chr(10) ||'hid- '||v1.hid|| chr(10) ||'address-- '||v1.building|| chr(10) ||v1.town|| chr(10) ||v1.city|| chr(10) ||v1.state);
+dbms_output.put_line('phone number- ');
+for v2 in(select phone_no,h.hname from h_phone p,hospital h where h.hid=p.hid and h.hname=hnm) loop
+dbms_output.put_line(v2.phone_no);
+end loop;
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such hospital exists');
+end;
+
+
+declare
+v_hn hospital.hname%type:=&hospital_name;
+begin
+p15(v_hn);
+end;

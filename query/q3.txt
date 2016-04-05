@@ -1,0 +1,11 @@
+declare
+v_type cancer.type%type:=&type;
+bodypart_affec1 cancer.bodypart_affec%type;
+cells_damaged1 cancer.cells_damaged%type;
+begin
+select bodypart_affec,cells_damaged into bodypart_affec1,cells_damaged1 from cancer  where cancer.type=v_type;
+dbms_output.put_line(v_type||'.'||'It affects '||bodypart_affec1||' body parts and '||cells_damaged1||'.');
+exception
+when no_data_found then
+dbms_output.put_line('no such type exists');
+end;

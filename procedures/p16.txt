@@ -1,0 +1,17 @@
+create or replace procedure p16(sym in symptoms.symptoms%type)
+as
+begin
+for v1 in(select * from symptoms where symptoms=sym) loop
+dbms_output.put_line(v1.type);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such value exists');
+end; 
+
+declare
+v_sym symptoms.symptoms%type:=&symptom;
+begin
+dbms_output.put_line('It is a symptom of --');
+p16(v_sym);
+end;

@@ -1,0 +1,7 @@
+select a1.sname 
+from specialists a1
+where a1.sid=(select a2.sid,count(b1.degrees) from s_educ b1,specialists a2
+	      where b1.sid=a2.sid
+	      having count(b1.degrees)=(select max(count(b2.degrees))from s_educ b2,specialists a3
+					where b2.sid=a3.sid
+					group by a3.sid));	

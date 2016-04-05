@@ -1,0 +1,13 @@
+create or replace procedure p25
+as
+m_fee specialists.consult_fee%type;
+begin
+select min(consult_fee) into m_fee from specialists;
+for v1 in(select * from specialists where consult_fee=m_fee) loop
+dbms_output.put_line(v1.sid||' '||v1.sname||' has the minimum consultation fees of Rs.'||m_fee);
+end loop;
+end;
+
+begin
+p25;
+end;

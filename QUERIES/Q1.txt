@@ -1,0 +1,624 @@
+
+SQL> declare
+  2  m_age specialists.age%type;
+  3  begin
+  4  select max(age) into m_age from specialists;
+  5  for v1 in(select * from specialists where age=m_age) loop
+  6  dbms_output.put_line(v1.sid||' '||v1.sname||' has the maximum age of '||m_age);
+  7  end loop;
+  8  end;
+  9  /
+101 Dr.(Mrs.)Ronak P.Bhansali has the maximum age of 51
+111 Dr. Jebasingh J has the maximum age of 51
+121 Dr. Shankar Lal Jakhar has the maximum age of 51
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  m_age specialists.age%type;
+  3  begin
+  4  select min(age) into m_age from specialists;
+  5  for v1 in(select * from specialists where age=m_age) loop
+  6  dbms_output.put_line(v1.sid||' '||v1.sname||' has the minimum age of '||m_age);
+  7  end loop;
+  8  end;
+  9  /
+102 Dr. Amitabh Ray has the minimum age of 39
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hn hospital.hname%type:=&hospital_name;
+  3  begin
+  4  dbms_output.put_line('phone numbers are = ');
+  5  for v1 in(select phone_no,h.hid from h_phone p,hospital h where h.hid=p.hid and h.hname=v_hn) l
+oop
+  6  dbms_output.put_line(v1.phone_no);
+  7  end loop;
+  8  end;
+  9  /
+Enter value for hospital_name: 'Jindal Clinic'
+old   2: v_hn hospital.hname%type:=&hospital_name;
+new   2: v_hn hospital.hname%type:='Jindal Clinic';
+phone numbers are =
+9104346389
+9872555576
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_sname specialists.sname%type:=&specialist_name;
+  3  begin
+  4  for v1 in(select h.hname,h.state from specialists s,works_at w,hospital h where s.sname=v_sname
+ and s.sid=w.sid and w.hid=h.hid)loop
+  5  dbms_output.put_line(v_sname|| chr(10) ||v1.hname||chr(10)||v1.state);
+  6  dbms_output.put_line('phone numbers-');
+  7  for v2 in(select phone_no,h.hname from h_phone p,hospital h where h.hid=p.hid and h.hname=v1.hn
+ame) loop
+  8  dbms_output.put_line(v2.phone_no);
+  9  end loop;
+ 10  end loop;
+ 11  exception
+ 12  when no_data_found then
+ 13  dbms_output.put_line('no such hospital exists');
+ 14  end;
+ 15  /
+Enter value for specialist_name: 'Dr. Amitabh Ray'
+old   2: v_sname specialists.sname%type:=&specialist_name;
+new   2: v_sname specialists.sname%type:='Dr. Amitabh Ray';
+Dr. Amitabh Ray
+AMRI Hospitals
+West Bengal
+phone numbers-
+9109748618260
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hn hospital.hname%type:=&hospital_name;
+  3  begin
+  4  for v1 in(select s.sname,s.speciality,s.consult_fee from hospital h,works_at w,specialists s wh
+ere h.hname=v_hn and h.hid=w.hid and w.sid=s.sid) loop
+  5  dbms_output.put_line(v1.sname||chr(10)||'speciality- '||v1.speciality||chr(10)||'consultation f
+ees- '||v1.consult_fee||chr(10));
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such hospital exists');
+ 10  end;
+ 11  /
+Enter value for hospital_name: 'Colombia Asia Hospital'
+old   2: v_hn hospital.hname%type:=&hospital_name;
+new   2: v_hn hospital.hname%type:='Colombia Asia Hospital';
+Dr. Jawahar Ticku
+speciality- Oncologist(Hematology)
+consultation fees- 43000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_sname specialists.sname%type:=&specialist_name;
+  3  begin
+  4  for v1 in(select * from specialists where sname=v_sname) loop
+  5  dbms_output.put_line(v1.sname|| chr(10) ||'sid- '||v1.sid|| chr(10) ||'dob- '||v1.dob||'  age- 
+'||v1.age|| chr(10) ||'speciality- '||v1.speciality|| chr(10) ||'consultation fees- '||v1.consult_fe
+e);
+  6  dbms_output.put_line('degrees--');
+  7  for v2 in(select e.degrees,s.sid from specialists s,s_educ e where s.sid=e.sid and s.sname=v_sn
+ame) loop
+  8  dbms_output.put_line(v2.degrees);
+  9  end loop;
+ 10  dbms_output.put_line('hospital--');
+ 11  for v3 in(select h.hname,h.state from hospital h,works_at w,specialists s where s.sname=v_sname
+ and s.sid=w.sid and w.hid=h.hid) loop
+ 12  dbms_output.put_line(v3.hname||','||v3.state);
+ 13  end loop;
+ 14  end loop;
+ 15  exception
+ 16  when no_data_found then
+ 17  dbms_output.put_line('no such specialist exists');
+ 18  end;
+ 19  
+ 20  
+ 21  /
+Enter value for specialist_name: 'Dr. Jawahar Ticku'
+old   2: v_sname specialists.sname%type:=&specialist_name;
+new   2: v_sname specialists.sname%type:='Dr. Jawahar Ticku';
+Dr. Jawahar Ticku
+sid- 110
+dob- 04-NOV-69  age- 42
+speciality-
+Oncologist(Hematology)
+consultation fees- 43000
+degrees--
+MD
+hospital--
+Colombia Asia Hospital,Delhi
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hn hospital.hname%type:=&hospital_name;
+  3  begin
+  4  for v1 in(select * from hospital where hname=v_hn) loop
+  5  dbms_output.put_line(chr(10)||v1.hname|| chr(10) ||'hid- '||v1.hid|| chr(10) ||'address-- '||v1
+.building|| chr(10) ||v1.town|| chr(10) ||v1.city|| chr(10) ||v1.state);
+  6  dbms_output.put_line('phone number- ');
+  7  for v2 in(select phone_no,h.hname from h_phone p,hospital h where h.hid=p.hid and h.hname=v_hn)
+ loop
+  8  dbms_output.put_line(v2.phone_no);
+  9  end loop;
+ 10  end loop;
+ 11  exception
+ 12  when no_data_found then
+ 13  dbms_output.put_line('no such hospital exists');
+ 14  end;
+ 15  
+ 16  
+ 17  /
+Enter value for hospital_name: 'Colombia Asia Hospital'
+old   2: v_hn hospital.hname%type:=&hospital_name;
+new   2: v_hn hospital.hname%type:='Colombia Asia Hospital';
+
+Colombia Asia Hospital
+hid- 9
+address-- 
+Palam Vihar
+Gugraon
+Delhi
+phone number-
+91009650152647
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_sym symptoms.symptoms%type:=&symptom;
+  3  begin
+  4  for v1 in(select * from symptoms where symptoms=v_sym) loop
+  5  dbms_output.put_line('it is a symptom of '||v1.type);
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such value exists');
+ 10  end; 
+ 11  /
+Enter value for symptom: 'fatigue'
+old   2: v_sym symptoms.symptoms%type:=&symptom;
+new   2: v_sym symptoms.symptoms%type:='fatigue';
+it is a symptom of Cholangiocarcinoma
+it is a symptom of Chronic myeloproliferative disorders
+it is a symptom of Endometrial cancer
+it is a symptom of Ewings sarcoma in the Ewing family of tumors
+it is a symptom of Gastrointestinal stromal tumor (GIST)
+it is a symptom of Hairy cell leukemia
+it is a symptom of Heart cancer
+it is a symptom of Hypopharyngeal cancer
+it is a symptom of Leukemias
+it is a symptom of Lung Cancer
+it is a symptom of Lymphomas
+it is a symptom of Mesothelioma
+it is a symptom of Non-Hodgkin lymphoma
+it is a symptom of Renal pelvis and ureter, transitional cell cancer
+it is a symptom of Rhabdomyosarcoma, childhoods
+it is a symptom of Sarcoma, Ewing family of tumors
+it is a symptom of Supratentorial primitive neuroectodermal tumor, childhood
+it is a symptom of Thymoma
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_s hospital.state%type:=&state;
+  3  begin
+  4  for v1 in(select * from hospital where state=v_s) loop
+  5  dbms_output.put_line(chr(10)||v1.hname|| chr(10) ||'hid- '||v1.hid|| chr(10) ||'address-- '||v1
+.building|| chr(10) ||v1.town|| chr(10) ||v1.city|| chr(10) ||v1.state);
+  6  dbms_output.put_line('phone number- ');
+  7  for v2 in(select phone_no,h.hname from h_phone p,hospital h where h.hid=p.hid and h.state=v_s) 
+loop
+  8  dbms_output.put_line(v2.phone_no);
+  9  end loop;
+ 10  end loop;
+ 11  exception
+ 12  when no_data_found then
+ 13  dbms_output.put_line('no such value exists');
+ 14  end;
+ 15  
+ 16  
+ 17  /
+Enter value for state: 'Karnataka'
+old   2: v_s hospital.state%type:=&state;
+new   2: v_s hospital.state%type:='Karnataka';
+
+Kidwai Memorial Institute of Oncology
+hid- 5
+address-- 
+marigowda road,near
+diary circle
+Belgaum
+Karnataka
+phone number-
+9109845280651
+918022152215
+9109611195666
+
+Narayana Hrudayalaya
+hid- 15
+address-- 
+Bommasandra, Hosur
+Road
+Bangalore
+Karnataka
+phone number-
+9109845280651
+918022152215
+9109611195666
+
+Columbia asia Hospital
+hid- 18
+address-- 
+Yeshwantpur
+Bangalore
+Karnataka
+phone number-
+9109845280651
+918022152215
+9109611195666
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_s hospital.state%type:=&state;
+  3  begin
+  4  for v1 in(select h.hname,s.sname from hospital h,works_at w,specialists s where h.state=v_s and
+ h.hid=w.hid and w.sid=s.sid) loop
+  5  dbms_output.put_line(chr(10)||v1.hname||chr(10)||'specialists--'||chr(10)||v1.sname);
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such value exists');
+ 10  end;
+ 11  
+ 12  
+ 13  /
+Enter value for state: 'Karnataka'
+old   2: v_s hospital.state%type:=&state;
+new   2: v_s hospital.state%type:='Karnataka';
+
+Kidwai Memorial Institute of Oncology
+specialists--
+Dr. Bindhu Joseph
+
+Narayana Hrudayalaya
+specialists--
+Dr. Prasad Dandekar
+
+Columbia asia Hospital
+specialists--
+Dr. Satish Kumar
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_s hospital.state%type:=&state;
+  3  c int;
+  4  begin
+  5  select count(hid) into c from hospital where state=v_s group by state;
+  6  dbms_output.put_line(v_s||' has '||c||' hospitals with cancer specialists.');
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such state in our database');
+ 10  end;
+ 11  /
+Enter value for state: 'Karnataka'
+old   2: v_s hospital.state%type:=&state;
+new   2: v_s hospital.state%type:='Karnataka';
+Karnataka has 3 hospitals with cancer specialists.
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hn hospital.hname%type:=&hospital_name;
+  3  c int;
+  4  begin
+  5  select count(w.sid) into c from hospital h,works_at w where h.hname=v_hn and h.hid=w.hid group 
+by w.hid;
+  6  dbms_output.put_line(v_hn||' has '||c||'cancer specialists.');
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such hospital name exists.');
+ 10  end;
+ 11  /
+Enter value for hospital_name: 'Narayana Hrudayalaya'
+old   2: v_hn hospital.hname%type:=&hospital_name;
+new   2: v_hn hospital.hname%type:='Narayana Hrudayalaya';
+Narayana Hrudayalaya has 1cancer specialists.
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  a char(3):=&alphabet;
+  3  a1 char(3);
+  4  begin
+  5  for v1 in(select * from cancer) loop 
+  6  select substr(v1.type,1,1) into a1 from dual;
+  7  if a1=a then
+  8  dbms_output.put_line(v1.type);
+  9  end if;
+ 10  end loop;
+ 11  exception
+ 12  when no_data_found then
+ 13  dbms_output.put_line('invalid alphabet');
+ 14  end;
+ 15  /
+Enter value for alphabet: 'S'
+old   2: a char(3):=&alphabet;
+new   2: a char(3):='S';
+Salivary gland cancer
+Sarcoma, Ewing family of tumors
+Sézary syndrome
+Skin cancer
+Soft tissue sarcoma
+Supratentorial primitive neuroectodermal tumor, childhood
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_tre treatment.treatment%type:=&treatment;
+  3  begin
+  4  for v1 in(select * from treatment where treatment=v_tre) loop
+  5  dbms_output.put_line('it is a treatment of '||v1.type);
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such value exists');
+ 10  end; 
+ 11  /
+Enter value for treatment: 'surgery'
+old   2: v_tre treatment.treatment%type:=&treatment;
+new   2: v_tre treatment.treatment%type:='surgery';
+it is a treatment of Adrenocortical carcinoma
+it is a treatment of Appendix cancer
+it is a treatment of Astrocytoma
+it is a treatment of Bladder cancer
+it is a treatment of Bone tumor
+it is a treatment of Brain tumor
+it is a treatment of Brainstem glioma
+it is a treatment of Breast cancer
+it is a treatment of Bronchial adenomas
+it is a treatment of Cancer of Unknown primary site
+it is a treatment of Carcinoid tumor
+it is a treatment of Carcinoma of unknown primary
+it is a treatment of Cerebellar astrocytoma
+it is a treatment of Cervical cancer
+it is a treatment of Cholangiocarcinoma
+it is a treatment of Chronic lymphocytic leukemia
+it is a treatment of Chronic myelogenous leukemia
+it is a treatment of Chronic myeloproliferative disorders
+it is a treatment of Colon Cancer
+it is a treatment of Endometrial cancer
+it is a treatment of Ependymoma
+it is a treatment of Esophageal cancer
+it is a treatment of Ewings sarcoma in the Ewing family of tumors
+it is a treatment of Eye Cancer
+it is a treatment of Gallbladder cancer
+it is a treatment of Gastric (Stomach) cancer
+it is a treatment of Gastrointestinal stromal tumor (GIST)
+it is a treatment of Germ cell tumor
+it is a treatment of Heart cancer
+it is a treatment of Hepatocellular (liver) cancer
+it is a treatment of Hypopharyngeal cancer
+it is a treatment of Hypothalamic and visual pathway glioma, childhood
+it is a treatment of Kidney cancer (renal cell cancer)
+it is a treatment of Laryngeal Cancer
+it is a treatment of Liposarcoma
+it is a treatment of Lung Cancer
+it is a treatment of Malignant Fibrous Histiocytoma of bone
+it is a treatment of Medulloblastoma, Childhood
+it is a treatment of Melanoma
+it is a treatment of Merkel Cell Carcinoma
+it is a treatment of Mesothelioma
+it is a treatment of Metastatic Squamous Neck Cancer with Occult Primary
+it is a treatment of Multiple Endocrine Neoplasia Syndrome, Childhood
+it is a treatment of Nasal cavity and paranasal sinus cancer
+it is a treatment of Nasopharyngeal carcinoma
+it is a treatment of Neuroblastoma
+it is a treatment of Neuroectodermal tumors
+it is a treatment of Non-Hodgkin lymphoma
+it is a treatment of Oral cancer
+it is a treatment of Oropharyngeal cancer
+it is a treatment of Ovarian cancer
+it is a treatment of Ovarian epithelial cancer (Surface epithelial-stromal
+tumor)
+it is a treatment of Pharyngeal cancer
+it is a treatment of Pleuropulmonary blastoma
+it is a treatment of Rectal cancer
+it is a treatment of Renal cell carcinoma (kidney cancer)
+it is a treatment of Renal pelvis and ureter, transitional cell cancer
+it is a treatment of Retinoblastoma
+it is a treatment of Rhabdomyosarcoma, childhoods
+it is a treatment of Salivary gland cancer
+it is a treatment of Sarcoma, Ewing family of tumors
+it is a treatment of Soft tissue sarcoma
+it is a treatment of Supratentorial primitive neuroectodermal tumor, childhood
+it is a treatment of Sézary syndrome
+it is a treatment of Testicular cancer
+it is a treatment of Throat cancer
+it is a treatment of Thymoma
+it is a treatment of Urethral cancer
+it is a treatment of Uterine cancer, endometrial
+it is a treatment of Vaginal cancer
+it is a treatment of Vulvar cancer
+it is a treatment of Wilms tumor (kidney cancer), childhood
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_dia diagnosis.tests%type:=&test_name;
+  3  begin
+  4  for v1 in(select * from diagnosis where tests=v_dia) loop
+  5  dbms_output.put_line('it is a test of '||v1.type);
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such value exists');
+ 10  end; 
+ 11  /
+Enter value for test_name: 'biopsy'
+old   2: v_dia diagnosis.tests%type:=&test_name;
+new   2: v_dia diagnosis.tests%type:='biopsy';
+it is a test of AIDS-related lymphoma
+it is a test of Acute lymphoblastic leukemia
+it is a test of Acute myeloid leukemia
+it is a test of Appendix cancer
+it is a test of Astrocytoma
+it is a test of Basal-cell carcinoma
+it is a test of Brainstem glioma
+it is a test of Burkitts lymphoma
+it is a test of Cancer of Unknown primary site
+it is a test of Carcinoma of unknown primary
+it is a test of Colon Cancer
+it is a test of Cutaneous T-cell lymphoma
+it is a test of Endometrial cancer
+it is a test of Esophageal cancer
+it is a test of Ewings sarcoma in the Ewing family of tumors
+it is a test of Eye Cancer
+it is a test of Gallbladder cancer
+it is a test of Gastric (Stomach) cancer
+it is a test of Gastrointestinal stromal tumor (GIST)
+it is a test of Hypopharyngeal cancer
+it is a test of Hypothalamic and visual pathway glioma, childhood
+it is a test of Intraocular Melanoma
+it is a test of Laryngeal Cancer
+it is a test of Lip and Oral Cavity Cancer
+it is a test of Liposarcoma
+it is a test of Metastatic Squamous Neck Cancer with Occult Primary
+it is a test of Multiple Endocrine Neoplasia Syndrome, Childhood
+it is a test of Nasal cavity and paranasal sinus cancer
+it is a test of Oral cancer
+it is a test of Oropharyngeal cancer
+it is a test of Ovarian epithelial cancer (Surface epithelial-stromal tumor)
+it is a test of Penile cancer
+it is a test of Pharyngeal cancer
+it is a test of Rhabdomyosarcoma, childhoods
+it is a test of Sarcoma, Ewing family of tumors
+it is a test of Skin cancer
+it is a test of Soft tissue sarcoma
+it is a test of Sézary syndrome
+it is a test of Testicular cancer
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  m_fee specialists.consult_fee%type;
+  3  begin
+  4  select max(consult_fee) into m_fee from specialists;
+  5  for v1 in(select * from specialists where consult_fee=m_fee) loop
+  6  dbms_output.put_line(v1.sid||' '||v1.sname||' has the maximum consultation fees of Rs.'||m_fee)
+;
+  7  end loop;
+  8  end;
+  9  /
+107 Dr. E Prasad has the maximum consultation fees of Rs.47000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  m_fee specialists.consult_fee%type;
+  3  begin
+  4  select min(consult_fee) into m_fee from specialists;
+  5  for v1 in(select * from specialists where consult_fee=m_fee) loop
+  6  dbms_output.put_line(v1.sid||' '||v1.sname||' has the minimum consultation fees of Rs.'||m_fee)
+;
+  7  end loop;
+  8  end;
+  9  /
+102 Dr. Amitabh Ray has the minimum consultation fees of Rs.12000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_min specialists.consult_fee%type:=&min_fees_u_want;
+  3  v_max specialists.consult_fee%type:=&max_fees_u_want;
+  4  begin
+  5  for v1 in(select * from specialists where consult_fee>=v_min and consult_fee<=v_max) loop
+  6  dbms_output.put_line(v1.sname||' with sid '||v1.sid||' has the fees Rs.'||v1.consult_fee);
+  7  end loop;
+  8  end;
+  9  /
+Enter value for min_fees_u_want: 30000
+old   2: v_min specialists.consult_fee%type:=&min_fees_u_want;
+new   2: v_min specialists.consult_fee%type:=30000;
+Enter value for max_fees_u_want: 40000
+old   3: v_max specialists.consult_fee%type:=&max_fees_u_want;
+new   3: v_max specialists.consult_fee%type:=40000;
+Dr.(Mrs.)Ronak P.Bhansali with sid 101 has the fees Rs.30000
+Dr. Bhagwan D Jindal with sid 104 has the fees Rs.33000
+Dr. Jebasingh J with sid 111 has the fees Rs.30000
+Dr. LM.Darlong with sid 112 has the fees Rs.40000
+Dr. Mudit Agarwal with sid 113 has the fees Rs.34000
+Dr. Swarupa Mitra with sid 123 has the fees Rs.36000
+Dr. T N Vijayashree with sid 124 has the fees Rs.40000
+Dr. Tarang Patel with sid 125 has the fees Rs.34000
+Dr. Tushar V Patil with sid 127 has the fees Rs.34000
+Dr. Vijay Anand P Reddy with sid 129 has the fees Rs.37000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_sname specialists.sname%type:=&specialist_name;
+  3  begin
+  4  for v1 in(select * from specialists where sname=v_sname) loop
+  5  dbms_output.put_line(v1.sname||' has consultation fees of Rs.'||v1.consult_fee);
+  6  end loop;
+  7  exception
+  8  when no_data_found then
+  9  dbms_output.put_line('no such specialist exists');
+ 10  end;
+ 11  /
+Enter value for specialist_name: 'Dr. Swarupa Mitra'
+old   2: v_sname specialists.sname%type:=&specialist_name;
+new   2: v_sname specialists.sname%type:='Dr. Swarupa Mitra';
+Dr. Swarupa Mitra has consultation fees of Rs.36000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_deg s_educ.degrees%type:=&degree;
+  3  begin
+  4  dbms_output.put_line('specialists with degree '||v_deg||' are:');
+  5  for v1 in(select s.sname,e.degrees from specialists s,s_educ e where e.degrees=v_deg and e.sid=
+s.sid) loop
+  6  dbms_output.put_line(v1.sname);
+  7  end loop;
+  8  exception
+  9  when no_data_found then
+ 10  dbms_output.put_line('specialists with this degree does not exist');
+ 11  end;
+ 12  /
+Enter value for degree: 'MD'
+old   2: v_deg s_educ.degrees%type:=&degree;
+new   2: v_deg s_educ.degrees%type:='MD';
+specialists with degree MD are:
+Dr.(Mrs.)Ronak P.Bhansali
+Dr. Amitabh Ray
+Dr. Bindhu Joseph
+Dr. E Prasad
+Dr. Jawahar Ticku
+Dr. Jebasingh J
+Dr. Prasad Dandekar
+Dr. S.K.Das
+Dr. Sapna Nangia
+Dr. Satish Kumar
+Dr. Shankar Lal Jakhar
+Dr. Swarupa Mitra
+Dr. T N Vijayashree
+Dr. Tushar Mohapatra
+Dr. Tushar V Patil
+Dr. V. Vedhamoorthy
+Dr. Vijay Anand P Reddy
+
+PL/SQL procedure successfully completed.
+
+
+
+

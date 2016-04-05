@@ -1,0 +1,10 @@
+declare
+v_hn hospital.hname%type:=&hospital_name;
+c int;
+begin
+select count(w.sid) into c from hospital h,works_at w where h.hname=v_hn and h.hid=w.hid group by w.hid;
+dbms_output.put_line(v_hn||' has '||c||'cancer specialists.');
+exception
+when no_data_found then
+dbms_output.put_line('no such hospital name exists.');
+end;

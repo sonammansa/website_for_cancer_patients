@@ -1,0 +1,917 @@
+declare
+  2  v_can cancer%rowtype;
+  3  cursor c1 is select * from cancer;
+  4  begin
+  5  open c1;
+  6  loop
+  7  fetch c1 into v_can;
+  8  exit when c1%notfound;
+  9  dbms_output.put_line(v_can.type);
+ 10  end loop;
+ 11  close c1;
+ 12  end;
+ 13  /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on;
+SQL> declare
+  2  v_can cancer%rowtype;
+  3  cursor c1 is select * from cancer;
+  4  begin
+  5  open c1;
+  6  loop
+  7  fetch c1 into v_can;
+  8  exit when c1%notfound;
+  9  dbms_output.put_line(v_can.type);
+ 10  end loop;
+ 11  close c1;
+ 12  end;
+ 13  /
+Acute lymphoblastic leukemia                                                    
+Acute myeloid leukemia                                                          
+Hairy cell leukemia                                                             
+Head and neck cancer                                                            
+Heart cancer                                                                    
+Hepatocellular (liver) cancer                                                   
+Hodgkin lymphoma                                                                
+Hypopharyngeal cancer                                                           
+Hypothalamic and visual pathway glioma, childhood                               
+Intraocular Melanoma                                                            
+Islet Cell Carcinoma (Endocrine Pancreas)                                       
+Kaposi sarcoma                                                                  
+Kidney cancer (renal cell cancer)                                               
+Laryngeal Cancer                                                                
+Leukemias                                                                       
+Lip and Oral Cavity Cancer                                                      
+Liposarcoma                                                                     
+Lung Cancer                                                                     
+Lymphomas                                                                       
+Malignant Fibrous Histiocytoma of bone                                          
+Medulloblastoma, Childhood                                                      
+Melanoma                                                                        
+Merkel Cell Carcinoma                                                           
+Mesothelioma                                                                    
+Metastatic Squamous Neck Cancer with Occult Primary                             
+Multiple Endocrine Neoplasia Syndrome, Childhood                                
+Multiple Myeloma or Plasma Cell Neoplasm                                        
+Mycosis Fungoides                                                               
+Myelodysplastic or Myeloproliferative Diseases                                  
+Nasal cavity and paranasal sinus cancer                                         
+Nasopharyngeal carcinoma                                                        
+Neuroblastoma                                                                   
+Non-Hodgkin lymphoma                                                            
+Waldenström macroglobulinemia                                                   
+Wilms tumor (kidney cancer), childhood                                          
+Adrenocortical carcinoma                                                        
+AIDS                                                                            
+AIDS-related lymphoma                                                           
+Anal cancer                                                                     
+Appendix cancer                                                                 
+Astrocytoma                                                                     
+Basal-cell carcinoma                                                            
+Bladder cancer                                                                  
+Bone tumor                                                                      
+Brain tumor                                                                     
+Brainstem glioma                                                                
+Breast cancer                                                                   
+Bronchial adenomas                                                              
+Burkitts lymphoma                                                               
+Carcinoid tumor                                                                 
+Carcinoma of unknown primary                                                    
+Central nervous system lymphoma, primary                                        
+Cerebellar astrocytoma                                                          
+Cervical cancer                                                                 
+Cholangiocarcinoma                                                              
+Chronic lymphocytic leukemia                                                    
+Chronic myelogenous leukemia                                                    
+Chronic myeloproliferative disorders                                            
+Colon Cancer                                                                    
+Cutaneous T-cell lymphoma                                                       
+Desmoplastic small round cell tumor                                             
+Endometrial cancer                                                              
+Ependymoma                                                                      
+Esophageal cancer                                                               
+Ewings sarcoma in the Ewing family of tumors                                    
+Eye Cancer                                                                      
+Gallbladder cancer                                                              
+Gastric (Stomach) cancer                                                        
+Gastrointestinal stromal tumor (GIST)                                           
+Germ cell tumor                                                                 
+Gestational trophoblastic tumor                                                 
+Vaginal cancer                                                                  
+Vulvar cancer                                                                   
+Oral cancer                                                                     
+Oropharyngeal cancer                                                            
+Ovarian cancer                                                                  
+Ovarian epithelial cancer (Surface epithelial-stromal tumor)                    
+Pancreatic cancer                                                               
+Parathyroid cancer                                                              
+Penile cancer                                                                   
+Pharyngeal cancer                                                               
+Pheochromocytoma                                                                
+Pinealoma                                                                       
+Pituitary adenoma                                                               
+Pleuropulmonary blastoma                                                        
+Primary central nervous system lymphoma                                         
+Rectal cancer                                                                   
+Renal cell carcinoma (kidney cancer)                                            
+Renal pelvis and ureter, transitional cell cancer                               
+Retinoblastoma                                                                  
+Rhabdomyosarcoma, childhoods                                                    
+Salivary gland cancer                                                           
+Sarcoma, Ewing family of tumors                                                 
+Sézary syndrome                                                                 
+Skin cancer                                                                     
+Soft tissue sarcoma                                                             
+Supratentorial primitive neuroectodermal tumor, childhood                       
+Testicular cancer                                                               
+Throat cancer                                                                   
+Thymoma                                                                         
+Thyroid cancer                                                                  
+Cancer of Unknown primary site                                                  
+Ureter and renal pelvis, transitional cell cancer                               
+Urethral cancer                                                                 
+Uterine cancer, endometrial                                                     
+Neuroectodermal tumors                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> Created file C:\Users\sonam\Desktop\xyz.sql
+declare
+  2  v_type cancer.type%type:=&type;
+  3  v_bdy cancer.bodypart_affec%type;
+  4  v_cel cancer.cells_damaged%type;
+  5  begin
+  6  select bodypart_affec,cells_damaged into v_bdy,v_cel from cancer where type=v_type;
+  7  dbms_output.put_line(v_type||' affects '||v_bdy||' and '||v_cel|| chr(10));
+  8  dbms_output.put_line('causes are');
+  9  for v1 in(select * from causes where type=v_type) loop
+ 10  dbms_output.put_line(v1.cause_riskfactor);
+ 11  end loop;
+ 12  dbms_output.put_line(chr(10)||'symptoms are');
+ 13  for v2 in(select * from symptoms where type=v_type) loop
+ 14  dbms_output.put_line(v2.symptoms);
+ 15  end loop;
+ 16  dbms_output.put_line(chr(10)||'tests to be done are');
+ 17  for v3 in(select * from diagnosis where type=v_type)loop
+ 18  dbms_output.put_line(v3.tests);
+ 19  end loop;
+ 20  dbms_output.put_line(chr(10)||'its treatment include');
+ 21  for v4 in(select * from treatment where type=v_type)loop
+ 22  dbms_output.put_line(v4.treatment);
+ 23  end loop;
+ 24  exception
+ 25  when no_data_found then
+ 26  dbms_output.put_line('no such type exists');
+ 27  end;
+ 28  /
+Enter value for type: 'Mesothelioma'
+old   2: v_type cancer.type%type:=&type;
+new   2: v_type cancer.type%type:='Mesothelioma';
+Mesothelioma affects pleura (outer lining of the lungs and internal chest wall),
+but it may also occur in the peritoneum (the lining of the abdominal cavity),   
+the pericardium (a sac that surrounds the heart),[2] or the tunica vaginalis (a 
+sac that surrounds the testis) and mesothelium
+                                 
+causes are                                                                      
+Environmental
+exposures                                                         
+Asbestos in
+buildings                                                           
+
+symptoms are                                                                   
+Low blood sugar level                                                           
+Wheezing, hoarseness, or cough                                                  
+fatigue                                                                         
+shortness of breath                                                             
+weight loss                                                                     
+
+tests to be done are                                                           
+Peritoneoscopy                                                                  
+Thoracoscopy                                                                    
+biopsy                                                                          
+Video-Assisted Thoracoscopic Surgery (VATS)                                     
+ct scan                                                                         
+
+its treatment include                                                          
+Immunotherapy                                                                   
+Multimodality Therapy                                                           
+Radiation therapy                                                               
+chemotherapy                                                                    
+surgery                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_type cancer.type%type:=&type;
+  3  bodypart_affec1 cancer.bodypart_affec%type;
+  4  cells_damaged1 cancer.cells_damaged%type;
+  5  begin
+  6  select bodypart_affec,cells_damaged into bodypart_affec1,cells_damaged1 from cancer  where cancer.type=v_type;
+  7  dbms_output.put_line(v_type||'.'||'It affects '||bodypart_affec1||' body parts and '||cells_damaged1||'.');
+  8  exception
+  9  when no_data_found then
+ 10  dbms_output.put_line('no such type exists');
+ 11  end;
+ 12  /
+Enter value for type: 'Laryngeal Cancer'
+old   2: v_type cancer.type%type:=&type;
+new   2: v_type cancer.type%type:='Laryngeal Cancer';
+Laryngeal Cancer.It affects larynx body parts and squamous cells, the thin, flat
+cells lining the inside of the larynx.                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_t cancer.type%type:=&type;
+  3  v_w varchar(50):=&what_to_display;
+  4  v1 cancer.bodypart_affec%type;
+  5  v2 cancer.cells_damaged%type;
+  6  begin
+  7  if v_w='body parts affected' then
+  8  select bodypart_affec into v1 from cancer where type=v_t;
+  9  dbms_output.put_line(v1);
+ 10  elsif v_w='cells affected' then
+ 11  select cells_damaged into v2 from cancer where type=v_t;
+ 12  dbms_output.put_line(v2);
+ 13  elsif v_w='causes' then
+ 14  dbms_output.put_line('causes are');
+ 15  for v1 in(select * from causes where type=v_t) loop
+ 16  dbms_output.put_line(v1.cause_riskfactor);
+ 17  end loop;
+ 18  elsif v_w='symptoms' then
+ 19  dbms_output.put_line('symptoms are');
+ 20  for v2 in(select * from symptoms where type=v_t) loop
+ 21  dbms_output.put_line(v2.symptoms);
+ 22  end loop;
+ 23  elsif v_w='diagnosis' then
+ 24  dbms_output.put_line('tests to be done are');
+ 25  for v3 in(select * from diagnosis where type=v_t)loop
+ 26  dbms_output.put_line(v3.tests);
+ 27  end loop;
+ 28  elsif v_w='treatment' then
+ 29  dbms_output.put_line('its treatment include');
+ 30  for v4 in(select * from treatment where type=v_t)loop
+ 31  dbms_output.put_line(v4.treatment);
+ 32  end loop;
+ 33  end if;
+ 34  exception
+ 35  when no_data_found then
+ 36  dbms_output.put_line('no such type exists');
+ 37  end;
+ 38  /
+Enter value for type: 'Bladder cancer'
+old   2: v_t cancer.type%type:=&type;
+new   2: v_t cancer.type%type:='Bladder cancer';
+Enter value for what_to_display: 'symptoms'
+old   3: v_w varchar(50):=&what_to_display;
+new   3: v_w varchar(50):='symptoms';
+symptoms are                                                                    
+Blood in the Urine                                                              
+frequent urination                                                              
+painful urination                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_spe specialists%rowtype;
+  3  cursor c1 is select * from specialists;
+  4  begin
+  5  open c1;
+  6  loop
+  7  fetch c1 into v_spe;
+  8  exit when c1%notfound;
+  9  dbms_output.put_line('sid = '||v_spe.sid|| chr(10) ||'specialist name is = '||v_spe.sname|| chr(10) ||'birthdate = '||v_spe.DOB|| chr(10) ||'age is = '||v_spe.age||' doctors speciality = '||v_spe.speciality|| chr(10) ||' fees = '||v_spe.consult_fee|| chr(10) );
+ 10  end loop;
+ 11  close c1;
+ 12  end;
+ 13  /
+sid = 101
+specialist name is = Dr.(Mrs.)Ronak P.Bhansali
+birthdate =            
+21-OCT-60
+age is = 51 doctors speciality = Oncologist(Gynec-oncologist)
+ fees = 
+30000
+                                                                          
+sid = 102
+specialist name is = Dr. Amitabh Ray
+birthdate = 19-OCT-72
+age is = 39
+doctors speciality = Oncologist
+ fees = 12000
+                                  
+sid = 103
+specialist name is = Dr. Amitkumar Jaiswal
+birthdate = 27-JUL-66
+age  
+is = 45 doctors speciality = Oncologist(surgical oncologist)
+ fees = 27000
+     
+sid = 104
+specialist name is = Dr. Bhagwan D Jindal
+birthdate = 10-NOV-64
+age is
+= 47 doctors speciality = Oncologist(cancer consultant)
+ fees = 33000
+          
+sid = 105
+specialist name is = Dr. Bindhu Joseph
+birthdate = 01-NOV-68
+age is = 
+43 doctors speciality = Oncologist
+ fees = 25000
+                               
+sid = 106
+specialist name is = Dr. Dinesh Chandra Katiyar
+birthdate =           
+28-APR-70
+age is = 42 doctors speciality = Oncologist(Cancer Surgery)
+ fees =   
+43000
+                                                                          
+sid = 107
+specialist name is = Dr. E Prasad
+birthdate = 11-OCT-68
+age is = 43   
+doctors speciality = Oncologist(Radiation Oncologist)
+ fees = 47000
+            
+sid = 108
+specialist name is = Dr. G.Amarnath
+birthdate = 15-OCT-61
+age is = 50 
+doctors speciality = Oncologist(Radiation oncology)
+ fees = 41000
+              
+sid = 109
+specialist name is = Dr. Hemanth Vudayaraju
+birthdate = 28-OCT-65
+age 
+is = 46 doctors speciality = Oncologist(Surgical Oncologist)
+ fees = 25000
+     
+sid = 110
+specialist name is = Dr. Jawahar Ticku
+birthdate = 04-NOV-69
+age is = 
+42 doctors speciality = Oncologist(Hematology)
+ fees = 43000
+                   
+sid = 111
+specialist name is = Dr. Jebasingh J
+birthdate = 23-MAR-61
+age is = 51
+doctors speciality = Oncologist(Medical Oncologist)
+ fees = 30000
+              
+sid = 112
+specialist name is = Dr. LM.Darlong
+birthdate = 14-JUN-64
+age is = 47 
+doctors speciality = Oncologist(Thoraric Surgical Oncology)
+ fees = 40000
+      
+sid = 113
+specialist name is = Dr. Mudit Agarwal
+birthdate = 05-MAY-70
+age is = 
+42 doctors speciality = Oncologist(Surgical Oncologist)
+ fees = 34000
+          
+sid = 114
+specialist name is = Dr. Nagendra Parvataneni
+birthdate =             
+29-JAN-63
+age is = 49 doctors speciality = Oncologist(Surgical Oncologist)
+ fees
+= 25000
+                                                                        
+sid = 115
+specialist name is = Dr. P.K.Das
+birthdate = 08-JAN-62
+age is = 50    
+doctors speciality = Oncologist(Medical Oncologist)
+ fees = 27000
+              
+sid = 116
+specialist name is = Dr. Prasad Dandekar
+birthdate = 21-APR-71
+age is 
+= 41 doctors speciality = Oncologist
+ fees = 18000
+                             
+sid = 117
+specialist name is = Dr. S.K.Das
+birthdate = 30-JUN-67
+age is = 44    
+doctors speciality = Oncologist(Gynae-Oncology)
+ fees = 20000
+                  
+sid = 118
+specialist name is = Dr. Samir Ray
+birthdate = 20-FEB-68
+age is = 44  
+doctors speciality = Oncologist(Consultant GI Oncosurgeon)
+ fees = 25000
+       
+sid = 120
+specialist name is = Dr. Satish Kumar
+birthdate = 04-SEP-63
+age is =  
+48 doctors speciality = Oncologist(Hematology)
+ fees = 17000
+                   
+sid = 121
+specialist name is = Dr. Shankar Lal Jakhar
+birthdate = 28-SEP-60
+age 
+is = 51 doctors speciality = Oncologist(Radiation Oncology)
+ fees = 29000
+      
+sid = 122
+specialist name is = Dr. Shuaib Zaidi
+birthdate = 14-AUG-64
+age is =  
+47 doctors speciality = Oncologist
+ fees = 21000
+                               
+sid = 123
+specialist name is = Dr. Swarupa Mitra
+birthdate = 27-AUG-67
+age is = 
+44 doctors speciality = Oncologist(Radiation Oncologist)
+ fees = 36000
+         
+sid = 124
+specialist name is = Dr. T N Vijayashree
+birthdate = 05-SEP-69
+age is 
+= 42 doctors speciality = Oncologist(Radiation Oncology)
+ fees = 40000
+         
+sid = 125
+specialist name is = Dr. Tarang Patel
+birthdate = 18-JUL-65
+age is =  
+46 doctors speciality = Oncologist(Consultant Onco Surgeon)
+ fees = 34000
+      
+sid = 126
+specialist name is = Dr. Tushar Mohapatra
+birthdate = 21-JAN-68
+age is
+= 44 doctors speciality = Oncologist(PET SCAN)
+ fees = 28000
+                   
+sid = 127
+specialist name is = Dr. Tushar V Patil
+birthdate = 30-OCT-69
+age is =
+42 doctors speciality = Oncologist(Hematology)
+ fees = 34000
+                   
+sid = 128
+specialist name is = Dr. V. Vedhamoorthy
+birthdate = 07-OCT-66
+age is 
+= 45 doctors speciality = Oncologist(Cancer Specialist)
+ fees = 29000
+          
+sid = 129
+specialist name is = Dr. Vijay Anand P Reddy
+birthdate = 25-DEC-62
+age
+is = 49 doctors speciality = Oncologist
+ fees = 37000
+                          
+sid = 119
+specialist name is = Dr. Sapna Nangia
+birthdate = 19-SEP-66
+age is =  
+45 doctors speciality = Oncologist(Radiation Oncology)
+ fees = 23000
+           
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hos hospital%rowtype;
+  3  cursor c1 is select * from hospital;
+  4  begin
+  5  open c1;
+  6  loop
+  7  fetch c1 into v_hos;
+  8  exit when c1%notfound;
+  9  dbms_output.put_line('id- '||v_hos.hid || chr(10) ||'name- '||v_hos.hname|| chr(10) ||'address- '||chr(10)||v_hos.building|| chr(10) ||v_hos.town|| chr(10) ||v_hos.city|| chr(10) ||v_hos.state|| chr(10) );
+ 10  end loop;
+ 11  close c1;
+ 12  end;
+ 13  /
+id- 2
+name- AMRI Hospitals
+address- 
+
+Dhakuria
+Kolkata
+West Bengal
+             
+id- 3
+name- CARE HOSPITAL
+address- 
+
+civil lines
+Nagpur
+Maharashtra
+            
+id- 4
+name- Jindal Clinic
+address- 
+near police                                 
+chownki,dhanas
+Sector-38
+Chandigarh
+Chandigarh
+                                 
+id- 5
+name- Kidwai Memorial Institute of Oncology
+address- 
+
+marigowda road,near
+diary circle
+Belgaum
+Karnataka
+                                                 
+id- 6
+name- SMH Curie Cancer Centre
+address- 
+2, Institutional Area
+Vikas Marg  
+Extn.
+Karkardooma
+Delhi
+                                                        
+id- 7
+name- Apollo Speciality Hospital
+address- 
+
+KK Nagar
+Madurai
+Tamilnadu
+   
+id- 8
+name- KIMS Hospital
+address- 
+1-8-31/1
+Minister Road
+Secunderabad
+Andhra  
+Pradesh
+                                                                        
+id- 9
+name- Colombia Asia Hospital
+address- 
+
+Palam Vihar
+Gugraon
+Delhi
+        
+id- 10
+name- Asirvatham Speciality Hospital
+address- 
+22
+Rajaji                 
+Street,Gandhinagar
+Madurai
+Tamilnadu
+                                           
+id- 11
+name- FORTIS HOSPITAL
+address- 
+B-22
+Sector-62
+Noida
+Uttar Pradesh
+      
+id- 12
+name- Dharamshila Cancer Hospital 
+address- 
+
+
+
+Delhi
+                   
+id- 13
+name- Indo American Cancer Hospital and Research Centre
+address- 
+
+Road  
+No. 14, Banjara Hills
+Hyderabad
+Andhra Pradesh
+                                 
+id- 14
+name- Apollo Hospital
+address- 
+
+Sarita Vihar
+South Delhi
+Delhi
+         
+id- 15
+name- Narayana Hrudayalaya
+address- 
+
+Bommasandra, Hosur                 
+Road
+Bangalore
+Karnataka
+                                                       
+id- 17
+name- Ashirwad Hospital
+address- 
+Bh. Polo Ground
+Kirti                  
+Stambh
+Vadodara
+Gujrat
+                                                         
+id- 18
+name- Columbia asia Hospital
+address- 
+
+Yeshwantpur
+Bangalore
+Karnataka
+ 
+id- 19
+name- PBM Hospital
+address- 
+B 4/11
+Patel nagar
+Bikaner
+Rajasthan
+       
+id- 20
+name- Cancer Cure Clinic
+address- 
+B-7, Azad Apartment, Plot 111, IP     
+Extension
+Patparganj
+Delhi
+Delhi
+                                               
+id- 21
+name- Artemis Health Institute
+address- 
+EG 37 Ashiana Garden            
+Alwar
+Bhiwadi
+South Delhi
+Delhi
+                                                
+id- 22
+name- DR T N VIJAYASREE
+address- 
+NO.1155/10 STATION ROAD, V R           
+NAGAR
+KORATTUR
+Chennai
+Tamilnadu
+                                               
+id- 23
+name- KRISHNA Heart n Super Specialty Institute
+address- 
+DEV Complex,   
+Opp. Parimal Garden
+Ambawadi
+Ahmedabad
+Gujrat
+                                  
+id- 24
+name- YASHODA HOSPITALS
+address- 
+2ND FLOOR, C                           
+BLOCK
+SOMAJIGUDA
+Hyderabad
+Andhra Pradesh
+                                      
+id- 25
+name- SAHYADRI SPECIALITY HOSPITALS
+address- 
+30C, ERANDAWANE
+KARVE      
+ROAD
+Pune
+Maharashtra
+                                                          
+id- 26
+name- Dr. U. Mohan Rau Memorial Hospital
+address- 
+962
+Poonamallee High  
+Road
+Chennai
+Tamilnadu
+                                                         
+id- 27
+name- Apollo Cancer Hospital
+address- 
+
+Apollo Health City, Jubilee      
+Hills
+Hyderabad
+Andhra Pradesh
+                                                 
+id- 16
+name- Center for Prevention of CACX
+address- 
+B-202,Welcome              
+Appartments
+Rohini,Sector-9
+North West Delhi
+Delhi
+                             
+id- 1
+name- Sainath raw-houses
+address- 
+A\15
+Maninagar
+Ahmedabad
+Gujrat
+       
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  v_hname hospital.hname%type;
+  3  v_state hospital.state%type;
+  4  v_hno h_phone.phone_no%type;
+  5  begin
+  6  for c1 in(select * from hospital) loop
+  7  dbms_output.put_line(chr(10)||c1.hname|| chr (10) ||c1.state);
+  8  dbms_output.put_line('phone numbers are = ');
+  9  for v1 in(select phone_no,h.hid from h_phone p,hospital h where h.hid=p.hid and h.hname=c1.hnam
+e) loop
+ 10  dbms_output.put_line(v1.phone_no);
+ 11  end loop;
+ 12  end loop;
+ 13  end;
+ 14  
+ 15  /
+
+AMRI Hospitals
+West Bengal
+phone numbers are =
+9109748618260
+
+CARE HOSPITAL
+Maharashtra
+phone numbers are =
+9109322478221
+
+Jindal Clinic
+Chandigarh
+phone numbers are =
+9104346389
+9872555576
+
+Kidwai Memorial Institute of Oncology
+Karnataka
+phone numbers are =
+9109845280651
+
+SMH Curie Cancer Centre
+Delhi
+phone numbers are =
+911143006000
+
+Apollo Speciality Hospital
+Tamilnadu
+phone numbers are =
+9842124100
+914522580892
+914522641332
+
+KIMS Hospital
+Andhra Pradesh
+phone numbers are =
+914044885000
+
+Colombia Asia Hospital
+Delhi
+phone numbers are =
+91009650152647
+
+Asirvatham Speciality Hospital
+Tamilnadu
+phone numbers are =
+914529442619775
+
+FORTIS HOSPITAL
+Uttar Pradesh
+phone numbers are =
+9109958919595
+911209891010390
+
+Dharamshila Cancer Hospital 
+Delhi
+phone numbers are =
+9109910206437
+
+Indo American Cancer Hospital and Research Centre
+Andhra Pradesh
+phone numbers are =
+9849999379
+
+Apollo Hospital
+Delhi
+phone numbers are =
+91119810444600
+
+Narayana Hrudayalaya
+Karnataka
+phone numbers are =
+918022152215
+
+Ashirwad Hospital
+Gujrat
+phone numbers are =
+9909912905
+912652711091
+
+Columbia asia Hospital
+Karnataka
+phone numbers are =
+9109611195666
+
+PBM Hospital
+Rajasthan
+phone numbers are =
+9109414451043
+
+Cancer Cure Clinic
+Delhi
+phone numbers are =
+32668050
+91119313668802
+
+Artemis Health Institute
+Delhi
+phone numbers are =
+9717041602
+9109812399708
+
+DR T N VIJAYASREE
+Tamilnadu
+phone numbers are =
+91449444132816
+
+KRISHNA Heart n Super Specialty Institute
+Gujrat
+phone numbers are =
+40022233
+9825062015
+917940022211
+
+YASHODA HOSPITALS
+Andhra Pradesh
+phone numbers are =
+91408008159444
+
+SAHYADRI SPECIALITY HOSPITALS
+Maharashtra
+phone numbers are =
+9109552522556
+
+Dr. U. Mohan Rau Memorial Hospital
+Tamilnadu
+phone numbers are =
+26411621
+26412474
+914426424396
+
+Apollo Cancer Hospital
+Andhra Pradesh
+phone numbers are =
+914023607777
+
+Center for Prevention of CACX
+Delhi
+phone numbers are =
+9109810059380
+
+Sainath raw-houses
+Gujrat
+phone numbers are =
+9426417678
+9426755855
+917925359232
+
+PL/SQL procedure successfully completed.

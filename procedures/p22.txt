@@ -1,0 +1,17 @@
+create or replace procedure p22(tre in treatment.treatment%type)
+as
+begin
+dbms_output.put_line('It is a treatment of --');
+for v1 in(select * from treatment where treatment=tre) loop
+dbms_output.put_line(v1.type);
+end loop;
+exception
+when no_data_found then
+dbms_output.put_line('no such value exists');
+end; 
+
+declare
+v_tre treatment.treatment%type:=&treatment;
+begin
+p22(v_tre);
+end;

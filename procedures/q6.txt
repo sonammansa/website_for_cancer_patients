@@ -1,0 +1,12 @@
+declare
+v_hos hospital%rowtype;
+cursor c1 is select * from hospital;
+begin
+open c1;
+loop
+fetch c1 into v_hos;
+exit when c1%notfound;
+dbms_output.put_line('id- '||v_hos.hid || chr(10) ||'name- '||v_hos.hname|| chr(10) ||'address- '||chr(10)||v_hos.building|| chr(10) ||v_hos.town|| chr(10) ||v_hos.city|| chr(10) ||v_hos.state|| chr(10) );
+end loop;
+close c1;
+end;
